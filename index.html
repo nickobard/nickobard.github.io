@@ -9,23 +9,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         .photo {
-            width: 20vw;
-            height: 20vw;
-            max-width: 25vw;
-            max-height: 25vw;
-            min-width: 15vw;
-            min-height: 15vw;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            object-position: top center;
+            object-position: center;
         }
     </style>
 </head>
 <body>
 <div class="container mt-5">
     <section id="about" class="text-center">
-        <img src="img/av_cropped_compressed.jpg" alt="My Photo" class="photo mb-3">
-        <h1>Nikita Bardatskii</h1>
+        <div class="row justify-content-center">
+            <div class="col-6 col-md-4 col-lg-3">
+                <img src="img/av_cropped_compressed.jpg" alt="My Photo" class="photo mb-3">
+            </div>
+        </div>
+        <h1 class="mt-5">Nikita Bardatskii</h1>
         <p>Hi, I'm a student at FIT CTU in Prague, studying Artificial Intelligence. I also partially studied Software Engineering program out of personal interest. Here you can find my top projects in SW and DS. </p>
     </section>
 
@@ -40,7 +40,7 @@
                         </button>
                     </h2>
                 </div>
-                <div id="collapse-1" class="collapse" aria-labelledby="heading-1">
+                <div id="collapse-1" class="collapse show" aria-labelledby="heading-1">
                     <div class="card-body">
                         Short description: A website to showcase my projects and skills.
                         <ul class="list-unstyled">
@@ -57,7 +57,7 @@
                         </button>
                     </h2>
                 </div>
-                <div id="collapse-2" class="collapse" aria-labelledby="heading-2">
+                <div id="collapse-2" class="collapse show" aria-labelledby="heading-2">
                     <div class="card-body">
                         Short description: An exploratory data analysis project using Python libraries.
                         <ul class="list-unstyled">
@@ -74,7 +74,7 @@
                         </button>
                     </h2>
                 </div>
-                <div id="collapse-3" class="collapse" aria-labelledby="heading-3">
+                <div id="collapse-3" class="collapse show" aria-labelledby="heading-3">
                     <div class="card-body">
                         Short description: Deployment of a machine learning model using Flask.
                         <ul class="list-unstyled">
@@ -87,11 +87,11 @@
                 <div class="card-header" id="heading-4">
                     <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
-                            Other
+                            New Project Category
                         </button>
                     </h2>
                 </div>
-                <div id="collapse-4" class="collapse" aria-labelledby="heading-4">
+                <div id="collapse-4" class="collapse show" aria-labelledby="heading-4">
                     <div class="card-body">
                         Short description: Description of the new project or topic.
                         <ul class="list-unstyled">
