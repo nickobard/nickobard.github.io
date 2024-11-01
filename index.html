@@ -45,10 +45,23 @@
                 </div>
                 <div id="collapse-1" class="collapse" aria-labelledby="heading-1">
                     <div class="card-body">
-                        Short description: A website to showcase my projects and skills.
-                        <ul class="list-unstyled">
-                            <li><a href="https://github.com/yourusername/portfolio-website" target="_blank">GitHub
-                                Repository</a></li>
+                        <p>Projects showing my skills in Data Analysis, Data Engineering and ML.</p>
+                        <ul>
+                            <li>
+                                <a href="https://github.com/nickobard/University/tree/master/2.Semester/DBS/Semestral%20Work"
+                                   target="_blank">Soul Farm Database</a>
+                                <span> - SQL, Postgres.</span>
+                            </li>
+                            <li>
+                                <a href="https://github.com/nickobard/eurostat-datasets-analysis" target="_blank">Data
+                                    Analysis of Eurostat Datasets</a>
+                                <span> - R language, Hypotheses Tests.</span>
+                            </li>
+                            <li>
+                                <a href="https://github.com/nickobard/University/tree/master/5.Semester/VIZ"
+                                   target="_blank">Data Visualization Course Projects (BI-VIZ)</a>
+                                <span>- Python for Data Visualizations (Matplotlib, Pandas, Numpy, Seaborn, NetworkX, etc.), Python for ML (Scikit-Learn)</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -64,8 +77,8 @@
                 </div>
                 <div id="collapse-2" class="collapse" aria-labelledby="heading-2">
                     <div class="card-body">
-                        Short description: An exploratory data analysis project using Python libraries.
-                        <ul class="list-unstyled">
+                        <p>Projects showing my skills in Software Engineering and DevOps.</p>
+                        <ul>
                             <li><a href="https://github.com/yourusername/data-analysis-python" target="_blank">GitHub
                                 Repository</a></li>
                         </ul>
@@ -83,10 +96,11 @@
                 </div>
                 <div id="collapse-3" class="collapse" aria-labelledby="heading-3">
                     <div class="card-body">
-                        Short description: Deployment of a machine learning model using Flask.
-                        <ul class="list-unstyled">
-                            <li><a href="https://github.com/yourusername/ml-model-deployment" target="_blank">GitHub
-                                Repository</a></li>
+                        <p>Projects done during my Bachelor Degree study in <a href="https://fit.cvut.cz/en">FIT
+                            CTU.</a></p>
+                        <ul>
+                            <li><a href="https://github.com/nickobard/University" target="_blank">Repository with all
+                                school courses and projects.</a></li>
                         </ul>
                     </div>
                 </div>
@@ -96,14 +110,14 @@
                     <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
                                 data-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
-                            New Project Category
+                            Other
                         </button>
                     </h2>
                 </div>
                 <div id="collapse-4" class="collapse" aria-labelledby="heading-4">
                     <div class="card-body">
-                        Short description: Description of the new project or topic.
-                        <ul class="list-unstyled">
+                        <p>Other projects.</p>
+                        <ul>
                             <li><a href="https://github.com/yourusername/new-project-repo" target="_blank">GitHub
                                 Repository</a></li>
                         </ul>
@@ -126,5 +140,26 @@
         <p>&copy; 2024 Nikita Bardatskii. All rights reserved.</p>
     </footer>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Restore the collapse state from localStorage
+        document.querySelectorAll('.collapse').forEach(function (collapseElement) {
+            const collapseId = collapseElement.id;
+            const isCollapsed = localStorage.getItem(collapseId);
+            if (isCollapsed === 'true') {
+                $(collapseElement).collapse('show');
+            }
+        });
+
+        // Save the collapse state to localStorage when toggled
+        $('.collapse').on('shown.bs.collapse', function () {
+            localStorage.setItem(this.id, 'true');
+        });
+
+        $('.collapse').on('hidden.bs.collapse', function () {
+            localStorage.setItem(this.id, 'false');
+        });
+    });
+</script>
 </body>
 </html>
