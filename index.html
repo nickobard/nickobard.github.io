@@ -242,26 +242,6 @@
         <p>&copy; 2024 Nikita Bardatskii. All rights reserved.</p>
     </footer>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Restore the collapse state from localStorage
-        document.querySelectorAll('.collapse').forEach(function (collapseElement) {
-            const collapseId = collapseElement.id;
-            const isCollapsed = localStorage.getItem(collapseId);
-            if (isCollapsed === 'true') {
-                $(collapseElement).collapse('show');
-            }
-        });
 
-        // Save the collapse state to localStorage when toggled
-        $('.collapse').on('shown.bs.collapse', function () {
-            localStorage.setItem(this.id, 'true');
-        });
-
-        $('.collapse').on('hidden.bs.collapse', function () {
-            localStorage.setItem(this.id, 'false');
-        });
-    });
-</script>
 </body>
 </html>
