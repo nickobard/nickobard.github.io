@@ -1,14 +1,20 @@
+:root {
+  --bg-color: white;
+  --text-color: black;
+}
+
+
 .page {
   min-height: 100vh;
   display: flex;
-  background: #111;
-  color: white;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 .photo-panel {
   width: 35%;
   background:
-          linear-gradient(to right, transparent 55%, #111 100%),
+          linear-gradient(to right, transparent 55%, var(--bg-color) 100%),
           url("./assets/av_cropped_compressed.jpg");
   background-size: cover;
   background-position: center;
@@ -29,15 +35,15 @@
 .tag {
   padding: 0.5rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid #555;
+  border: 1px solid var(--text-color);
   background: transparent;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
 }
 
 .tag.active {
-  background: white;
-  color: black;
+  background: #6b6375;
+  color: #ffffff;
 }
 
 .items {
@@ -47,9 +53,9 @@
 
 .item {
   padding: 1rem;
-  border: 1px solid #333;
+  border: 1px solid var(--text-color);
   border-radius: 1rem;
-  background: #181818;
+  background: var(--bg-color);
 }
 
 .item summary {

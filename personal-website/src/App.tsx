@@ -3,7 +3,9 @@ import { portfolioItems } from "./data/portfolioItems";
 import "./App.css";
 
 function App() {
+  // retrieving all the tags
   const allTags = [...new Set(portfolioItems.flatMap((item) => item.tags))];
+
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const toggleTag = (tag: string) => {
