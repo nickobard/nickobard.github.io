@@ -39,7 +39,7 @@ function App() {
 
                 <section className="intro">
                     <h1>Nikita Bardatskii</h1>
-                    <p>
+                    <p style={{paddingTop: "2rem"}}>
                         Computer science student focused on machine learning, data science,
                         and AI. I build practical projects with Python, React, and modern web
                         tools.
@@ -47,7 +47,7 @@ function App() {
                 </section>
 
                 <section className="experience">
-                    <h2>Experience</h2>
+                    <h1>Experience</h1>
 
                     <div className="tags">
                         {allTags.map((tag) => (
