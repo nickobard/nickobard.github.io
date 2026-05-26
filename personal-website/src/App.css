@@ -11,19 +11,27 @@
   color: var(--text-color);
 }
 
-.photo-panel {
-  width: 35%;
-  background:
-          linear-gradient(to right, transparent 55%, var(--bg-color) 100%),
-          url("./assets/av_cropped_compressed.jpg");
-  background-size: cover;
-  background-position: center;
+.content {
+  flex-direction: column;
+  align-items: center;
 }
 
-.content {
-  flex: 1;
-  padding: 4rem;
+.profile-card {
+
 }
+
+.profile-photo {
+  width: clamp(140px, 25vw, 260px);
+}
+
+.intro {
+
+}
+
+.experience {
+
+}
+
 
 .tags {
   display: flex;
