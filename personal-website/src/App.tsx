@@ -49,7 +49,9 @@ function App() {
                 <section className="experience">
                     <h1>Experience</h1>
 
-                    <div className="tags">
+                    <hr />
+
+                    <div className="tags" style={{paddingTop: "2rem"}}>
                         {allTags.map((tag) => (
                             <button
                                 key={tag}
