@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {portfolioItems} from "../data/portfolioItems.ts";
 import {usePortfolioContext} from "../context/PortfolioContext.tsx";
 import './TagSelector.css'
@@ -19,21 +19,56 @@ export function TagSelector() {
                 tag.toLowerCase().includes(tagQuery.toLowerCase())
             );
 
+    const tagSelectorRef = useRef<HTMLDivElement | null>(null);
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                tagSelectorRef.current &&
+                !tagSelectorRef.current.contains(event.target as Node)
+            ) {
+                setIsTagDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    const wasInputFocusedBeforeClick = useRef(false);
 
     return (<>
 
-        <div className="tag-selector">
-            <input
-                className="tag-search"
-                type="text"
-                placeholder="Search tags..."
-                value={tagQuery}
-                onFocus={() => setIsTagDropdownOpen(true)}
-                onChange={(event) => {
-                    setTagQuery(event.target.value);
-                    setIsTagDropdownOpen(true);
-                }}
-            />
+        <div className="tag-selector" ref={tagSelectorRef}>
+            <div>
+                <input
+                    ref={inputRef}
+                    className="tag-search"
+                    type="text"
+                    placeholder="Filter by tags..."
+                    value={tagQuery}
+                    onMouseDown={() => {
+                        wasInputFocusedBeforeClick.current = document.activeElement === inputRef.current
+                    }}
+                    onFocus={() => setIsTagDropdownOpen(true)}
+                    onClick={() => {
+                        if (wasInputFocusedBeforeClick.current) {
+                            setIsTagDropdownOpen((prev) => !prev)
+                        } else {
+                            setIsTagDropdownOpen(true)
+                        }
+                    }}
+                    onChange={(event) => {
+                        setTagQuery(event.target.value);
+                        setIsTagDropdownOpen(true);
+                    }}
+
+                />
+            </div>
+
 
             {isTagDropdownOpen && (
                 <div className="tag-dropdown">
