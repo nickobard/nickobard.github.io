@@ -1,9 +1,4 @@
-export type PortfolioItem = {
-    title: string;
-    tags: string[];
-    summary: string;
-    details?: string[];
-};
+import type {PortfolioItem} from "../types/portfolio.ts";
 
 export const portfolioItems: PortfolioItem[] = [
     {

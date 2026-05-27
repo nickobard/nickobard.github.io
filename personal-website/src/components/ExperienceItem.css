@@ -1,0 +1,12 @@
+
+.item {
+    padding: 1rem;
+    border: 1px solid var(--text-color);
+    border-radius: 1rem;
+    background: var(--bg-color);
+}
+
+.item summary {
+    cursor: pointer;
+    font-weight: 600;
+}

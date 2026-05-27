@@ -1,0 +1,16 @@
+
+.profile-card {
+
+}
+
+.profile-photo {
+    width: clamp(140px, 40vw, 400px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.intro {
+    padding: 2rem;
+}

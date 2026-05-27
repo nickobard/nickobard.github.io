@@ -1,122 +1,22 @@
 :root {
-  --bg-color: white;
-  --text-color: black;
+    --bg-color: white;
+    --text-color: black;
 }
 
 
 .page {
-  min-height: 100vh;
-  display: flex;
-  background: var(--bg-color);
-  color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 
 .content {
-  flex-direction: column;
-  align-items: center;
-  padding: 3rem 2rem;
-}
-
-.profile-card {
-
-}
-
-.profile-photo {
-  width: clamp(140px, 40vw, 400px);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-
-.intro {
-  padding: 2rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 2rem;
 }
 
 .experience {
 
-}
-
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-
-
-.tag-selector {
-  width: min(600px, 100%);
-  position: relative;
-}
-
-.tag-search {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 999px;
-  border: 1px solid #333;
-  background: #181818;
-  color: white;
-}
-
-.tag-dropdown {
-  margin-top: 0.75rem;
-  max-height: 220px;
-  overflow-y: auto;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-
-  padding: 1rem;
-  border: 1px solid #333;
-  border-radius: 1rem;
-  background: #181818;
-}
-
-.tag {
-  padding: 0.5rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid #555;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-}
-
-.tag.active {
-  background: white;
-  color: black;
-}
-
-.tag {
-  padding: 0.5rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid var(--text-color);
-  background: transparent;
-  color: var(--text-color);
-  cursor: pointer;
-}
-
-.tag.active {
-  background: #6b6375;
-  color: #ffffff;
-}
-
-.items {
-  display: grid;
-  gap: 1rem;
-}
-
-.item {
-  padding: 1rem;
-  border: 1px solid var(--text-color);
-  border-radius: 1rem;
-  background: var(--bg-color);
-}
-
-.item summary {
-  cursor: pointer;
-  font-weight: 600;
 }
