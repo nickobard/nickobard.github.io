@@ -18,5 +18,6 @@ export function ExperienceItem({item}: Props) {
                     ))}
                 </ul>
             )}
-        </details>);
+        </details>
+    );
 }

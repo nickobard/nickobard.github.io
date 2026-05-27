@@ -1,5 +1,8 @@
 .items {
     padding-top: 2rem;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
+    min-height: 300px;
+
 }
