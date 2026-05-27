@@ -1,11 +1,16 @@
 import {useEffect, useRef, useState} from "react";
 import {portfolioItems} from "../data/portfolioItems.ts";
 import {usePortfolioContext} from "../context/PortfolioContext.tsx";
+import Fuse from "fuse.js"
 import './TagSelector.css'
 
 export function TagSelector() {
 
     const allTags = [...new Set(portfolioItems.flatMap((item) => item.tags))];
+    const fuse = new Fuse(allTags, {
+        threshold: 0.4,
+    });
+
 
     const {selectedTags, toggleTag} = usePortfolioContext();
 
@@ -15,9 +20,7 @@ export function TagSelector() {
     const visibleTags =
         tagQuery.trim() === ""
             ? allTags
-            : allTags.filter((tag) =>
-                tag.toLowerCase().includes(tagQuery.toLowerCase())
-            );
+            : fuse.search(tagQuery).map((result) => result.item);
 
     const inputAreaRef = useRef<HTMLDivElement | null>(null);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
