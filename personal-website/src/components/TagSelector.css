@@ -21,8 +21,14 @@
 
 .tag-dropdown {
     margin-top: 0.75rem;
-    max-height: 220px;
+    max-height: 500px;
+    height: 100px;
+    min-height: 10px;
     overflow-y: auto;
+    resize: vertical;
+
+    align-items: flex-start;
+    align-content: flex-start;
 
     display: flex;
     flex-wrap: wrap;
@@ -46,4 +52,21 @@
 .tag.active {
     background: gray;
     color: white;
+}
+
+.selected-tags {
+    margin-top: 1rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.selected-tag {
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid var(--text-color);
+    background: #6b6375;
+    color: white;
+    cursor: pointer;
 }

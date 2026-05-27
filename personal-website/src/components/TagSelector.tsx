@@ -19,12 +19,21 @@ export function TagSelector() {
                 tag.toLowerCase().includes(tagQuery.toLowerCase())
             );
 
-    const tagSelectorRef = useRef<HTMLDivElement | null>(null);
+    const inputAreaRef = useRef<HTMLDivElement | null>(null);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+    const selectedTagsRef = useRef<HTMLDivElement | null>(null);
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
+
+            const target = event.target as Node;
+
+            const clickedInside = inputAreaRef.current?.contains(target) ||
+                dropdownRef.current?.contains(target) ||
+                selectedTagsRef.current?.contains(target);
+
             if (
-                tagSelectorRef.current &&
-                !tagSelectorRef.current.contains(event.target as Node)
+                !clickedInside
             ) {
                 setIsTagDropdownOpen(false);
             }
@@ -41,9 +50,8 @@ export function TagSelector() {
     const wasInputFocusedBeforeClick = useRef(false);
 
     return (<>
-
-        <div className="tag-selector" ref={tagSelectorRef}>
-            <div>
+        <div className="tag-selector">
+            <div ref={inputAreaRef}>
                 <input
                     ref={inputRef}
                     className="tag-search"
@@ -71,7 +79,7 @@ export function TagSelector() {
 
 
             {isTagDropdownOpen && (
-                <div className="tag-dropdown">
+                <div className="tag-dropdown" ref={dropdownRef}>
                     {visibleTags.map((tag) => (
                         <button
                             key={tag}
@@ -85,6 +93,21 @@ export function TagSelector() {
                 </div>
             )}
         </div>
+
+        {selectedTags.length > 0 && (
+            <div className="selected-tags" ref={selectedTagsRef}>
+                {selectedTags.map((tag) => (
+                    <button
+                        key={tag}
+                        type="button"
+                        className="selected-tag"
+                        onClick={() => toggleTag(tag)}
+                    >
+                        {tag} ×
+                    </button>
+                ))}
+            </div>
+        )}
     </>);
 }
 
