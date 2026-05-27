@@ -22,18 +22,6 @@ export function TagSelector() {
 
     return (<>
 
-        <div className="tags" style={{paddingTop: "2rem"}}>
-            {allTags.map((tag) => (
-                <button
-                    key={tag}
-                    className={selectedTags.includes(tag) ? "tag active" : "tag"}
-                    onClick={() => toggleTag(tag)}
-                >
-                    {tag}
-                </button>
-            ))}
-        </div>
-
         <div className="tag-selector">
             <input
                 className="tag-search"

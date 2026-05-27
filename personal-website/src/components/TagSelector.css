@@ -7,7 +7,8 @@
 
 .tag-selector {
     width: min(600px, 100%);
-    position: relative;
+    padding: 1rem;
+    padding-bottom: 3rem;
 }
 
 .tag-search {
@@ -15,8 +16,8 @@
     padding: 0.8rem 1rem;
     border-radius: 999px;
     border: 1px solid #333;
-    background: #181818;
-    color: white;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 
 .tag-dropdown {
@@ -31,7 +32,7 @@
     padding: 1rem;
     border: 1px solid #333;
     border-radius: 1rem;
-    background: #181818;
+    background: var(--bg-color);
 }
 
 .tag {
@@ -39,7 +40,7 @@
     border-radius: 999px;
     border: 1px solid #555;
     background: transparent;
-    color: white;
+    color: var(--text-color);
     cursor: pointer;
 }
 
@@ -47,18 +48,3 @@
     background: white;
     color: black;
 }
-
-.tag {
-    padding: 0.5rem 0.9rem;
-    border-radius: 999px;
-    border: 1px solid var(--text-color);
-    background: transparent;
-    color: var(--text-color);
-    cursor: pointer;
-}
-
-.tag.active {
-    background: #6b6375;
-    color: #ffffff;
-}
-
