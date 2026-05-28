@@ -25,9 +25,63 @@
 
 .view-switch {
     padding-left: 1rem;
+
     display: flex;
-    gap: 0.5rem;
     align-items: center;
+    gap: 0.75rem;
+
     margin-bottom: 1rem;
+
     cursor: pointer;
+
+    user-select: none;
+
+    --switch-width: 40px;
+    --switch-height: 20px;
+
+}
+
+.view-switch input {
+    display: none;
+}
+
+.slider {
+    position: relative;
+
+    width: var(--switch-width);
+    height: var(--switch-height);
+
+    background: #444;
+    border-radius: 999px;
+
+    transition: background 0.2s ease;
+}
+
+.slider::before {
+    content: "";
+
+    position: absolute;
+
+    top: calc(0.1 * var(--switch-height));
+    left: calc(0.1 * var(--switch-height));
+
+    width: calc(0.8 * var(--switch-height));
+    height: calc(0.8 * var(--switch-height));
+
+    border-radius: 50%;
+    background: white;
+
+    transition: transform 0.2s ease;
+}
+
+.view-switch input:checked + .slider {
+    background: #4f46e5;
+}
+
+.view-switch input:checked + .slider::before {
+    transform: translateX(
+            calc(
+                    var(--switch-width) - 0.1 * var(--switch-height) * 2 -  0.8 * var(--switch-height)
+            )
+    );
 }

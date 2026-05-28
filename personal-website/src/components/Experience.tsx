@@ -71,12 +71,13 @@ export function Experience() {
     return (<div className="experience-content">
         <div className="view-controls" ref={experienceViewControlsRef}>
             <label className="view-switch">
+                <span>Flat view</span>
                 <input
                     type="checkbox"
                     checked={isFlatView}
                     onChange={(event) => setIsFlatView(event.target.checked)}
                 />
-                Flat view
+                <span className="slider"></span>
             </label>
         </div>
 
