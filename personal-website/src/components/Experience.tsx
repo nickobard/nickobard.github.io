@@ -1,4 +1,5 @@
 import type {ExperienceNode, ExperienceItem} from "../types/portfolio.ts";
+import {filterExperienceTree} from "../utils/filterExperienceTree.ts"
 import "./Experience.css"
 import {usePortfolioContext} from "../context/PortfolioContext.tsx";
 
@@ -52,9 +53,11 @@ function ExperienceTree({nodes, depth = 0}: Props) {
 
 export function Experience() {
 
-    const {experienceData} = usePortfolioContext();
+    const {experienceData, selectedTags} = usePortfolioContext();
+
+    const filteredExperienceData = filterExperienceTree(experienceData, selectedTags);
 
     return (<div className="experience-content">
-        <ExperienceTree nodes={experienceData}/>
+        <ExperienceTree nodes={filteredExperienceData}/>
     </div>);
 }
