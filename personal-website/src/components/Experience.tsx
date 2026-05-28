@@ -1,7 +1,9 @@
 import type {ExperienceNode, ExperienceItem} from "../types/portfolio.ts";
 import {filterExperienceTree} from "../utils/filterExperienceTree.ts"
+import {useState} from "react";
 import "./Experience.css"
 import {usePortfolioContext} from "../context/PortfolioContext.tsx";
+import {flattenExperienceTree} from "../utils/flattenExperienceTree.ts";
 
 type Props = {
     nodes: ExperienceNode[];
@@ -46,18 +48,40 @@ function ExperienceTree({nodes, depth = 0}: Props) {
     );
 }
 
-// function ExperienceList() {
-//     return(<>
-//     </>);
-// }
+function ExperienceList({nodes}: { nodes: ExperienceNode[] }) {
+    const flatItems = flattenExperienceTree(nodes);
+    return (<>
+        <div className="experience-list">
+            {flatItems.map((item) => (
+                <ExperienceItem item={item}/>
+            ))}
+        </div>
+    </>);
+}
 
 export function Experience() {
+
+    const [isFlatView, setIsFlatView] = useState(false);
 
     const {experienceData, selectedTags} = usePortfolioContext();
 
     const filteredExperienceData = filterExperienceTree(experienceData, selectedTags);
 
+
     return (<div className="experience-content">
-        <ExperienceTree nodes={filteredExperienceData}/>
+        <label className="view-switch">
+            <input
+                type="checkbox"
+                checked={isFlatView}
+                onChange={(event) => setIsFlatView(event.target.checked)}
+            />
+            Flat view
+        </label>
+        {isFlatView ? (
+            <ExperienceList nodes={filteredExperienceData}/>
+        ) : (
+            <ExperienceTree nodes={filteredExperienceData}/>
+        )}
+
     </div>);
 }
