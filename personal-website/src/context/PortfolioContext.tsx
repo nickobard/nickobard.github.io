@@ -1,8 +1,11 @@
 import {createContext, useContext, useState} from "react";
+import {experienceData} from "../data/portfolioItems.ts";
+import type {ExperienceNode} from "../types/portfolio.ts";
 
 type PortfolioContextValue = {
     selectedTags: string[];
     toggleTag: (tag: string) => void;
+    experienceData: ExperienceNode[];
 };
 
 const PortfolioContext = createContext<PortfolioContextValue | null>(null);
@@ -21,7 +24,7 @@ export function PortfolioProvider({children}: { children: React.ReactNode }) {
 
 
     return (
-        <PortfolioContext.Provider value={{selectedTags, toggleTag}}>
+        <PortfolioContext.Provider value={{selectedTags, toggleTag, experienceData}}>
             {children}
         </PortfolioContext.Provider>
     );

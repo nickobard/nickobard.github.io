@@ -1,12 +1,24 @@
 import {useEffect, useRef, useState} from "react";
-import {portfolioItems} from "../data/portfolioItems.ts";
 import {usePortfolioContext} from "../context/PortfolioContext.tsx";
 import Fuse from "fuse.js"
 import './TagSelector.css'
+import type {ExperienceNode} from "../types/portfolio.ts";
 
 export function TagSelector() {
 
-    const allTags = [...new Set(portfolioItems.flatMap((item) => item.tags))];
+    const {experienceData} = usePortfolioContext();
+
+    function flattenExperience(nodes: ExperienceNode[]): ExperienceNode[] {
+        return nodes.flatMap((node) =>
+            node.type === "folder"
+                ? flattenExperience(node.children)
+                : [node]
+        );
+    }
+
+    const experienceDataFlat = flattenExperience(experienceData)
+
+    const allTags = [...new Set(experienceDataFlat.flatMap((item) => item.tags))];
     const fuse = new Fuse(allTags, {
         threshold: 0.4,
     });

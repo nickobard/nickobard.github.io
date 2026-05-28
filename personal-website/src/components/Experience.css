@@ -1,0 +1,25 @@
+.experience-content {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 300px;
+}
+
+.experience-tree {
+    gap: 0.75rem;
+}
+
+.experience-list {
+
+}
+
+.experience-node {
+    border-left: 1px solid #333;
+    padding-left: 1rem;
+}
+
+.experience-item {
+    padding: 1rem;
+    border-radius: 1rem;
+}

@@ -2,7 +2,7 @@ import "./App.css";
 
 import {ProfileIntro} from "./components/ProfileIntro.tsx";
 import {TagSelector} from "./components/TagSelector.tsx";
-import {ExperienceList} from "./components/ExperienceList.tsx";
+import {Experience} from "./components/Experience.tsx";
 import {PortfolioProvider} from "./context/PortfolioContext.tsx";
 
 
@@ -16,7 +16,7 @@ function App() {
                     <hr/>
                     <PortfolioProvider>
                         <TagSelector/>
-                        <ExperienceList/>
+                        <Experience/>
                     </PortfolioProvider>
                 </section>
             </section>
