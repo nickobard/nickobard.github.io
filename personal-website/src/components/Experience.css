@@ -81,7 +81,9 @@
 .view-switch input:checked + .slider::before {
     transform: translateX(
             calc(
-                    var(--switch-width) - 0.1 * var(--switch-height) * 2 -  0.8 * var(--switch-height)
+                    var(--switch-width)
+                    - 0.1 * var(--switch-height) * 2
+                    - 0.8 * var(--switch-height)
             )
     );
 }
