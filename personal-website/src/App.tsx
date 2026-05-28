@@ -3,7 +3,7 @@ import "./App.css";
 import {ProfileIntro} from "./components/ProfileIntro.tsx";
 import {TagSelector} from "./components/TagSelector.tsx";
 import {Experience} from "./components/Experience.tsx";
-import {PortfolioProvider} from "./context/PortfolioContext.tsx";
+import {ExperienceProvider} from "./context/ExperienceContext.tsx";
 
 
 function App() {
@@ -14,10 +14,10 @@ function App() {
                 <section className="experience">
                     <h1>Experience</h1>
                     <hr/>
-                    <PortfolioProvider>
+                    <ExperienceProvider>
                         <TagSelector/>
                         <Experience/>
-                    </PortfolioProvider>
+                    </ExperienceProvider>
                 </section>
             </section>
         </main>

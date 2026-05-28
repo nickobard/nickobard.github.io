@@ -2,7 +2,7 @@ import type {ExperienceNode, ExperienceItem} from "../types/portfolio.ts";
 import {filterExperienceTree} from "../utils/filterExperienceTree.ts"
 import {useState} from "react";
 import "./Experience.css"
-import {usePortfolioContext} from "../context/PortfolioContext.tsx";
+import {useExperienceContext} from "../context/ExperienceContext.tsx";
 import {flattenExperienceTree} from "../utils/flattenExperienceTree.ts";
 
 type Props = {
@@ -63,20 +63,23 @@ export function Experience() {
 
     const [isFlatView, setIsFlatView] = useState(false);
 
-    const {experienceData, selectedTags} = usePortfolioContext();
+    const {experienceData, selectedTags, experienceViewControlsRef} = useExperienceContext();
 
     const filteredExperienceData = filterExperienceTree(experienceData, selectedTags);
 
 
     return (<div className="experience-content">
-        <label className="view-switch">
-            <input
-                type="checkbox"
-                checked={isFlatView}
-                onChange={(event) => setIsFlatView(event.target.checked)}
-            />
-            Flat view
-        </label>
+        <div className="view-controls" ref={experienceViewControlsRef}>
+            <label className="view-switch">
+                <input
+                    type="checkbox"
+                    checked={isFlatView}
+                    onChange={(event) => setIsFlatView(event.target.checked)}
+                />
+                Flat view
+            </label>
+        </div>
+
         {isFlatView ? (
             <ExperienceList nodes={filteredExperienceData}/>
         ) : (

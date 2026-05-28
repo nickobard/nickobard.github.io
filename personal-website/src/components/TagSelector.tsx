@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import {usePortfolioContext} from "../context/PortfolioContext.tsx";
+import {useExperienceContext} from "../context/ExperienceContext.tsx";
 import Fuse from "fuse.js"
 import './TagSelector.css'
 import {flattenExperienceTree} from "../utils/flattenExperienceTree.ts";
@@ -7,7 +7,7 @@ import {flattenExperienceTree} from "../utils/flattenExperienceTree.ts";
 
 export function TagSelector() {
 
-    const {experienceData} = usePortfolioContext();
+    const {experienceData} = useExperienceContext();
 
 
     const experienceDataFlat = flattenExperienceTree(experienceData)
@@ -18,7 +18,7 @@ export function TagSelector() {
     });
 
 
-    const {selectedTags, toggleTag} = usePortfolioContext();
+    const {selectedTags, toggleTag} = useExperienceContext();
 
     const [tagQuery, setTagQuery] = useState("");
     const [isTagDropdownOpen, setIsTagDropdownOpen] = useState(false);
@@ -31,6 +31,8 @@ export function TagSelector() {
     const inputAreaRef = useRef<HTMLDivElement | null>(null);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
     const selectedTagsRef = useRef<HTMLDivElement | null>(null);
+    const {experienceViewControlsRef} = useExperienceContext();
+
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -39,7 +41,8 @@ export function TagSelector() {
 
             const clickedInside = inputAreaRef.current?.contains(target) ||
                 dropdownRef.current?.contains(target) ||
-                selectedTagsRef.current?.contains(target);
+                selectedTagsRef.current?.contains(target) ||
+                experienceViewControlsRef.current?.contains(target);
 
             if (
                 !clickedInside
