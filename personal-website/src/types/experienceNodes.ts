@@ -1,6 +1,7 @@
 export type ExperienceFolder = {
     type: "folder";
     title: string;
+    summary?: string;
     children: ExperienceNode[];
 };
 
@@ -8,7 +9,7 @@ export type ExperienceItem = {
     type: "item";
     title: string;
     tags: string[];
-    summary: string;
+    summary?: string;
     details?: string[];
 };
 
