@@ -1,5 +1,5 @@
 import type {ExperienceItem} from "../../types/experienceNodes.ts";
-
+import "./ExperienceItem.css"
 
 export function ExperienceItem({item}: { item: ExperienceItem }) {
     return (<details className="experience-item">
