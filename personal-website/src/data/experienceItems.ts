@@ -1,10 +1,9 @@
-import type {ExperienceNode} from "../types/portfolio.ts";
+import type {ExperienceNode} from "../types/experienceNodes.ts";
 
 export const experienceData: ExperienceNode[] = [
     {
         type: "folder",
         title: "Machine Learning",
-        tags: ["ML", "Python"],
         children: [
             {
                 type: "item",
@@ -18,7 +17,6 @@ export const experienceData: ExperienceNode[] = [
     {
         type: "folder",
         title: "Frontend",
-        tags: ["React", "TypeScript"],
         children: [
             {
                 type: "item",

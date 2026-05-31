@@ -1,4 +1,4 @@
-import type {ExperienceItem, ExperienceNode} from "../types/portfolio.ts";
+import type {ExperienceItem, ExperienceNode} from "../types/experienceNodes.ts";
 
 export function flattenExperienceTree(nodes: ExperienceNode[]): ExperienceItem[] {
     return nodes.flatMap((node) =>

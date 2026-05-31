@@ -1,4 +1,4 @@
-import type {ExperienceNode} from "../types/portfolio.ts";
+import type {ExperienceNode} from "../types/experienceNodes.ts";
 
 
 export function filterExperienceTree(

@@ -1,4 +1,4 @@
-import type {ExperienceNode, ExperienceItem} from "../types/portfolio.ts";
+import type {ExperienceNode, ExperienceItem} from "../types/experienceNodes.ts";
 import {filterExperienceTree} from "../utils/filterExperienceTree.ts"
 import {useState} from "react";
 import "./Experience.css"
