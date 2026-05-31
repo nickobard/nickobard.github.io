@@ -1,5 +1,5 @@
 import {createContext, useContext, useRef, useState} from "react";
-import {experienceData} from "../data/experienceItems.ts";
+import {testExperienceData} from "../data/experienceItems.ts";
 import type {ExperienceNode} from "../types/experienceNodes.ts";
 
 type ExperienceContextValue = {
@@ -31,7 +31,7 @@ export function ExperienceProvider({children}: { children: React.ReactNode }) {
         <ExperienceContext.Provider value={{
             selectedTags,
             toggleTag,
-            experienceData,
+            experienceData: testExperienceData,
             experienceViewControlsRef
         }}>
             {children}
