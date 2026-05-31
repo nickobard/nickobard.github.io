@@ -2,8 +2,27 @@
     gap: 1rem;
 }
 
+.experience-folder-wrapper {
+    border-left: 1px solid #333;
+    padding-left: 1rem;
+}
 
-.experience-node {
+.experience-folder-wrapper-top-level {
+    border: 1px solid #333;
+    border-radius: 12px;
+
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.experience-item-wrapper-top-level {
+    border: 1px solid #333;
+    border-radius: 12px;
+
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.experience-item-wrapper {
     border-left: 1px solid #333;
     padding-left: 1rem;
 }
