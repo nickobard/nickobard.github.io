@@ -5,7 +5,7 @@ import './ExperienceTree.css'
 type Props = {
     nodes: ExperienceNode[];
     depth?: number;
-    parentKey: string;
+    parentKey?: string;
 };
 
 export function ExperienceTree({nodes, depth = 0, parentKey = ""}: Props) {
