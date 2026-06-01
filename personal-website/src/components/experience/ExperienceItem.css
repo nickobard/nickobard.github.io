@@ -23,9 +23,14 @@
 }
 
 .experience-item-summary {
+    text-align: left;
     margin-top: 0.25rem;
     font-size: 0.9rem;
     color: #999;
+}
+
+.experience-item-description {
+    text-align: left;
 }
 
 .experience-item-arrow {

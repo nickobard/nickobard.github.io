@@ -17,7 +17,7 @@ export function ExperienceItem({item}: { item: ExperienceItem }) {
                 </div>
             </summary>
             {item.description && (
-                <p>{item.description}</p>
+                <p className="experience-item-description">{item.description}</p>
             )}
 
             {item.details && (

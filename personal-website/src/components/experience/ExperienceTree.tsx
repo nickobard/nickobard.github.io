@@ -58,7 +58,7 @@ function ExperienceFolder({folderNode, depth, parentKey}: ExperienceFolderProps)
             </summary>
 
             {folderNode.description && (
-                <p>{folderNode.description}</p>
+                <p className={"experience-folder-description"}>{folderNode.description}</p>
             )}
 
             {folderNode.children.map((node) => (
