@@ -1,3 +1,8 @@
+.experience-tree {
+    --list-indent: 1.5rem;
+    padding-left: var(--list-indent);
+}
+
 .experience-tree.top-level {
     gap: 1rem;
     list-style: none;
@@ -5,27 +10,38 @@
     margin: 0;
 }
 
-.experience-tree {
-
-}
 
 .experience-folder-wrapper {
+    margin-left: calc(-1 * var(--list-indent));
     border: 1px solid #333;
     border-radius: 12px;
 
     padding: 1rem;
+    list-style: none;
+
+}
+
+
+.experience-folder-wrapper.top-level {
     margin-bottom: 1rem;
+    margin-left: 0;
 }
 
 .experience-item-wrapper {
 
     padding: 1rem;
-    margin-bottom: 1rem;
 
 }
 
 .experience-item-wrapper.top-level {
     border: 1px solid #333;
     border-radius: 12px;
+    margin-bottom: 1rem;
 
+}
+
+.experience-item-wrapper:not(.top-level)::marker {
+    color: #999;
+    font-size: 0.9rem;
+    content: "● ";
 }

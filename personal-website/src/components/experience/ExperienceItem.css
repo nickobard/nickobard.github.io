@@ -40,3 +40,21 @@
 .experience-item[open] .experience-item-arrow {
     transform: rotate(90deg);
 }
+
+.details-list {
+
+}
+
+.details-list-item {
+    padding-left: 1rem;
+    text-align: left;
+}
+
+.details-list-item::marker {
+    font-size: 0.8rem;
+    content: "● ";
+}
+
+.details-list-item-text {
+    text-align: left;
+}

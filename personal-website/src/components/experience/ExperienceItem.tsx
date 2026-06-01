@@ -21,9 +21,11 @@ export function ExperienceItem({item}: { item: ExperienceItem }) {
             )}
 
             {item.details && (
-                <ul>
+                <ul className="details-list">
                     {item.details.map((detail) => (
-                        <li key={detail}>{detail}</li>
+                        <li className="details-list-item" key={detail}>
+                            <span className="details-list-item-text">{detail}</span>
+                        </li>
                     ))}
                 </ul>
             )}

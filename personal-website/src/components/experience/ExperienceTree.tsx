@@ -11,7 +11,7 @@ export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
                 node.type === "folder" ? (
                     <li
                         key={`${node.title}/`}
-                        className="experience-folder-wrapper"
+                        className="experience-folder-wrapper top-level"
                     >
                         <ExperienceFolder folderNode={node}
                                           depth={0}
