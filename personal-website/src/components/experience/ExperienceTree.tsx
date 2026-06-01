@@ -1,6 +1,7 @@
 import type {ExperienceFolder, ExperienceNode} from "../../types/experienceNodes.ts";
 import {ExperienceItem} from "./ExperienceItem.tsx";
 import './ExperienceTree.css'
+import './ExperienceFolder.css'
 
 export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
 
@@ -58,7 +59,6 @@ function ExperienceFolder({folderNode, depth, parentKey}: ExperienceFolderProps)
                     </div>
                 )
             ))}
-
         </details>
     )
 }

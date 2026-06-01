@@ -2,36 +2,36 @@
 
 }
 
-.experience-summary {
+.experience-item summary {
     list-style: none;
     cursor: pointer;
 }
 
-.experience-summary::-webkit-details-marker {
+.experience-item summary::-webkit-details-marker {
     display: none;
 }
 
-.experience-header {
+.experience-item-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.experience-title {
+.experience-item-title {
     font-size: 1.1rem;
     font-weight: 600;
 }
 
-.experience-excerpt {
+.experience-item-summary {
     margin-top: 0.25rem;
     font-size: 0.9rem;
     color: #999;
 }
 
-.experience-arrow {
+.experience-item-arrow {
     transition: transform 0.2s ease;
 }
 
-details[open] .experience-arrow {
+details[open] .experience-item-arrow {
     transform: rotate(90deg);
 }

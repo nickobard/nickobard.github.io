@@ -3,16 +3,16 @@ import "./ExperienceItem.css"
 
 export function ExperienceItem({item}: { item: ExperienceItem }) {
     return (<details className="experience-item">
-            <summary className="experience-summary">
-                <div className="experience-header">
-                      <span className="experience-title">
+            <summary>
+                <div className="experience-item-header">
+                      <span className="experience-item-title">
                         {item.title}
                       </span>
 
-                    <span className="experience-arrow"> ▶ </span>
+                    <span className="experience-item-arrow"> ▶ </span>
                 </div>
 
-                <div className="experience-excerpt">
+                <div className="experience-item-summary">
                     {item.summary}
                 </div>
             </summary>
