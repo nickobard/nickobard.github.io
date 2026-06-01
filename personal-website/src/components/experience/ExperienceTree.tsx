@@ -6,27 +6,27 @@ import './ExperienceFolder.css'
 export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
 
     return (
-        <div className="experience-tree">
+        <ul className="experience-tree top-level">
             {nodes.map((node) => (
                 node.type === "folder" ? (
-                    <div
+                    <li
                         key={`${node.title}/`}
                         className="experience-folder-wrapper"
                     >
                         <ExperienceFolder folderNode={node}
                                           depth={0}
                                           parentKey={`${node.title}`}/>
-                    </div>
+                    </li>
                 ) : (
-                    <div
+                    <li
                         key={`${node.title}`}
                         className="experience-item-wrapper top-level"
                     >
                         <ExperienceItem item={node}/>
-                    </div>
+                    </li>
                 )
             ))}
-        </div>
+        </ul>
     );
 }
 
@@ -60,26 +60,27 @@ function ExperienceFolder({folderNode, depth, parentKey}: ExperienceFolderProps)
             {folderNode.description && (
                 <p className={"experience-folder-description"}>{folderNode.description}</p>
             )}
-
+            <ul className="experience-tree">
             {folderNode.children.map((node) => (
                 node.type === "folder" ? (
-                    <div
+                    <li
                         key={`${parentKey}/${node.title}/`}
                         className="experience-folder-wrapper">
                         <ExperienceFolder folderNode={node}
                                           depth={depth + 1}
                                           parentKey={`${parentKey}/${node.title}`}/>
 
-                    </div>
+                    </li>
                 ) : (
-                    <div
+                    <li
                         key={`${parentKey}/${node.title}`}
-                        className="experience-item-wrapper"
+                        className="experience-item-wrapper with-bullet"
                     >
                         <ExperienceItem item={node}/>
-                    </div>
+                    </li>
                 )
             ))}
+            </ul>
         </details>
     )
 }
