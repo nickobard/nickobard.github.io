@@ -10,21 +10,15 @@
     margin-bottom: 1rem;
 }
 
-.experience-folder-wrapper-top-level {
-    border: 1px solid #333;
-    border-radius: 12px;
-
-    padding: 1rem;
-    margin-bottom: 1rem;
-}
-
-.experience-item-wrapper-top-level {
-    border: 1px solid #333;
-    border-radius: 12px;
-
-    padding: 1rem;
-    margin-bottom: 1rem;
-}
 .experience-item-wrapper {
+
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.experience-item-wrapper.top-level {
+    border: 1px solid #333;
+    border-radius: 12px;
 
 }

@@ -1,3 +1,37 @@
 .experience-item {
 
 }
+
+.experience-summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.experience-summary::-webkit-details-marker {
+    display: none;
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.experience-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.experience-excerpt {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.experience-arrow {
+    transition: transform 0.2s ease;
+}
+
+details[open] .experience-arrow {
+    transform: rotate(90deg);
+}
