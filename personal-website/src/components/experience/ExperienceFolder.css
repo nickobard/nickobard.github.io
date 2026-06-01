@@ -32,6 +32,6 @@
     transition: transform 0.2s ease;
 }
 
-.experience-folder[open] > .experience-folder-summary .experience-folder-arrow {
+.experience-folder[open] > summary .experience-folder-arrow {
     transform: rotate(90deg);
 }

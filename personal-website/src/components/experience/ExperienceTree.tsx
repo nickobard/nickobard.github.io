@@ -41,13 +41,13 @@ function ExperienceFolder({folderNode, depth, parentKey}: ExperienceFolderProps)
         <details className="experience-folder">
             <summary>
                 <div className="experience-folder-header">
-          <span className="experience-folder-title">
-            {folderNode.title}
-          </span>
+                  <span className="experience-folder-title">
+                    {folderNode.title}
+                  </span>
 
                     <span className="experience-folder-arrow">
-            ▶
-          </span>
+                        ▶
+                    </span>
                 </div>
 
                 {folderNode.summary && (

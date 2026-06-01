@@ -32,6 +32,6 @@
     transition: transform 0.2s ease;
 }
 
-details[open] .experience-item-arrow {
+.experience-item[open] .experience-item-arrow {
     transform: rotate(90deg);
 }
