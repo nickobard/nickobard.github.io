@@ -1,3 +1,37 @@
 .experience-folder {
 
 }
+
+.experience-folder summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.experience-folder summary::-webkit-details-marker {
+    display: none;
+}
+
+.experience-folder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.experience-folder-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.experience-folder-excerpt {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.experience-folder-arrow {
+    transition: transform 0.2s ease;
+}
+
+.experience-folder[open] > .experience-folder-summary .experience-folder-arrow {
+    transform: rotate(90deg);
+}

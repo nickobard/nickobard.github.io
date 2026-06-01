@@ -39,7 +39,28 @@ type ExperienceFolderProps = {
 function ExperienceFolder({folderNode, depth, parentKey}: ExperienceFolderProps) {
     return (
         <details className="experience-folder">
-            <summary>{folderNode.title}</summary>
+            <summary>
+                <div className="experience-folder-header">
+          <span className="experience-folder-title">
+            {folderNode.title}
+          </span>
+
+                    <span className="experience-folder-arrow">
+            ▶
+          </span>
+                </div>
+
+                {folderNode.summary && (
+                    <div className="experience-folder-excerpt">
+                        {folderNode.summary}
+                    </div>
+                )}
+            </summary>
+
+            {folderNode.description && (
+                <p>{folderNode.description}</p>
+            )}
+
             {folderNode.children.map((node) => (
                 node.type === "folder" ? (
                     <div
