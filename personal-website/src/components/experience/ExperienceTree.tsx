@@ -51,7 +51,7 @@ function ExperienceFolder({folderNode, depth, parentKey}: ExperienceFolderProps)
                 </div>
 
                 {folderNode.summary && (
-                    <div className="experience-folder-excerpt">
+                    <div className="experience-folder-summary">
                         {folderNode.summary}
                     </div>
                 )}

@@ -4,13 +4,16 @@ export const testExperienceData: ExperienceNode[] = [
     {
         type: "folder",
         title: "Data Science",
-        description: "Projects involving machine learning, analytics, and visualization.",
+        summary: "ML, analytics, and visualization work.",
+        description:
+            "Projects involving machine learning, analytics, and visualization across structured data, graphs, and predictive modeling.",
         children: [
             {
                 type: "item",
                 title: "Image Classification Pipeline",
                 tags: ["Keras", "TensorFlow", "Computer Vision"],
-                description: "Developed a CNN-based image classifier.",
+                description:
+                    "Developed a CNN-based image classification pipeline with preprocessing, augmentation, training, and model comparison.",
                 details: [
                     "Implemented data augmentation",
                     "Trained custom CNN architectures",
@@ -20,7 +23,7 @@ export const testExperienceData: ExperienceNode[] = [
             {
                 type: "folder",
                 title: "Machine Learning",
-                description: "Predictive modeling and supervised learning projects.",
+                summary: "Predictive modeling projects.",
                 children: [
                     {
                         type: "item",
@@ -37,13 +40,14 @@ export const testExperienceData: ExperienceNode[] = [
                         type: "item",
                         title: "House Price Estimation",
                         tags: ["ML", "Python", "scikit-learn", "Pandas"],
-                        description: "Built regression models for property valuation.",
+                        description:
+                            "Built regression models for property valuation using tabular housing data, missing-value handling, feature selection, and error analysis.",
                         details: [
                             "Performed feature selection",
                             "Handled missing values",
                             "Measured performance with RMSE",
                         ],
-                    }
+                    },
                 ],
             },
             {
@@ -61,7 +65,8 @@ export const testExperienceData: ExperienceNode[] = [
                 type: "item",
                 title: "Fraud Detection Prototype",
                 tags: ["Keras", "TensorFlow", "Anomaly Detection"],
-                description: "Explored anomaly detection for financial transactions.",
+                description:
+                    "Explored neural anomaly detection methods for identifying suspicious financial transaction patterns under class imbalance.",
                 details: [
                     "Generated synthetic fraud samples",
                     "Tested autoencoder architectures",
@@ -71,13 +76,14 @@ export const testExperienceData: ExperienceNode[] = [
             {
                 type: "folder",
                 title: "Data Analysis",
-                description: "Exploratory analysis and visualization projects.",
+                summary: "Exploratory analysis and visualization projects.",
                 children: [
                     {
                         type: "item",
                         title: "Social Network Exploration",
                         tags: ["NetworkX", "Python", "Graph Analysis"],
-                        description: "Investigated community structures in social graphs.",
+                        description:
+                            "Investigated social graph structure using centrality metrics, community detection, and visual network exploration.",
                         details: [
                             "Computed centrality measures",
                             "Detected graph communities",
@@ -94,20 +100,21 @@ export const testExperienceData: ExperienceNode[] = [
                             "Aggregated transactional data",
                             "Produced interactive visual reports",
                         ],
-                    }
+                    },
                 ],
             },
             {
                 type: "item",
                 title: "Recommendation Engine",
                 tags: ["Keras", "TensorFlow", "Recommender Systems"],
-                description: "Implemented a collaborative filtering prototype.",
+                description:
+                    "Implemented a recommendation prototype based on user-item interactions, embedding representations, and ranking-quality evaluation.",
                 details: [
                     "Processed user-item interactions",
                     "Built embedding-based models",
                     "Evaluated recommendation quality",
                 ],
-            }
+            },
         ],
     },
     {
@@ -125,7 +132,8 @@ export const testExperienceData: ExperienceNode[] = [
         type: "item",
         title: "Credit Risk Assessment",
         tags: ["ML", "Python", "scikit-learn", "Pandas"],
-        description: "Classified loan applications by risk level.",
+        description:
+            "Classified loan applications by risk level using supervised learning, imbalance handling, model comparison, and explainability reporting.",
         details: [
             "Balanced imbalanced datasets",
             "Compared classification models",
@@ -135,7 +143,9 @@ export const testExperienceData: ExperienceNode[] = [
     {
         type: "folder",
         title: "Software Engineering",
-        description: "Frontend, backend, and software development projects.",
+        summary: "Frontend, backend, and tooling projects.",
+        description:
+            "Software projects covering web development, automation, containerization, command-line tooling, and system monitoring.",
         children: [
             {
                 type: "item",
@@ -147,7 +157,8 @@ export const testExperienceData: ExperienceNode[] = [
                 type: "item",
                 title: "Dockerized API Service",
                 tags: ["Python", "Docker", "FastAPI"],
-                description: "Created a containerized REST API.",
+                description:
+                    "Created a FastAPI service packaged with Docker, including local development configuration and reproducible deployment setup.",
             },
             {
                 type: "item",
@@ -159,25 +170,27 @@ export const testExperienceData: ExperienceNode[] = [
                 type: "item",
                 title: "Git Automation Toolkit",
                 tags: ["Python", "Git", "CLI"],
-                description: "Automated repetitive Git workflows.",
+                description:
+                    "Automated repetitive Git operations through a small command-line toolkit focused on workflow speed and consistency.",
             },
             {
                 type: "item",
                 title: "Linux Monitoring Dashboard",
                 tags: ["Linux", "Python", "Monitoring"],
                 description: "Collected and visualized system metrics.",
-            }
+            },
         ],
     },
     {
         type: "item",
         title: "Research Paper Recommender",
         tags: ["NLP", "Python", "Machine Learning"],
-        description: "Suggested academic papers based on user interests.",
+        description:
+            "Suggested academic papers based on user interests using document embeddings, similarity search, and relevance evaluation.",
         details: [
             "Generated document embeddings",
             "Implemented similarity search",
             "Evaluated recommendation relevance",
         ],
-    }
+    },
 ];
