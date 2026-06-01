@@ -2,14 +2,16 @@
 
 }
 
-.experience-folder summary {
-    list-style: none;
+.experience-folder-summary-button {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    text-align: left;
     cursor: pointer;
 }
 
-.experience-folder summary::-webkit-details-marker {
-    display: none;
-}
 
 .experience-folder-header {
     display: flex;
@@ -34,9 +36,23 @@
 }
 
 .experience-folder-arrow {
+    font-size: 1.2rem;
+    display: inline-block;
     transition: transform 0.2s ease;
 }
 
-.experience-folder[open] > summary .experience-folder-arrow {
+
+.experience-folder-arrow.open {
     transform: rotate(90deg);
 }
+
+
+.details-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.details-content-inner {
+    padding-top: 1rem;
+}
+
