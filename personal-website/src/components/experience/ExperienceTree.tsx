@@ -19,7 +19,6 @@ export function ExperienceTree({nodes, depth = 0, parentKey = ""}: Props) {
                         className={depth === 0
                             ? "experience-folder-wrapper-top-level"
                             : "experience-folder-wrapper"}
-                        style={{marginLeft: `${depth * 1.5}rem`}}
                     >
                         <details>
                             <summary>{node.title}</summary>
@@ -34,7 +33,6 @@ export function ExperienceTree({nodes, depth = 0, parentKey = ""}: Props) {
                         className={depth === 0
                             ? "experience-item-wrapper-top-level"
                             : "experience-item-wrapper"}
-                        style={{marginLeft: `${depth * 1.5}rem`}}
                     >
                         <ExperienceItem item={node}/>
                     </div>
