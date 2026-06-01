@@ -5,13 +5,11 @@ export function ExperienceItem({item}: { item: ExperienceItem }) {
     return (<details className="experience-item">
             <summary className="experience-summary">
                 <div className="experience-header">
-      <span className="experience-title">
-        {item.title}
-      </span>
+                      <span className="experience-title">
+                        {item.title}
+                      </span>
 
-                    <span className="experience-arrow">
-        ▶
-      </span>
+                    <span className="experience-arrow"> ▶ </span>
                 </div>
 
                 <div className="experience-excerpt">

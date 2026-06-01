@@ -1,47 +1,64 @@
-import type {ExperienceNode} from "../../types/experienceNodes.ts";
+import type {ExperienceFolder, ExperienceNode} from "../../types/experienceNodes.ts";
 import {ExperienceItem} from "./ExperienceItem.tsx";
 import './ExperienceTree.css'
 
-type Props = {
-    nodes: ExperienceNode[];
-    depth?: number;
-    parentKey?: string;
-};
-
-export function ExperienceTree({nodes, depth = 0, parentKey = ""}: Props) {
+export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
 
     return (
         <div className="experience-tree">
             {nodes.map((node) => (
                 node.type === "folder" ? (
                     <div
-                        key={`${parentKey}/${node.title}`}
+                        key={`${node.title}/`}
                         className="experience-folder-wrapper"
                     >
-                        <details>
-                            <summary>{node.title}</summary>
-                            <ExperienceTree nodes={node.children}
-                                            depth={depth + 1}
-                                            parentKey={`${parentKey}/${node.title}`}/>
-                        </details>
+                        <ExperienceFolder folderNode={node}
+                                          depth={0}
+                                          parentKey={`${node.title}`}/>
                     </div>
                 ) : (
                     <div
-                        key={`${parentKey}/${node.title}`}
-                        className={depth === 0
-                            ? "experience-item-wrapper top-level"
-                            : "experience-item-wrapper"}
+                        key={`${node.title}`}
+                        className="experience-item-wrapper top-level"
                     >
                         <ExperienceItem item={node}/>
                     </div>
                 )
-
-
             ))}
         </div>
     );
 }
 
-// function ExperienceTreeFolderView({nodes, depth = 0}: Props) {
-//     return (<></>)
-// }
+type ExperienceFolderProps = {
+    folderNode: ExperienceFolder;
+    depth: number;
+    parentKey: string;
+};
+
+function ExperienceFolder({folderNode, depth, parentKey}: ExperienceFolderProps) {
+    return (
+        <details className="experience-folder">
+            <summary>{folderNode.title}</summary>
+            {folderNode.children.map((node) => (
+                node.type === "folder" ? (
+                    <div
+                        key={`${parentKey}/${node.title}/`}
+                        className="experience-folder-wrapper">
+                        <ExperienceFolder folderNode={node}
+                                          depth={depth + 1}
+                                          parentKey={`${parentKey}/${node.title}`}/>
+
+                    </div>
+                ) : (
+                    <div
+                        key={`${parentKey}/${node.title}`}
+                        className="experience-item-wrapper"
+                    >
+                        <ExperienceItem item={node}/>
+                    </div>
+                )
+            ))}
+
+        </details>
+    )
+}
