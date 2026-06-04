@@ -1,10 +1,103 @@
 import type {ExperienceFolder, ExperienceNode} from "../../types/experienceNodes.ts";
 import {ExperienceItem} from "./ExperienceItem.tsx";
-import {useEffect, useRef, useState} from "react";
+import {type RefObject, useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import './ExperienceTree.css'
 import './ExperienceFolder.css'
 
+
+type FolderRef = {
+    contentElement: HTMLDivElement;
+    setContentHeight: (height: number) => void;
+};
+
+type NodeId = string;
+
+type TreeIndex = {
+    parentById: Map<NodeId, NodeId | null>;
+    childrenById: Map<NodeId, NodeId[]>;
+};
+
+function getAncestors(id: NodeId, parentById: Map<NodeId, NodeId | null>) {
+    const ancestors: NodeId[] = [];
+
+    let current = parentById.get(id) ?? null;
+
+    while (current !== null) {
+        ancestors.push(current);
+        current = parentById.get(current) ?? null;
+    }
+
+    return ancestors;
+}
+
+export function buildTreeIndex(nodes: ExperienceNode[]): TreeIndex {
+    const index: TreeIndex = {
+        parentById: new Map(),
+        childrenById: new Map(),
+    };
+
+    fillTreeIndex(nodes, null, index);
+
+    return index;
+}
+
+function fillTreeIndex(
+    nodes: ExperienceNode[],
+    parentId: string | null,
+    index: TreeIndex
+) {
+    for (const node of nodes) {
+        const id = parentId === null ? node.title : `${parentId}/${node.title}`;
+
+        index.parentById.set(id, parentId);
+
+        if (node.type === "folder") {
+
+            const childIds = node.children.map((child) => `${id}/${child.title}`);
+
+            index.childrenById.set(id, childIds);
+
+            fillTreeIndex(node.children, id, index);
+        }
+    }
+}
+
+function updateAllHeightsInTree(
+    ids: NodeId[],
+    folderRefs: RefObject<Map<string, FolderRef>>
+) {
+    for (const id of ids) {
+        const folderRef = folderRefs.current?.get(id);
+
+        if (!folderRef) {
+            continue;
+        }
+
+        const height = folderRef.contentElement.scrollHeight;
+        folderRef.setContentHeight(height);
+    }
+}
+
 export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
+
+    const [lastChangedId, setLastChangedId] = useState<string | null>(null);
+    const [openIds, setOpenIds] = useState<Set<string>>(new Set());
+    const treeIndex = useMemo(() => {
+        return buildTreeIndex(nodes);
+    }, [nodes]);
+
+    const folderRefs = useRef<Map<NodeId, FolderRef>>(new Map());
+
+    useLayoutEffect(() => {
+        if (!lastChangedId) return;
+
+        const idsToUpdate = [
+            lastChangedId,
+            ...getAncestors(lastChangedId, treeIndex.parentById),
+        ];
+
+        updateAllHeightsInTree(idsToUpdate, folderRefs);
+    }, [openIds, lastChangedId]);
 
     return (
         <ul className="experience-tree top-level">
@@ -16,7 +109,11 @@ export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
                     >
                         <ExperienceFolder folderNode={node}
                                           depth={0}
-                                          parentKey={`${node.title}`}/>
+                                          index={`${node.title}`}
+                                          openIds={openIds}
+                                          setOpenIds={setOpenIds}
+                                          folderRefs={folderRefs}
+                                          setLastChangedId={setLastChangedId}/>
                     </li>
                 ) : (
                     <li
@@ -34,39 +131,65 @@ export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
 type ExperienceFolderProps = {
     folderNode: ExperienceFolder;
     depth: number;
-    parentKey: string;
+    index: NodeId;
+    openIds: Set<NodeId>;
+    setOpenIds: React.Dispatch<React.SetStateAction<Set<string>>>;
+    folderRefs: RefObject<Map<NodeId, FolderRef>>;
+    setLastChangedId: (id: string) => void;
 };
 
-function ExperienceFolder({folderNode, depth, parentKey}: ExperienceFolderProps) {
 
-    const [isOpen, setIsOpen] = useState(false);
+function ExperienceFolder({
+                              folderNode,
+                              depth,
+                              index,
+                              openIds,
+                              setOpenIds,
+                              folderRefs,
+                              setLastChangedId
+                          }: ExperienceFolderProps) {
+
+    const isOpen = openIds.has(index);
     const contentRef = useRef<HTMLDivElement | null>(null);
     const [contentHeight, setContentHeight] = useState<number>();
 
-    useEffect(() => {
-        const element = contentRef.current;
+    const toggleFolder = (id: string) => {
+        setOpenIds((prev) => {
+            const next = new Set(prev);
 
-        if (!element) return;
+            if (next.has(id)) {
+                next.delete(id);
+            } else {
+                next.add(id);
+            }
 
-        const observer = new ResizeObserver(() => {
-            setContentHeight(element.scrollHeight);
+            return next;
         });
 
-        observer.observe(element);
+        setLastChangedId(id);
+    };
 
-        setContentHeight(element.scrollHeight);
+    useEffect(() => {
+        if (!contentRef.current) {
+            return;
+        }
+
+        folderRefs.current.set(index, {
+            contentElement: contentRef.current,
+            setContentHeight,
+        });
 
         return () => {
-            observer.disconnect();
+            folderRefs.current.delete(index);
         };
-    }, []);
+    }, [index, folderRefs]);
 
     return (
         <div className="experience-folder">
             <button
                 type="button"
                 className="experience-folder-summary-button"
-                onClick={() => setIsOpen((prev) => !prev)}
+                onClick={() => toggleFolder(index)}
             >
                 <div className="experience-folder-header">
                   <span className="experience-folder-title">
@@ -98,16 +221,21 @@ function ExperienceFolder({folderNode, depth, parentKey}: ExperienceFolderProps)
                         {folderNode.children.map((node) => (
                             node.type === "folder" ? (
                                 <li
-                                    key={`${parentKey}/${node.title}/`}
+                                    key={`${index}/${node.title}/`}
                                     className="experience-folder-wrapper">
                                     <ExperienceFolder folderNode={node}
                                                       depth={depth + 1}
-                                                      parentKey={`${parentKey}/${node.title}`}/>
+                                                      index={`${index}/${node.title}`}
+                                                      openIds={openIds}
+                                                      setOpenIds={setOpenIds}
+                                                      folderRefs={folderRefs}
+                                                      setLastChangedId={setLastChangedId}
+                                    />
 
                                 </li>
                             ) : (
                                 <li
-                                    key={`${parentKey}/${node.title}`}
+                                    key={`${index}/${node.title}`}
                                     className="experience-item-wrapper with-bullet"
                                 >
                                     <ExperienceItem item={node}/>
