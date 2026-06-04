@@ -1,12 +1,12 @@
 import type {ExperienceFolder, ExperienceNode} from "../../types/experienceNodes.ts";
 import {ExperienceItem} from "./ExperienceItem.tsx";
-import {type RefObject, useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
+import {type RefObject, useLayoutEffect, useMemo, useRef, useState} from "react";
 import './ExperienceTree.css'
 import './ExperienceFolder.css'
 
 
 type FolderRef = {
-    contentElement: HTMLDivElement;
+    contentRef: RefObject<HTMLDivElement>;
     setContentHeight: (height: number) => void;
 };
 
@@ -64,17 +64,24 @@ function fillTreeIndex(
 
 function updateAllHeightsInTree(
     ids: NodeId[],
-    folderRefs: RefObject<Map<string, FolderRef>>
+    folderRefs: RefObject<Map<string, FolderRef>>,
+    lastChangedId: string
 ) {
+    const lastChangedFolder = folderRefs.current?.get(lastChangedId)
+    const lastChangedFolderScrollHeight = lastChangedFolder?.contentRef.current.scrollHeight
+    lastChangedFolder?.setContentHeight(lastChangedFolderScrollHeight)
     for (const id of ids) {
+        if (lastChangedId === id) {
+            continue;
+        }
         const folderRef = folderRefs.current?.get(id);
 
         if (!folderRef) {
             continue;
         }
 
-        const height = folderRef.contentElement.scrollHeight;
-        folderRef.setContentHeight(height);
+        const height = folderRef.contentRef.current.scrollHeight;
+        folderRef.setContentHeight(height + lastChangedFolderScrollHeight);
     }
 }
 
@@ -96,7 +103,7 @@ export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
             ...getAncestors(lastChangedId, treeIndex.parentById),
         ];
 
-        updateAllHeightsInTree(idsToUpdate, folderRefs);
+        updateAllHeightsInTree(idsToUpdate, folderRefs, lastChangedId);
     }, [openIds, lastChangedId]);
 
     return (
@@ -169,13 +176,13 @@ function ExperienceFolder({
         setLastChangedId(id);
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!contentRef.current) {
             return;
         }
 
         folderRefs.current.set(index, {
-            contentElement: contentRef.current,
+            contentRef: contentRef,
             setContentHeight,
         });
 
