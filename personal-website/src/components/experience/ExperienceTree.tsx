@@ -1,123 +1,17 @@
 import type {ExperienceFolder, ExperienceNode} from "../../types/experienceNodes.ts";
 import {ExperienceItem} from "./ExperienceItem.tsx";
-import {type RefObject, useLayoutEffect, useMemo, useRef, useState} from "react";
+import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import './ExperienceTree.css'
 import './ExperienceFolder.css'
+import {ExperienceContentNode, ExperienceContentTree} from "../../models/ExperienceContentTree.ts";
 
-
-type FolderRef = {
-    contentRef: RefObject<HTMLDivElement | null>;
-    setContentHeight: (height: number) => void;
-};
-
-type NodeId = string;
-
-type TreeIndex = {
-    parentById: Map<NodeId, NodeId | null>;
-    childrenById: Map<NodeId, NodeId[]>;
-};
-
-function getAncestors(id: NodeId, parentById: Map<NodeId, NodeId | null>) {
-    const ancestors: NodeId[] = [];
-
-    let current = parentById.get(id) ?? null;
-
-    while (current !== null) {
-        ancestors.push(current);
-        current = parentById.get(current) ?? null;
-    }
-
-    return ancestors;
-}
-
-export function buildTreeIndex(nodes: ExperienceNode[]): TreeIndex {
-    const index: TreeIndex = {
-        parentById: new Map(),
-        childrenById: new Map(),
-    };
-
-    fillTreeIndex(nodes, null, index);
-
-    return index;
-}
-
-function fillTreeIndex(
-    nodes: ExperienceNode[],
-    parentId: string | null,
-    index: TreeIndex
-) {
-    for (const node of nodes) {
-        const id = parentId === null ? node.title : `${parentId}/${node.title}`;
-
-        index.parentById.set(id, parentId);
-
-        if (node.type === "folder") {
-
-            const childIds = node.children.map((child) => `${id}/${child.title}`);
-
-            index.childrenById.set(id, childIds);
-
-            fillTreeIndex(node.children, id, index);
-        }
-    }
-}
-
-function updateAllHeightsInTree(
-    ids: NodeId[],
-    folderRefs: RefObject<Map<string, FolderRef>>,
-    lastChangedId: string
-) {
-    const lastChangedFolder = folderRefs.current?.get(lastChangedId)
-    if (lastChangedFolder === undefined) {
-        return;
-    }
-    if (lastChangedFolder.contentRef === null) {
-        return;
-    }
-    if (lastChangedFolder.contentRef.current === null) {
-        return;
-    }
-    const lastChangedFolderScrollHeight = lastChangedFolder?.contentRef.current.scrollHeight
-
-    lastChangedFolder?.setContentHeight(lastChangedFolderScrollHeight)
-    for (const id of ids) {
-        if (lastChangedId === id) {
-            continue;
-        }
-        const folderRef = folderRefs.current?.get(id);
-
-        if (!folderRef) {
-            continue;
-        }
-        if (folderRef.contentRef.current === null) {
-            continue;
-        }
-
-        const height = folderRef.contentRef.current.scrollHeight;
-        folderRef.setContentHeight(height + lastChangedFolderScrollHeight);
-    }
-}
 
 export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
-
-    const [lastChangedId, setLastChangedId] = useState<string | null>(null);
-    const [openIds, setOpenIds] = useState<Set<string>>(new Set());
-    const treeIndex = useMemo(() => {
-        return buildTreeIndex(nodes);
-    }, [nodes]);
-
-    const folderRefs = useRef<Map<NodeId, FolderRef>>(new Map());
-
-    useLayoutEffect(() => {
-        if (!lastChangedId) return;
-
-        const idsToUpdate = [
-            lastChangedId,
-            ...getAncestors(lastChangedId, treeIndex.parentById),
-        ];
-
-        updateAllHeightsInTree(idsToUpdate, folderRefs, lastChangedId);
-    }, [openIds, lastChangedId]);
+    console.log("ExperienceTree render");
+    const contentTree = useMemo(
+        () => new ExperienceContentTree(),
+        [nodes]
+    );
 
     return (
         <ul className="experience-tree top-level">
@@ -127,13 +21,10 @@ export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
                         key={`${node.title}/`}
                         className="experience-folder-wrapper top-level"
                     >
-                        <ExperienceFolder folderNode={node}
+                        <ExperienceFolder parentContentNode={contentTree.root}
+                                          folderNode={node}
                                           depth={0}
-                                          index={`${node.title}`}
-                                          openIds={openIds}
-                                          setOpenIds={setOpenIds}
-                                          folderRefs={folderRefs}
-                                          setLastChangedId={setLastChangedId}/>
+                                          index={`${node.title}`}/>
                     </li>
                 ) : (
                     <li
@@ -149,67 +40,49 @@ export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
 }
 
 type ExperienceFolderProps = {
+    parentContentNode: ExperienceContentNode;
     folderNode: ExperienceFolder;
     depth: number;
-    index: NodeId;
-    openIds: Set<NodeId>;
-    setOpenIds: React.Dispatch<React.SetStateAction<Set<string>>>;
-    folderRefs: RefObject<Map<NodeId, FolderRef>>;
-    setLastChangedId: (id: string) => void;
+    index: string;
+
 };
 
 
 function ExperienceFolder({
+                              parentContentNode,
                               folderNode,
                               depth,
-                              index,
-                              openIds,
-                              setOpenIds,
-                              folderRefs,
-                              setLastChangedId
+                              index
                           }: ExperienceFolderProps) {
 
-    const isOpen = openIds.has(index);
+    const [isOpen, setOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement | null>(null);
     const [contentHeight, setContentHeight] = useState<number>();
 
-    const toggleFolder = (id: string) => {
-        setOpenIds((prev) => {
-            const next = new Set(prev);
+    const experienceContentNode = useMemo(() =>
+        new ExperienceContentNode('folder',
+            parentContentNode,
+            contentRef,
+            setContentHeight),  [parentContentNode]
+    );
 
-            if (next.has(id)) {
-                next.delete(id);
-            } else {
-                next.add(id);
-            }
-
-            return next;
-        });
-
-        setLastChangedId(id);
-    };
+    useEffect(() => {
+        parentContentNode.addChild(experienceContentNode);
+    }, [parentContentNode, experienceContentNode]);
 
     useLayoutEffect(() => {
         if (!contentRef.current) {
             return;
         }
-
-        folderRefs.current.set(index, {
-            contentRef: contentRef,
-            setContentHeight,
-        });
-
-        return () => {
-            folderRefs.current.delete(index);
-        };
-    }, [index, folderRefs]);
+        ExperienceContentTree.updateTreeContentHeight(experienceContentNode);
+    }, [isOpen]);
 
     return (
         <div className="experience-folder">
             <button
                 type="button"
                 className="experience-folder-summary-button"
-                onClick={() => toggleFolder(index)}
+                onClick={() => setOpen((prev) => !prev)}
             >
                 <div className="experience-folder-header">
                   <span className="experience-folder-title">
@@ -243,13 +116,10 @@ function ExperienceFolder({
                                 <li
                                     key={`${index}/${node.title}/`}
                                     className="experience-folder-wrapper">
-                                    <ExperienceFolder folderNode={node}
+                                    <ExperienceFolder parentContentNode={experienceContentNode}
+                                                      folderNode={node}
                                                       depth={depth + 1}
                                                       index={`${index}/${node.title}`}
-                                                      openIds={openIds}
-                                                      setOpenIds={setOpenIds}
-                                                      folderRefs={folderRefs}
-                                                      setLastChangedId={setLastChangedId}
                                     />
 
                                 </li>
