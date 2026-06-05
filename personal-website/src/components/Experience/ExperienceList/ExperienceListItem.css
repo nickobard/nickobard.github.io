@@ -1,0 +1,72 @@
+.experience-list-item-summary-button {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.experience-list-item-origin {
+    margin-bottom: 0.25rem;
+    color: #999;
+    font-size: 0.75rem;
+    line-height: 1.2;
+}
+
+.experience-list-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.experience-list-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.experience-list-item-summary {
+    margin-top: 0.25rem;
+    color: #999;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.experience-list-item-arrow {
+    display: inline-block;
+    font-size: 1.2rem;
+    transition: transform var(--experience-arrow-duration, 0.2s) ease;
+}
+
+.experience-list-item-arrow.open {
+    transform: rotate(90deg);
+}
+
+.experience-list-item-details {
+    overflow: hidden;
+    transition: max-height var(--experience-content-duration, 0.3s) ease;
+}
+
+.experience-list-item-details-inner {
+    padding-top: 1rem;
+    padding-bottom: 0.25rem;
+}
+
+.experience-list-item-description {
+    text-align: left;
+}
+
+.experience-list-item-details-list-entry {
+    padding-left: 1rem;
+    text-align: left;
+}
+
+.experience-list-item-details-list-entry::marker {
+    content: "● ";
+    font-size: 0.8rem;
+}
+
+.experience-list-item-details-list-text {
+    text-align: left;
+}

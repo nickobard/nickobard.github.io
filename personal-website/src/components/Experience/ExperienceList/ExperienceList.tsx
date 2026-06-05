@@ -1,13 +1,16 @@
 import type {ExperienceNode} from "../../../types/experienceNodes.ts";
-import {flattenExperienceTree} from "../../../utils/flattenExperienceTree.ts";
-import {ExperienceTreeItem} from "../ExperienceTree/ExperienceTreeItem.tsx";
+import {flattenExperienceTreeWithPath} from "../../../utils/flattenExperienceTree.ts";
+import {ExperienceListItem} from "./ExperienceListItem.tsx";
+import "./ExperienceList.css"
 
 export function ExperienceList({nodes}: { nodes: ExperienceNode[] }) {
-    const flatItems = flattenExperienceTree(nodes);
+    const flatItems = flattenExperienceTreeWithPath(nodes);
     return (<>
         <div className="experience-list">
-            {flatItems.map((item) => (
-                <ExperienceTreeItem item={item}/>
+            {flatItems.map(({item, path}) => (
+                <div className="experience-list-item" key={`${path.join("/")}/${item.title}`}>
+                    <ExperienceListItem item={item} originPath={path}/>
+                </div>
             ))}
         </div>
     </>);

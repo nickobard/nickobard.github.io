@@ -1,3 +1,13 @@
 .experience-list {
-    gap: 1rem
+    --experience-arrow-duration: 0.2s;
+    --experience-content-duration: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.experience-list-item {
+    padding: 1rem;
+    border: 1px solid #333;
+    border-radius: 12px;
+    margin-bottom: 1rem;
 }
