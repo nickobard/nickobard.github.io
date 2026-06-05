@@ -1,5 +1,7 @@
 .experience-tree {
     --list-indent: 1.5rem;
+    --experience-arrow-duration: 0.2s;
+    --experience-content-duration: 0.3s;
     padding-left: var(--list-indent);
 }
 
@@ -45,4 +47,3 @@
     font-size: 0.9rem;
     content: "● ";
 }
-

@@ -2,13 +2,14 @@
 
 }
 
-.experience-item summary {
-    list-style: none;
+.experience-item-summary-button {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    text-align: left;
     cursor: pointer;
-}
-
-.experience-item summary::-webkit-details-marker {
-    display: none;
 }
 
 .experience-item-header {
@@ -34,11 +35,26 @@
 }
 
 .experience-item-arrow {
-    transition: transform 0.2s ease;
+    font-size: 1.2rem;
+    display: inline-block;
+    transition: transform var(--experience-arrow-duration, 0.2s) ease;
 }
 
-.experience-item[open] .experience-item-arrow {
+.experience-item-arrow.open {
     transform: rotate(90deg);
+}
+
+.details-content {
+    overflow: hidden;
+    transition: max-height var(--experience-content-duration, 0.3s) ease;
+}
+
+.details-content-inner {
+    padding-top: 1rem;
+}
+
+.experience-item-content-inner {
+    padding-bottom: 0.25rem;
 }
 
 .details-list {

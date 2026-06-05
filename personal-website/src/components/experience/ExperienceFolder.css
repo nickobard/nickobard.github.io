@@ -38,7 +38,7 @@
 .experience-folder-arrow {
     font-size: 1.2rem;
     display: inline-block;
-    transition: transform 0.2s ease;
+    transition: transform var(--experience-arrow-duration, 0.2s) ease;
 }
 
 
@@ -49,10 +49,9 @@
 
 .details-content {
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height var(--experience-content-duration, 0.3s) ease;
 }
 
 .details-content-inner {
     padding-top: 1rem;
 }
-

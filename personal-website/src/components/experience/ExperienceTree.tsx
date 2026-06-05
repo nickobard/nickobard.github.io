@@ -10,6 +10,9 @@ export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
     console.log("ExperienceTree render");
     const contentTree = useMemo(
         () => new ExperienceContentTree(),
+        // The content tree mirrors the rendered node structure, so reset it when
+        // filtering or other node changes replace the rendered tree.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [nodes]
     );
 
@@ -31,7 +34,7 @@ export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
                         key={`${node.title}`}
                         className="experience-item-wrapper top-level"
                     >
-                        <ExperienceItem item={node}/>
+                        <ExperienceItem item={node} parentContentNode={contentTree.root}/>
                     </li>
                 )
             ))}
@@ -75,7 +78,7 @@ function ExperienceFolder({
             return;
         }
         ExperienceContentTree.updateTreeContentHeight(experienceContentNode);
-    }, [isOpen]);
+    }, [isOpen, experienceContentNode]);
 
     return (
         <div className="experience-folder">
@@ -128,7 +131,7 @@ function ExperienceFolder({
                                     key={`${index}/${node.title}`}
                                     className="experience-item-wrapper with-bullet"
                                 >
-                                    <ExperienceItem item={node}/>
+                                    <ExperienceItem item={node} parentContentNode={experienceContentNode}/>
                                 </li>
                             )
                         ))}
