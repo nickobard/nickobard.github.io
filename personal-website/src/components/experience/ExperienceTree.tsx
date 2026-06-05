@@ -6,7 +6,7 @@ import './ExperienceFolder.css'
 
 
 type FolderRef = {
-    contentRef: RefObject<HTMLDivElement>;
+    contentRef: RefObject<HTMLDivElement | null>;
     setContentHeight: (height: number) => void;
 };
 
@@ -68,7 +68,17 @@ function updateAllHeightsInTree(
     lastChangedId: string
 ) {
     const lastChangedFolder = folderRefs.current?.get(lastChangedId)
+    if (lastChangedFolder === undefined) {
+        return;
+    }
+    if (lastChangedFolder.contentRef === null) {
+        return;
+    }
+    if (lastChangedFolder.contentRef.current === null) {
+        return;
+    }
     const lastChangedFolderScrollHeight = lastChangedFolder?.contentRef.current.scrollHeight
+
     lastChangedFolder?.setContentHeight(lastChangedFolderScrollHeight)
     for (const id of ids) {
         if (lastChangedId === id) {
@@ -77,6 +87,9 @@ function updateAllHeightsInTree(
         const folderRef = folderRefs.current?.get(id);
 
         if (!folderRef) {
+            continue;
+        }
+        if (folderRef.contentRef.current === null) {
             continue;
         }
 
