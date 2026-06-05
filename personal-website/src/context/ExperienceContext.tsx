@@ -1,5 +1,5 @@
 import {createContext, useContext, useRef, useState} from "react";
-import {testExperienceData} from "../data/experienceItems.ts";
+import {testExperienceData} from "../data/testExperienceData.ts";
 import type {ExperienceNode} from "../types/experienceNodes.ts";
 
 type ExperienceContextValue = {
