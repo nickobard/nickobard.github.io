@@ -2,7 +2,7 @@ import "./App.css";
 
 import {ProfileIntro} from "./components/ProfileIntro.tsx";
 import {TagSelector} from "./components/TagSelector.tsx";
-import {Experience} from "./components/experience/Experience.tsx";
+import {Experience} from "./components/Experience/Experience.tsx";
 import {ExperienceProvider} from "./context/ExperienceContext.tsx";
 
 

@@ -4,8 +4,8 @@ import "./Experience.css"
 import {useExperienceContext} from "../../context/ExperienceContext.tsx";
 
 import {RenderViewControls} from "./ViewControls.tsx";
-import {ExperienceList} from "./ExperienceList.tsx";
-import {ExperienceTree} from "./ExperienceTree.tsx";
+import {ExperienceList} from "./ExperienceList/ExperienceList.tsx";
+import {ExperienceTree} from "./ExperienceTree/ExperienceTree.tsx";
 
 
 export function Experience() {

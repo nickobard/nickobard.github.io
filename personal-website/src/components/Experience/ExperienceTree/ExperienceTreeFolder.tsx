@@ -1,48 +1,12 @@
-import type {ExperienceFolder, ExperienceNode} from "../../types/experienceNodes.ts";
-import {ExperienceItem} from "./ExperienceItem.tsx";
+import type {ExperienceFolder} from "../../../types/experienceNodes.ts";
+import {ExperienceTreeItem} from "./ExperienceTreeItem.tsx";
 import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import './ExperienceTree.css'
-import './ExperienceFolder.css'
-import {ExperienceContentNode, ExperienceContentTree} from "../../models/ExperienceContentTree.ts";
+import './ExperienceTreeFolder.css'
+import {ExperienceContentNode, ExperienceContentTree} from "../../../models/ExperienceContentTree.ts";
 
 
-export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
-    console.log("ExperienceTree render");
-    const contentTree = useMemo(
-        () => new ExperienceContentTree(),
-        // The content tree mirrors the rendered node structure, so reset it when
-        // filtering or other node changes replace the rendered tree.
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [nodes]
-    );
-
-    return (
-        <ul className="experience-tree top-level">
-            {nodes.map((node) => (
-                node.type === "folder" ? (
-                    <li
-                        key={`${node.title}/`}
-                        className="experience-folder-wrapper top-level"
-                    >
-                        <ExperienceFolder parentContentNode={contentTree.root}
-                                          folderNode={node}
-                                          depth={0}
-                                          index={`${node.title}`}/>
-                    </li>
-                ) : (
-                    <li
-                        key={`${node.title}`}
-                        className="experience-item-wrapper top-level"
-                    >
-                        <ExperienceItem item={node} parentContentNode={contentTree.root}/>
-                    </li>
-                )
-            ))}
-        </ul>
-    );
-}
-
-type ExperienceFolderProps = {
+type Props = {
     parentContentNode: ExperienceContentNode;
     folderNode: ExperienceFolder;
     depth: number;
@@ -51,12 +15,12 @@ type ExperienceFolderProps = {
 };
 
 
-function ExperienceFolder({
-                              parentContentNode,
-                              folderNode,
-                              depth,
-                              index
-                          }: ExperienceFolderProps) {
+export function ExperienceTreeFolder({
+                                     parentContentNode,
+                                     folderNode,
+                                     depth,
+                                     index
+                                 }: Props) {
 
     const [isOpen, setOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement | null>(null);
@@ -66,7 +30,7 @@ function ExperienceFolder({
         new ExperienceContentNode('folder',
             parentContentNode,
             contentRef,
-            setContentHeight),  [parentContentNode]
+            setContentHeight), [parentContentNode]
     );
 
     useEffect(() => {
@@ -119,10 +83,10 @@ function ExperienceFolder({
                                 <li
                                     key={`${index}/${node.title}/`}
                                     className="experience-folder-wrapper">
-                                    <ExperienceFolder parentContentNode={experienceContentNode}
-                                                      folderNode={node}
-                                                      depth={depth + 1}
-                                                      index={`${index}/${node.title}`}
+                                    <ExperienceTreeFolder parentContentNode={experienceContentNode}
+                                                          folderNode={node}
+                                                          depth={depth + 1}
+                                                          index={`${index}/${node.title}`}
                                     />
 
                                 </li>
@@ -131,7 +95,7 @@ function ExperienceFolder({
                                     key={`${index}/${node.title}`}
                                     className="experience-item-wrapper with-bullet"
                                 >
-                                    <ExperienceItem item={node} parentContentNode={experienceContentNode}/>
+                                    <ExperienceTreeItem item={node} parentContentNode={experienceContentNode}/>
                                 </li>
                             )
                         ))}

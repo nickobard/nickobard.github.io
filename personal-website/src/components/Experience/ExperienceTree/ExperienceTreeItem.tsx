@@ -1,14 +1,14 @@
-import type {ExperienceItem} from "../../types/experienceNodes.ts";
+import type {ExperienceItem} from "../../../types/experienceNodes.ts";
 import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
-import {ExperienceContentNode, ExperienceContentTree} from "../../models/ExperienceContentTree.ts";
-import "./ExperienceItem.css"
+import {ExperienceContentNode, ExperienceContentTree} from "../../../models/ExperienceContentTree.ts";
+import "./ExperienceTreeItem.css"
 
 type ExperienceItemProps = {
     item: ExperienceItem;
     parentContentNode?: ExperienceContentNode;
 };
 
-export function ExperienceItem({item, parentContentNode}: ExperienceItemProps) {
+export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProps) {
     const [isOpen, setOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement | null>(null);
     const [contentHeight, setContentHeight] = useState<number>();
