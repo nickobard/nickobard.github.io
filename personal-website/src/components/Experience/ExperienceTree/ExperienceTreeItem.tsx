@@ -47,8 +47,14 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
                         {item.title}
                       </span>
 
-                    <span className={isOpen ? "experience-item-arrow open" : "experience-item-arrow"}>
-                        ▶
+                    <span className="experience-item-header-meta">
+                        <span className="experience-item-date-label">
+                            {item.date_label}
+                        </span>
+
+                        <span className={isOpen ? "experience-item-arrow open" : "experience-item-arrow"}>
+                            ▶
+                        </span>
                     </span>
                 </div>
 

@@ -54,10 +54,19 @@ export function ExperienceTreeFolder({
                 <div className="experience-folder-header">
                   <span className="experience-folder-title">
                     {folderNode.title}
+                    <span className="experience-folder-title-marker">/</span>
                   </span>
 
-                    <span className={isOpen ? "experience-folder-arrow open" : "experience-folder-arrow"}>
-                        ▶
+                    <span className="experience-folder-header-meta">
+                        {folderNode.date_label && (
+                            <span className="experience-folder-date-label">
+                                {folderNode.date_label}
+                            </span>
+                        )}
+
+                        <span className={isOpen ? "experience-folder-arrow open" : "experience-folder-arrow"}>
+                            ▶
+                        </span>
                     </span>
                 </div>
 

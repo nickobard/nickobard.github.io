@@ -21,6 +21,22 @@
 .experience-item-title {
     font-size: 1.1rem;
     font-weight: 600;
+    white-space: nowrap;
+}
+
+.experience-item-header-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.experience-item-date-label {
+    color: #999;
+    font-size: 0.787rem;
+    font-weight: 400;
+    white-space: nowrap;
+    transform: translateY(0.04rem);
 }
 
 .experience-item-summary {

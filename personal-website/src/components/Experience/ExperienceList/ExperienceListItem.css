@@ -26,6 +26,19 @@
     font-weight: 600;
 }
 
+.experience-list-item-header-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.experience-list-item-date-label {
+    color: #999;
+    font-size: 0.787rem;
+    font-weight: 400;
+}
+
 .experience-list-item-summary {
     margin-top: 0.25rem;
     color: #999;

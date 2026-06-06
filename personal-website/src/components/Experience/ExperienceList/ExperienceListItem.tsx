@@ -34,8 +34,14 @@ export function ExperienceListItem({item, originPath}: Props) {
                         {item.title}
                     </span>
 
-                    <span className={isOpen ? "experience-list-item-arrow open" : "experience-list-item-arrow"}>
-                        ▶
+                    <span className="experience-list-item-header-meta">
+                        <span className="experience-list-item-date-label">
+                            {item.date_label}
+                        </span>
+
+                        <span className={isOpen ? "experience-list-item-arrow open" : "experience-list-item-arrow"}>
+                            ▶
+                        </span>
                     </span>
                 </div>
 
