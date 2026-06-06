@@ -4,6 +4,7 @@ import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import './ExperienceTree.css'
 import './ExperienceTreeFolder.css'
 import {ExperienceContentNode, ExperienceContentTree} from "../../../models/ExperienceContentTree.ts";
+import {type ExperienceSortDirection, sortExperienceNodes} from "../../../utils/sortExperienceNodes.ts";
 
 
 type Props = {
@@ -11,6 +12,7 @@ type Props = {
     folderNode: ExperienceFolder;
     depth: number;
     index: string;
+    sortDirection?: ExperienceSortDirection;
 
 };
 
@@ -19,12 +21,17 @@ export function ExperienceTreeFolder({
                                      parentContentNode,
                                      folderNode,
                                      depth,
-                                     index
+                                     index,
+                                     sortDirection = "asc"
                                  }: Props) {
 
     const [isOpen, setOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement | null>(null);
     const [contentHeight, setContentHeight] = useState<number>();
+    const sortedChildren = useMemo(
+        () => sortExperienceNodes(folderNode.children, sortDirection),
+        [folderNode.children, sortDirection]
+    );
 
     const experienceContentNode = useMemo(() =>
         new ExperienceContentNode('folder',
@@ -87,7 +94,7 @@ export function ExperienceTreeFolder({
 
 
                     <ul className="experience-tree">
-                        {folderNode.children.map((node) => (
+                        {sortedChildren.map((node) => (
                             node.type === "folder" ? (
                                 <li
                                     key={`${index}/${node.title}/`}
@@ -96,6 +103,7 @@ export function ExperienceTreeFolder({
                                                           folderNode={node}
                                                           depth={depth + 1}
                                                           index={`${index}/${node.title}`}
+                                                          sortDirection={sortDirection}
                                     />
 
                                 </li>

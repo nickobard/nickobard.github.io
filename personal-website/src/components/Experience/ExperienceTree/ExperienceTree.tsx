@@ -4,20 +4,31 @@ import {useMemo} from "react";
 import './ExperienceTree.css'
 import {ExperienceContentTree} from "../../../models/ExperienceContentTree.ts";
 import {ExperienceTreeFolder} from "./ExperienceTreeFolder.tsx";
+import {type ExperienceSortDirection, sortExperienceNodes} from "../../../utils/sortExperienceNodes.ts";
 
-export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
+type Props = {
+    nodes: ExperienceNode[];
+    sortDirection?: ExperienceSortDirection;
+};
+
+export function ExperienceTree({nodes, sortDirection = "desc"}: Props) {
+
+    const sortedNodes = useMemo(
+        () => sortExperienceNodes(nodes, sortDirection),
+        [nodes, sortDirection]
+    );
 
     const contentTree = useMemo(
         () => new ExperienceContentTree(),
         // The content tree mirrors the rendered node structure, so reset it when
         // filtering or other node changes replace the rendered tree.
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [nodes]
+        [sortedNodes]
     );
 
     return (
         <ul className="experience-tree top-level">
-            {nodes.map((node) => (
+            {sortedNodes.map((node) => (
                 node.type === "folder" ? (
                     <li
                         key={`${node.title}/`}
@@ -26,7 +37,8 @@ export function ExperienceTree({nodes}: { nodes: ExperienceNode[] }) {
                         <ExperienceTreeFolder parentContentNode={contentTree.root}
                                               folderNode={node}
                                               depth={0}
-                                              index={`${node.title}`}/>
+                                              index={`${node.title}`}
+                                              sortDirection={sortDirection}/>
                     </li>
                 ) : (
                     <li
