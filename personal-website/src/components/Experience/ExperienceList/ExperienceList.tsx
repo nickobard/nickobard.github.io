@@ -2,7 +2,8 @@ import type {ExperienceNode} from "../../../types/experienceNodes.ts";
 import {flattenExperienceTreeWithPath} from "../../../utils/flattenExperienceTree.ts";
 import {ExperienceListItem} from "./ExperienceListItem.tsx";
 import "./ExperienceList.css"
-import {type ExperienceSortDirection, sortWithFixed} from "../../../utils/sortExperienceNodesByInterval.ts";
+import type {ExperienceSortDirection} from "../../../utils/sortExperienceNodesByInterval.ts";
+import {sortWithFixedByCumulativeMedian} from "../../../utils/sortExperienceNodesByCumulativeMedian.ts";
 import {useMemo} from "react";
 
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
 
 export function ExperienceList({nodes, sortDirection = "desc"}: Props) {
     const flatItems = useMemo(
-        () => sortWithFixed(
+        () => sortWithFixedByCumulativeMedian(
             flattenExperienceTreeWithPath(nodes),
             ({item}) => item,
             sortDirection

@@ -3,7 +3,7 @@ export function createFolder(
 ): ExperienceFolder {
     return {
         type: "folder",
-        position: "fixed",
+        position: "flexible",
         ...data,
     };
 }

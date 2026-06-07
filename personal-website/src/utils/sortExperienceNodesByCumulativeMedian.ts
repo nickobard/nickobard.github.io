@@ -8,7 +8,17 @@ type NodeWithDatePoints = {
 };
 
 function dateValue(date?: string): number | undefined {
-    return date ? new Date(date).getTime() : undefined;
+    if (!date) {
+        return undefined;
+    }
+
+    const value = new Date(date).getTime();
+
+    return Number.isNaN(value) ? undefined : value;
+}
+
+function endDateValue(date?: string): number {
+    return dateValue(date) ?? Number.POSITIVE_INFINITY;
 }
 
 function datePointsForNode(node: ExperienceNode): number[] {
@@ -16,7 +26,7 @@ function datePointsForNode(node: ExperienceNode): number[] {
         return node.children.flatMap(datePointsForNode);
     }
 
-    return [dateValue(node.start_date), dateValue(node.end_date)]
+    return [dateValue(node.start_date), endDateValue(node.end_date)]
         .filter((value): value is number => value !== undefined);
 }
 
@@ -32,6 +42,10 @@ function median(values: number[]): number {
         return sortedValues[middle];
     }
 
+    if (!Number.isFinite(sortedValues[middle])) {
+        return Number.POSITIVE_INFINITY;
+    }
+
     return (sortedValues[middle - 1] + sortedValues[middle]) / 2;
 }
 
@@ -41,31 +55,47 @@ function compareByMedian(
     direction: ExperienceSortDirection
 ): number {
     const directionMultiplier = direction === "asc" ? 1 : -1;
-    const medianDiff = a.sortMedian - b.sortMedian;
 
-    if (medianDiff !== 0) {
-        return medianDiff * directionMultiplier;
+    if (a.sortMedian < b.sortMedian) {
+        return -1 * directionMultiplier;
+    }
+
+    if (a.sortMedian > b.sortMedian) {
+        return directionMultiplier;
     }
 
     return a.node.title.localeCompare(b.node.title);
 }
 
-function sortWithFixedMedianPositions(
-    nodesWithDatePoints: NodeWithDatePoints[],
+export function sortWithFixedByCumulativeMedian<T>(
+    items: T[],
+    getNode: (item: T) => ExperienceNode,
     direction: ExperienceSortDirection
-): NodeWithDatePoints[] {
-    const flexibleSorted = nodesWithDatePoints
+): T[] {
+    const itemsWithDatePoints = items.map((item) => {
+        const node = getNode(item);
+        const datePoints = datePointsForNode(node);
+
+        return {
+            item,
+            node,
+            datePoints,
+            sortMedian: median(datePoints),
+        };
+    });
+
+    const flexibleSorted = itemsWithDatePoints
         .filter(({node}) => node.position !== "fixed")
         .sort((a, b) => compareByMedian(a, b, direction));
 
     let flexIndex = 0;
 
-    return nodesWithDatePoints.map((nodeWithDatePoints) => {
-        if (nodeWithDatePoints.node.position === "fixed") {
-            return nodeWithDatePoints;
+    return itemsWithDatePoints.map((itemWithDatePoints) => {
+        if (itemWithDatePoints.node.position === "fixed") {
+            return itemWithDatePoints.item;
         }
 
-        return flexibleSorted[flexIndex++];
+        return flexibleSorted[flexIndex++].item;
     });
 }
 
@@ -101,8 +131,9 @@ export function sortExperienceNodesByCumulativeMedian(
     nodes: ExperienceNode[],
     direction: ExperienceSortDirection = "asc"
 ): ExperienceNode[] {
-    return sortWithFixedMedianPositions(
+    return sortWithFixedByCumulativeMedian(
         nodes.map((node) => sortNodeWithDatePoints(node, direction)),
+        ({node}) => node,
         direction
     ).map(({node}) => node);
 }
