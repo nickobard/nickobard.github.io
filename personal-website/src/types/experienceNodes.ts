@@ -33,7 +33,7 @@ export type ExperienceFolder = {
 
 export type ExperienceItem = {
     type: "item";
-    date_label: string;
+    date_label?: string;
     start_date: string;
     end_date?: string;
     position: "fixed" | "flexible";
