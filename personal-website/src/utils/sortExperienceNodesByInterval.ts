@@ -57,11 +57,11 @@ function sortNodeChildren(
 
     return {
         ...node,
-        children: sortExperienceNodes(node.children, direction),
+        children: sortExperienceNodesByInterval(node.children, direction),
     };
 }
 
-export function sortExperienceNodes(
+export function sortExperienceNodesByInterval(
     nodes: ExperienceNode[],
     direction: ExperienceSortDirection = "asc"
 ): ExperienceNode[] {

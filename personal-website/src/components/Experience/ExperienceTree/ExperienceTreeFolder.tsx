@@ -4,7 +4,8 @@ import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import './ExperienceTree.css'
 import './ExperienceTreeFolder.css'
 import {ExperienceContentNode, ExperienceContentTree} from "../../../models/ExperienceContentTree.ts";
-import {type ExperienceSortDirection, sortExperienceNodes} from "../../../utils/sortExperienceNodes.ts";
+import type {ExperienceSortDirection} from "../../../utils/sortExperienceNodesByInterval.ts";
+import {sortExperienceNodesByCumulativeMedian} from "../../../utils/sortExperienceNodesByCumulativeMedian.ts";
 
 
 type Props = {
@@ -29,7 +30,7 @@ export function ExperienceTreeFolder({
     const contentRef = useRef<HTMLDivElement | null>(null);
     const [contentHeight, setContentHeight] = useState<number>();
     const sortedChildren = useMemo(
-        () => sortExperienceNodes(folderNode.children, sortDirection),
+        () => sortExperienceNodesByCumulativeMedian(folderNode.children, sortDirection),
         [folderNode.children, sortDirection]
     );
 

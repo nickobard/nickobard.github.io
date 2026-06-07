@@ -2,7 +2,7 @@ import type {ExperienceNode} from "../../../types/experienceNodes.ts";
 import {flattenExperienceTreeWithPath} from "../../../utils/flattenExperienceTree.ts";
 import {ExperienceListItem} from "./ExperienceListItem.tsx";
 import "./ExperienceList.css"
-import {type ExperienceSortDirection, sortWithFixed} from "../../../utils/sortExperienceNodes.ts";
+import {type ExperienceSortDirection, sortWithFixed} from "../../../utils/sortExperienceNodesByInterval.ts";
 import {useMemo} from "react";
 
 type Props = {
