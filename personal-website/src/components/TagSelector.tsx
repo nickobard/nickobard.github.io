@@ -12,7 +12,7 @@ export function TagSelector() {
 
     const experienceDataFlat = flattenExperienceTree(experienceData)
 
-    const allTags = [...new Set(experienceDataFlat.flatMap((item) => item.tags))];
+    const allTags = [...new Set(experienceDataFlat.flatMap((item) => item.tags ?? []))];
     const fuse = new Fuse(allTags, {
         threshold: 0.4,
     });
