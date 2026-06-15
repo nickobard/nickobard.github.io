@@ -4,6 +4,7 @@ import {createFolder, createItem} from "../types/experienceNodes.ts";
 export const currentExperienceData: ExperienceNode[] = [
     createFolder({
         title: "Work Experience",
+        priority: 1,
         children: [
             createFolder({
                 title: "JetBrains s.r.o.",
@@ -74,6 +75,7 @@ export const currentExperienceData: ExperienceNode[] = [
     }),
     createFolder({
         title: "Education",
+        priority: 2,
         children: [
             createFolder({
                 title: "Bachelor Program",
@@ -106,6 +108,7 @@ export const currentExperienceData: ExperienceNode[] = [
     }),
     createFolder({
         title: "Personal Projects",
+        priority: 3,
         start_date: "2024-01",
         children: [
             createItem({
@@ -116,6 +119,7 @@ export const currentExperienceData: ExperienceNode[] = [
     }),
     createFolder({
         title: "Volunteering",
+        priority: 4,
         start_date: "2023-07-01",
         end_date: "2026-02-01",
         children: [
