@@ -13,7 +13,7 @@ export function filterExperienceTree(
         .map((node) => {
             if (node.type === "item") {
                 const matches = selectedTags.every((tag) =>
-                    node.tags.includes(tag)
+                    node.tags !== undefined ? node.tags.includes(tag) : false
                 );
 
                 return matches ? node : null;
