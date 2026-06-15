@@ -25,6 +25,7 @@ export type ExperienceFolder = {
     date_label?: string;
     start_date?: string;
     end_date?: string;
+    priority?: number;
     position: "fixed" | "flexible";
     summary?: string;
     description?: string;
@@ -36,6 +37,7 @@ export type ExperienceItem = {
     date_label?: string;
     start_date: string;
     end_date?: string;
+    priority?: number;
     position: "fixed" | "flexible";
     title: string;
     tags?: string[];

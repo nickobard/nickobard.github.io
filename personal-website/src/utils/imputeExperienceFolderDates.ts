@@ -50,7 +50,7 @@ function formatDateRangeLabel(startDate?: string, endDate?: string): string | un
 function imputeItemDateLabel(item: ExperienceItem): ExperienceItem {
     return {
         ...item,
-        date_label: formatDateRangeLabel(item.start_date, item.end_date),
+        date_label: item.date_label ?? formatDateRangeLabel(item.start_date, item.end_date),
     };
 }
 
@@ -63,18 +63,20 @@ function imputeFolderDates(folder: ExperienceFolder): ExperienceFolder {
         .map((child) => child.end_date)
         .filter((date): date is string => date !== undefined);
     const maxEndDateValue = Math.max(...children.map((child) => endDateValue(child.end_date)));
-    const startDate = startDates.length > 0
+    const imputedStartDate = startDates.length > 0
         ? startDates.reduce((minDate, date) => compareDateStrings(date, minDate) < 0 ? date : minDate)
         : undefined;
-    const endDate = maxEndDateValue === Number.POSITIVE_INFINITY || endDates.length === 0
+    const imputedEndDate = maxEndDateValue === Number.POSITIVE_INFINITY || endDates.length === 0
         ? undefined
         : endDates.reduce((maxDate, date) => compareDateStrings(date, maxDate) > 0 ? date : maxDate);
+    const startDate = folder.start_date ?? imputedStartDate;
+    const endDate = folder.end_date ?? imputedEndDate;
 
     return {
         ...folder,
         start_date: startDate,
         end_date: endDate,
-        date_label: formatDateRangeLabel(startDate, endDate),
+        date_label: folder.date_label ?? formatDateRangeLabel(startDate, endDate),
         children,
     };
 }
