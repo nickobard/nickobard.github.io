@@ -1,19 +1,17 @@
 export function createFolder(
-    data: Omit<ExperienceFolder, "type" | "position">
+    data: Omit<ExperienceFolder, "type">
 ): ExperienceFolder {
     return {
         type: "folder",
-        position: "flexible",
         ...data,
     };
 }
 
 export function createItem(
-    data: Omit<ExperienceItem, "type" | "position">
+    data: Omit<ExperienceItem, "type">
 ): ExperienceItem {
     return {
         type: "item",
-        position: "flexible",
         ...data,
     };
 }
@@ -26,7 +24,6 @@ export type ExperienceFolder = {
     start_date?: string;
     end_date?: string;
     priority?: number;
-    position: "fixed" | "flexible";
     summary?: string;
     description?: string;
     children: ExperienceNode[];
@@ -38,7 +35,6 @@ export type ExperienceItem = {
     start_date: string;
     end_date?: string;
     priority?: number;
-    position: "fixed" | "flexible";
     title: string;
     tags?: string[];
     summary?: string;

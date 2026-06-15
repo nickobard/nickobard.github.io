@@ -49,12 +49,34 @@ function median(values: number[]): number {
     return (sortedValues[middle - 1] + sortedValues[middle]) / 2;
 }
 
+function priorityValue(priority?: number): number {
+    return priority !== undefined && priority >= 0
+        ? priority
+        : Number.NEGATIVE_INFINITY;
+}
+
 function compareByMedian(
     a: NodeWithDatePoints,
     b: NodeWithDatePoints,
     direction: ExperienceSortDirection
 ): number {
     const directionMultiplier = direction === "asc" ? 1 : -1;
+    const aPriority = priorityValue(a.node.priority);
+    const bPriority = priorityValue(b.node.priority);
+    const aHasPriority = Number.isFinite(aPriority);
+    const bHasPriority = Number.isFinite(bPriority);
+
+    if (aHasPriority && !bHasPriority) {
+        return -1;
+    }
+
+    if (!aHasPriority && bHasPriority) {
+        return 1;
+    }
+
+    if (aPriority !== bPriority) {
+        return aPriority - bPriority;
+    }
 
     if (a.sortMedian < b.sortMedian) {
         return -1 * directionMultiplier;
@@ -67,7 +89,7 @@ function compareByMedian(
     return a.node.title.localeCompare(b.node.title);
 }
 
-export function sortWithFixedByCumulativeMedian<T>(
+export function sortByCumulativeMedian<T>(
     items: T[],
     getNode: (item: T) => ExperienceNode,
     direction: ExperienceSortDirection
@@ -84,19 +106,9 @@ export function sortWithFixedByCumulativeMedian<T>(
         };
     });
 
-    const flexibleSorted = itemsWithDatePoints
-        .filter(({node}) => node.position !== "fixed")
-        .sort((a, b) => compareByMedian(a, b, direction));
-
-    let flexIndex = 0;
-
-    return itemsWithDatePoints.map((itemWithDatePoints) => {
-        if (itemWithDatePoints.node.position === "fixed") {
-            return itemWithDatePoints.item;
-        }
-
-        return flexibleSorted[flexIndex++].item;
-    });
+    return itemsWithDatePoints
+        .sort((a, b) => compareByMedian(a, b, direction))
+        .map(({item}) => item);
 }
 
 function sortNodeWithDatePoints(
@@ -131,7 +143,7 @@ export function sortExperienceNodesByCumulativeMedian(
     nodes: ExperienceNode[],
     direction: ExperienceSortDirection = "asc"
 ): ExperienceNode[] {
-    return sortWithFixedByCumulativeMedian(
+    return sortByCumulativeMedian(
         nodes.map((node) => sortNodeWithDatePoints(node, direction)),
         ({node}) => node,
         direction
