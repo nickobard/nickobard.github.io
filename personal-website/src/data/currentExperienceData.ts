@@ -1,0 +1,129 @@
+import type {ExperienceNode} from "../types/experienceNodes.ts";
+import {createFolder, createItem} from "../types/experienceNodes.ts";
+
+export const currentExperienceData: ExperienceNode[] = [
+    createFolder({
+        title: "Work Experience",
+        children: [
+            createFolder({
+                title: "JetBrains s.r.o.",
+                children: [
+                    createItem({
+                        title: "Junior Data Analyst",
+                        summary: "JetBrains s.r.o.",
+                        start_date: "2025-07-15",
+                        end_date: "2026-03",
+                        tags: ["Data Analysis"],
+                    }),
+                    createItem({
+                        title: "Intern Data Analyst",
+                        summary: "JetBrains s.r.o.",
+                        start_date: "2025-01-15",
+                        end_date: "2025-07-15",
+                        tags: ["Data Analysis"],
+                    }),
+                ]
+            }),
+
+            createItem({
+                title: "Technical Assistant",
+                summary: "Summer school for teenagers about AI from AI dětem.",
+                start_date: "2024-07-01",
+                end_date: "2024-07-08",
+                tags: ["Education"],
+            }),
+            createFolder({
+                    title: 'Management at student club Buben',
+                    children: [
+                        createItem({
+                            title: "Head of Sports",
+                            summary: "Volunteering to rebuild a gym at student club Buben.",
+                            start_date: "2023-09-01",
+                            end_date: "2026-02-01",
+                            tags: ["Management"],
+                        }),
+                        createItem({
+                            title: "Board Member",
+                            summary: "Volunteering to rebuild a student club Buben.",
+                            start_date: "2023-09-01",
+                            end_date: "2025-02-01",
+                            tags: ["Management"],
+                        }),
+                    ]
+                }
+            ),
+            createFolder({
+                title: "University Activities",
+                children: [
+                    createItem({
+                        title: "Freelance university activities",
+                        summary: "Faculty of Information Technology at Czech Technical University.",
+                        start_date: "2022-09",
+                        end_date: "2024-09",
+                    }),
+                    createItem({
+                        title: "Research Summer",
+                        summary: "Faculty of Information Technology at Czech Technical University.",
+                        start_date: "2023-06-01",
+                        end_date: "2026-02-01",
+                    })
+                ]
+            })
+
+        ],
+    }),
+    createFolder({
+        title: "Education",
+        children: [
+            createFolder({
+                title: "Bachelor Program",
+                start_date: "2022-09-01",
+                end_date: "2026-06-24",
+                children: [
+                    createFolder({
+                        title: "Data Science Program",
+                        start_date: "2024-09-01",
+                        end_date: "2025-09-01",
+                        children: []
+
+                    }),
+                    createFolder({
+                        title: "Software Engineering Program",
+                        start_date: "2024-09-01",
+                        end_date: "2025-09-01",
+                        children: []
+
+                    }),
+                    createItem({
+                        title: "Research Summer",
+                        summary: "Faculty of Information Technology at Czech Technical University.",
+                        start_date: "2023-06-01",
+                        end_date: "2026-02-01",
+                    })
+                ]
+            }),
+        ],
+    }),
+    createFolder({
+        title: "Personal Projects",
+        start_date: "2024-01",
+        children: [
+            createItem({
+                title: "Personal Website",
+                start_date: "2026-05"
+            })
+        ]
+    }),
+    createFolder({
+        title: "Volunteering",
+        start_date: "2023-07-01",
+        end_date: "2026-02-01",
+        children: [
+            createItem({
+                title: 'Head of sports',
+                start_date: "2023-07-01",
+                end_date: "2026-02-01",
+            })
+        ]
+    })
+];

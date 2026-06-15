@@ -38,7 +38,7 @@ export type ExperienceItem = {
     end_date?: string;
     position: "fixed" | "flexible";
     title: string;
-    tags: string[];
+    tags?: string[];
     summary?: string;
     description?: string;
     details?: string[];
