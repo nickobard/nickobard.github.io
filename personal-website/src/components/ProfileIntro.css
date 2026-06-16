@@ -14,3 +14,7 @@
 .intro {
     padding: 2rem;
 }
+
+.intro-text p{
+    padding-top: 1rem;
+}
