@@ -31,7 +31,13 @@ export const currentExperienceData: ExperienceNode[] = [
                 summary: "Summer school for teenagers about AI from AI dětem.",
                 start_date: "2024-07-01",
                 end_date: "2024-07-08",
+                description: "Test description",
                 tags: ["Education"],
+                details: [
+                    "Test details point",
+                    "Test details point",
+                    "Test details point"
+                ]
             }),
             createFolder({
                     title: 'Management at student club Buben',
