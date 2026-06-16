@@ -23,6 +23,10 @@
 
 }
 
+.experience-folder-wrapper  + .experience-folder-wrapper {
+    margin-top: 1rem;
+}
+
 
 .experience-folder-wrapper.top-level {
     margin-bottom: 1rem;
@@ -34,6 +38,7 @@
     padding: 1rem;
 
 }
+
 
 .experience-item-wrapper.top-level {
     border: 1px solid #333;
