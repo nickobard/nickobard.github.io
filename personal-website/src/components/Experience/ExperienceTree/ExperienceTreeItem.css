@@ -18,10 +18,16 @@
     align-items: center;
 }
 
+.experience-item-title-container {
+    display: flex;
+    align-items: center;
+}
+
 .experience-item-title {
     font-size: 1.1rem;
     font-weight: 600;
     white-space: nowrap;
+    padding-left: 0.9rem;
 }
 
 .experience-item-header-meta {
@@ -37,6 +43,10 @@
     font-weight: 400;
     white-space: nowrap;
     transform: translateY(0.04rem);
+}
+
+.experience-item-padded-content {
+    padding-left: 1.5rem;
 }
 
 .experience-item-summary {

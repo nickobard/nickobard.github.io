@@ -43,11 +43,17 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
                 onClick={() => setOpen((prev) => !prev)}
             >
                 <div className="experience-item-header">
-                      <span className="experience-item-title">
+                    <div className="experience-item-title-container">
+                        <span>●</span>
+
+
+                        <span className="experience-item-title">
                         {item.title}
                       </span>
+                    </div>
 
-                    <span className="experience-item-header-meta">
+
+                        <span className="experience-item-header-meta">
                         <span className="experience-item-date-label">
                             {item.date_label}
                         </span>
@@ -56,14 +62,15 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
                             ▶
                         </span>
                     </span>
+
                 </div>
 
-                <div className="experience-item-summary">
+                <div className="experience-item-summary experience-item-padded-content">
                     {item.summary}
                 </div>
             </button>
 
-            <div className="details-content"
+            <div className="details-content experience-item-padded-content"
                  style={{maxHeight: isOpen ? `${contentHeight ?? 0}px` : "0px"}}>
                 <div ref={contentRef} className="details-content-inner experience-item-content-inner">
                     {item.description && (

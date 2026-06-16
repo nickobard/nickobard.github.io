@@ -111,7 +111,7 @@ export function ExperienceTreeFolder({
                             ) : (
                                 <li
                                     key={`${index}/${node.title}`}
-                                    className="experience-item-wrapper with-bullet"
+                                    className="experience-item-wrapper"
                                 >
                                     <ExperienceTreeItem item={node} parentContentNode={experienceContentNode}/>
                                 </li>
