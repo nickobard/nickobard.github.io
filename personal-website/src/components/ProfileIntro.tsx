@@ -14,9 +14,7 @@ export function ProfileIntro() {
         <section className="intro">
             <h1>Nikita Bardatskii</h1>
             <p style={{paddingTop: "2rem"}}>
-                Computer science student focused on machine learning, data science,
-                and AI. I build practical projects with Python, React, and modern web
-                tools.
+                Hi 👋
             </p>
         </section>
         </>

@@ -5,18 +5,22 @@
 
 
 .page {
-    min-height: 100vh;
-    display: flex;
     background: var(--bg-color);
     color: var(--text-color);
 }
 
 .content {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 3rem 2rem;
 }
 
 .experience {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem ;
 
+}
+
+.experience hr {
+    width: 100%;
 }
