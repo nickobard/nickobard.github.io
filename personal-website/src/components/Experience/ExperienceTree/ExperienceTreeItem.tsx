@@ -1,7 +1,9 @@
 import type {ExperienceItem} from "../../../types/experienceNodes.ts";
 import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import {ExperienceContentNode, ExperienceContentTree} from "../../../models/ExperienceContentTree.ts";
-import "./ExperienceTreeItem.css"
+import "./ExperienceTreeItem.css";
+import ReactMarkdown from "react-markdown";
+import { dedent } from "ts-dedent";
 
 type ExperienceItemProps = {
     item: ExperienceItem;
@@ -78,13 +80,9 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
                     )}
 
                     {item.details && (
-                        <ul className="details-list">
-                            {item.details.map((detail) => (
-                                <li className="details-list-item" key={detail}>
-                                    <span className="details-list-item-text">{detail}</span>
-                                </li>
-                            ))}
-                        </ul>
+                     <ReactMarkdown>
+                         {dedent(item.details)}
+                     </ReactMarkdown>
                     )}
                 </div>
             </div>

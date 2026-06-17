@@ -1,6 +1,8 @@
 import type {ExperienceItem} from "../../../types/experienceNodes.ts";
 import {useLayoutEffect, useRef, useState} from "react";
 import "./ExperienceListItem.css"
+import ReactMarkdown from "react-markdown";
+import {dedent} from "ts-dedent";
 
 type Props = {
     item: ExperienceItem;
@@ -62,13 +64,9 @@ export function ExperienceListItem({item, originPath}: Props) {
                     )}
 
                     {item.details && (
-                        <ul className="experience-list-item-details-list">
-                            {item.details.map((detail) => (
-                                <li className="experience-list-item-details-list-entry" key={detail}>
-                                    <span className="experience-list-item-details-list-text">{detail}</span>
-                                </li>
-                            ))}
-                        </ul>
+                        <ReactMarkdown>
+                            {dedent(item.details)}
+                        </ReactMarkdown>
                     )}
                 </div>
             </div>

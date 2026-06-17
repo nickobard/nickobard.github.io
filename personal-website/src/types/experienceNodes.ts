@@ -40,7 +40,7 @@ export type ExperienceItem = {
     tags?: string[];
     summary?: string;
     description?: string;
-    details?: string[];
+    details?: string;
     show_in_list_view: boolean;
 };
 
