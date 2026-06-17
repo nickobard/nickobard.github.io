@@ -59,10 +59,14 @@ export const currentExperienceData: ExperienceNode[] = [
                     children: [
                         createItem({
                             title: "Head of Sports",
-                            summary: "As ",
-                            description: "",
+                            summary: "Assigned to build a gym for the student club.",
                             start_date: "2023-09-01",
-                            end_date: "2026-02-01",
+                            end_date: "2025-010-01",
+                            details: `
+                                - Worked with other people on building a gym, as a responsible person for the final result,
+                                - Managed and negotiated budget, responsible for creating a purchase and assets location plan,
+                                - Greatly contributed in creating an operational order and finding people to keep the gym in operation.
+                            `,
                             tags: ["Management"],
                         }),
                         createItem({
@@ -70,6 +74,7 @@ export const currentExperienceData: ExperienceNode[] = [
                             summary: "Volunteering to rebuild a student club Buben.",
                             start_date: "2023-09-01",
                             end_date: "2025-02-01",
+                            description: "Contributed in various parts of the club rebuilding, but greatly in gym rebuilding.",
                             tags: ["Management"],
                         }),
                     ]
@@ -80,9 +85,14 @@ export const currentExperienceData: ExperienceNode[] = [
                 children: [
                     createItem({
                         title: "Freelance university activities",
-                        summary: "Faculty of Information Technology at Czech Technical University.",
                         start_date: "2022-09",
                         end_date: "2024-09",
+                        description: "Was responsible in wide spectrum of simple gigs",
+                        details: `
+                            - Helped with organizations of events,
+                            - Helped with coordination of certain parts of events,
+                            - Mainly worked with people presenting faculty and conveying some useful information.
+                        `
                     }),
                     createItem({
                         title: "Research Summer",
