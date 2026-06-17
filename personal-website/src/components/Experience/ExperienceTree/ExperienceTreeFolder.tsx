@@ -19,12 +19,12 @@ type Props = {
 
 
 export function ExperienceTreeFolder({
-                                     parentContentNode,
-                                     folderNode,
-                                     depth,
-                                     index,
-                                     sortDirection = "asc"
-                                 }: Props) {
+                                         parentContentNode,
+                                         folderNode,
+                                         depth,
+                                         index,
+                                         sortDirection = "asc"
+                                     }: Props) {
 
     const [isOpen, setOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement | null>(null);
@@ -62,7 +62,7 @@ export function ExperienceTreeFolder({
                 <div className="experience-folder-header">
                   <span className="experience-folder-title">
                     {folderNode.title}
-                    <span className="experience-folder-title-marker">/</span>
+                      <span className="experience-folder-title-marker">/</span>
                   </span>
 
                     <span className="experience-folder-header-meta">
