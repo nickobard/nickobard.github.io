@@ -133,6 +133,7 @@ export const currentExperienceData: ExperienceNode[] = [
                 title: 'Head of sports',
                 start_date: "2023-07-01",
                 end_date: "2026-02-01",
+                show_in_list_view: false,
             })
         ]
     })

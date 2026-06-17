@@ -8,10 +8,11 @@ export function createFolder(
 }
 
 export function createItem(
-    data: Omit<ExperienceItem, "type">
+    data: Omit<ExperienceItem, "type" | "show_in_list_view"> & { show_in_list_view?: boolean }
 ): ExperienceItem {
     return {
         type: "item",
+        show_in_list_view: true,
         ...data,
     };
 }
@@ -40,6 +41,7 @@ export type ExperienceItem = {
     summary?: string;
     description?: string;
     details?: string[];
+    show_in_list_view: boolean;
 };
 
 export type ExperienceNode =

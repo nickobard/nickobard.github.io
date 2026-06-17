@@ -13,11 +13,15 @@ type Props = {
 
 export function ExperienceList({nodes, sortDirection = "desc"}: Props) {
     const flatItems = useMemo(
-        () => sortByCumulativeMedian(
-            flattenExperienceTreeWithPath(nodes),
-            ({item}) => item,
-            sortDirection
-        ),
+        () => {
+            const flattened = flattenExperienceTreeWithPath(nodes);
+            const filtered = flattened.filter(({item}) => item.show_in_list_view)
+            return sortByCumulativeMedian(
+                filtered,
+                ({item}) => item,
+                sortDirection
+            );
+        },
         [nodes, sortDirection]
     );
 
