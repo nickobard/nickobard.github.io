@@ -52,7 +52,6 @@
 
 .experience-folder-summary {
     text-align: left;
-    margin-top: 0.25rem;
     font-size: 0.9rem;
     color: #999;
 }
@@ -73,11 +72,12 @@
 }
 
 
-.details-content {
+.folder-details-content {
     overflow: hidden;
     transition: max-height var(--experience-content-duration, 0.3s) ease;
 }
 
-.details-content-inner {
+.folder-details-content-inner {
     padding-top: 1rem;
+    padding-bottom: 0.5rem;
 }

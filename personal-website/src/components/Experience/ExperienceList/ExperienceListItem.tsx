@@ -55,18 +55,20 @@ export function ExperienceListItem({item, originPath}: Props) {
             </button>
 
             <div
-                className="experience-list-item-details"
+                className="experience-list-item-details "
                 style={{maxHeight: isOpen ? `${contentHeight}px` : "0px"}}
             >
-                <div ref={contentRef} className="experience-list-item-details-inner">
+                <div ref={contentRef} className="details-content-inner">
                     {item.description && (
-                        <p className="experience-list-item-description">{item.description}</p>
+                        <p className="experience-item-description">{item.description}</p>
                     )}
 
                     {item.details && (
-                        <ReactMarkdown>
-                            {dedent(item.details)}
-                        </ReactMarkdown>
+                        <div className="details-list experience-item-padded-content">
+                            <ReactMarkdown>
+                                {dedent(item.details)}
+                            </ReactMarkdown>
+                        </div>
                     )}
                 </div>
             </div>

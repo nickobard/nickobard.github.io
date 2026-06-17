@@ -22,6 +22,7 @@ export const currentExperienceData: ExperienceNode[] = [
                         summary: "First big-tech work experience.",
                         start_date: "2025-01-15",
                         end_date: "2025-07-15",
+                        description: "Test text Test text Test text Test text Test text Test text",
                         details: `
                             - Calculated conversions of users from trial to license statistics
                             - Did scientific project of estimating state-of-the-art methods for computing simultaneous confidence intervals

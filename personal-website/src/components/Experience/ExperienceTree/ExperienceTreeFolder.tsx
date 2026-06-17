@@ -85,9 +85,9 @@ export function ExperienceTreeFolder({
                 )}
             </button>
 
-            <div className="details-content"
+            <div className="folder-details-content"
                  style={{maxHeight: isOpen ? `${contentHeight ?? 0}px` : "0px"}}>
-                <div ref={contentRef} className="details-content-inner">
+                <div ref={contentRef} className="folder-details-content-inner">
 
                     {folderNode.description && (
                         <p className={"experience-folder-description"}>{folderNode.description}</p>

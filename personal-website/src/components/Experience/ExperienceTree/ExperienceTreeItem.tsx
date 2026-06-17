@@ -3,7 +3,7 @@ import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import {ExperienceContentNode, ExperienceContentTree} from "../../../models/ExperienceContentTree.ts";
 import "./ExperienceTreeItem.css";
 import ReactMarkdown from "react-markdown";
-import { dedent } from "ts-dedent";
+import {dedent} from "ts-dedent";
 
 type ExperienceItemProps = {
     item: ExperienceItem;
@@ -55,7 +55,7 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
                     </div>
 
 
-                        <span className="experience-item-header-meta">
+                    <span className="experience-item-header-meta">
                         <span className="experience-item-date-label">
                             {item.date_label}
                         </span>
@@ -74,16 +74,19 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
 
             <div className="details-content experience-item-padded-content"
                  style={{maxHeight: isOpen ? `${contentHeight ?? 0}px` : "0px"}}>
-                <div ref={contentRef} className="details-content-inner experience-item-content-inner">
+                <div ref={contentRef} className="details-content-inner">
                     {item.description && (
                         <p className="experience-item-description">{item.description}</p>
                     )}
 
                     {item.details && (
-                     <ReactMarkdown>
-                         {dedent(item.details)}
-                     </ReactMarkdown>
+                        <div className="details-list">
+                            <ReactMarkdown>
+                                {dedent(item.details)}
+                            </ReactMarkdown>
+                        </div>
                     )}
+
                 </div>
             </div>
         </div>

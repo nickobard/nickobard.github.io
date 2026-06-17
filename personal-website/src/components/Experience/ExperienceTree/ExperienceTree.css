@@ -1,5 +1,5 @@
 .experience-tree {
-    --list-indent: 1rem;
+    --list-indent: 0.75rem;
     --experience-arrow-duration: 0.2s;
     --experience-content-duration: 0.3s;
     padding-left: var(--list-indent);
