@@ -9,7 +9,7 @@ export const currentExperienceData: ExperienceNode[] = [
         children: [
             createFolder({
                 title: "JetBrains s.r.o.",
-                summary: "Work experience in a big-tech company which develop tools for SW engineers and Data Scientists.",
+                summary: "Work experience in a big-tech company which develops tools for SW engineers and Data Scientists.",
                 children: [
                     createItem({
                         title: "Junior Data Analyst",
@@ -21,7 +21,7 @@ export const currentExperienceData: ExperienceNode[] = [
                             - Calculated retention of users segmented by groups,
                                 - Conducted tests of independence between groups for correct interpretation of the results.
                         `,
-                        tags: ["Data Analysis"],
+                        tags: ["Data Analysis", "Statistics", "Bootstrap"],
                     }),
                     createItem({
                         title: "Intern Data Analyst",
@@ -43,22 +43,24 @@ export const currentExperienceData: ExperienceNode[] = [
             createItem({
                 title: "Technical Assistant",
                 summary: "Summer school for teenagers about AI from AI dětem.",
-                start_date: "2024-07-01",
-                end_date: "2024-07-08",
-                description: "Test description",
+                start_date: "2024-07-22",
+                end_date: "2024-07-25",
+                description: "As an AI program student I was as a technical assistant to lectors, guiding students technically and making one technical presentation for them.",
                 tags: ["Education"],
                 details: `
-                    - Test details point
-                    - Test details point
-                    - Test details point
+                    - Guided teams of teenage students in their sprints of creating AI applications,
+                    - Advised on some technical details regarding AI models and principles how it works,
+                    - Created a presentation about data poisoning of neural network, showing the students dangers of improperly trained networks.
                 `
             }),
             createFolder({
                     title: 'Management at student club',
+                    description: "Greatly contributed in rebuilding a student club in a dormitory after reconstruction.",
                     children: [
                         createItem({
                             title: "Head of Sports",
-                            summary: "Volunteering to rebuild a gym at student club Buben.",
+                            summary: "As ",
+                            description: "",
                             start_date: "2023-09-01",
                             end_date: "2026-02-01",
                             tags: ["Management"],

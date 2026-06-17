@@ -18,7 +18,6 @@
     margin-left: calc(-1 * var(--list-indent));
     border: 1px solid #333;
     border-radius: 12px;
-
     padding: 1rem;
     list-style: none;
 
@@ -39,11 +38,10 @@
 
 .experience-item-wrapper {
     list-style: none;
-    padding: 0 1rem 0 0;
+    padding-left: 1rem;
 }
 
 .experience-item-wrapper + .experience-item-wrapper{
-    padding-top: 0.5rem;
     margin-top: 1rem;
 }
 
