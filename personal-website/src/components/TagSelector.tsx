@@ -62,6 +62,9 @@ export function TagSelector() {
     const wasInputFocusedBeforeClick = useRef(false);
 
     return (<>
+
+        <p className="tag-controls-tip">Tip about how to use the controls: the default view is a hierarchial structure, standard as if sending a resume. If you seek for concrete skills and knowledge, use the tag selector to filter by the skills or technologies you are interested in. I also recommend to try the flat view, where you can find relevant experience even faster, without navigation in the tree.</p>
+
         <div className="tag-selector">
             <div ref={inputAreaRef}>
                 <input

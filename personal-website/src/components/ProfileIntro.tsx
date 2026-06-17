@@ -15,10 +15,7 @@ export function ProfileIntro() {
             <h1>Nikita Bardatskii</h1>
             <div className="intro-text">
                 <p>
-                    Hello 👋, you are on my portfolio page, where you can see my whole (somewhat applicable) experience that i have so far. Down there there is a default (classic) tree view. Try flat switch to filter my experiences by tags to find faster technologies you are interested in.
-                </p>
-                <p>
-                    Something about myself: I am a tech enthusiast, who likes to use technologies to solve different kinds of problems, that actually help somebody to achieve better quality of service. I do have experience in software engineering, grasping every aspect of it in some degree. I also have some experience in Data Science.
+                    Hello 👋. I am a tech enthusiast, who likes to use technologies to solve different kinds of problems, that actually help somebody to achieve better quality of service. I do have experience in software engineering, grasping every aspect of it in some degree. I also have some experience in Data Science.
                 </p>
 
                 <p>
