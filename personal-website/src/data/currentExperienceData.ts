@@ -15,6 +15,12 @@ export const currentExperienceData: ExperienceNode[] = [
                         title: "Junior Data Analyst",
                         start_date: "2025-07-15",
                         end_date: "2026-03",
+                        description: "Worked for a few more months as a junior data analyst.",
+                        details: `
+                            - Conducted AB tests,
+                            - Calculated retention of users segmented by groups,
+                                - Conducted tests of independence between groups for correct interpretation of the results.
+                        `,
                         tags: ["Data Analysis"],
                     }),
                     createItem({
@@ -22,13 +28,12 @@ export const currentExperienceData: ExperienceNode[] = [
                         summary: "First big-tech work experience.",
                         start_date: "2025-01-15",
                         end_date: "2025-07-15",
-                        description: "Test text Test text Test text Test text Test text Test text",
                         details: `
-                            - Calculated conversions of users from trial to license statistics
-                            - Did scientific project of estimating state-of-the-art methods for computing simultaneous confidence intervals
-                                - Used parallelism for computationally intensive simulations
-                                - Studied state-of-the-art methods
-                                - Compared and presented to the team of Data Analysts
+                            - Calculated conversions of users from trial to license statistics,
+                            - Did scientific project of estimating state-of-the-art methods for computing simultaneous confidence intervals:
+                                - Used parallelism for computationally intensive simulations,
+                                - Studied state-of-the-art methods,
+                                - Compared and presented to the team of Data Analysts.
                         `,
                         tags: ["Data Analysis"],
                     }),

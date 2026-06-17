@@ -28,6 +28,9 @@
     margin-top: 1rem;
 }
 
+.experience-folder-wrapper + .experience-item-wrapper {
+    margin-top: 1rem;
+}
 
 .experience-folder-wrapper.top-level {
     margin-bottom: 1rem;
@@ -36,7 +39,7 @@
 
 .experience-item-wrapper {
     list-style: none;
-    padding: 1rem 1rem 0 0;
+    padding: 0 1rem 0 0;
 }
 
 .experience-item-wrapper + .experience-item-wrapper{
