@@ -15,11 +15,11 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
                 tags: ["Keras", "TensorFlow", "Computer Vision"],
                 description:
                     "Developed a CNN-based image classification pipeline with preprocessing, augmentation, training, and model comparison.",
-                details: [
-                    "Implemented data augmentation",
-                    "Trained custom CNN architectures",
-                    "Compared model accuracy across datasets",
-                ],
+                details: `
+                    - Implemented data augmentation
+                    - Trained custom CNN architectures
+                    - Compared model accuracy across datasets
+                `,
             }),
             createFolder({
                 title: "Machine Learning",
@@ -31,11 +31,11 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
                         end_date: "2022-08-31",
                         tags: ["ML", "Python", "scikit-learn"],
                         description: "Predicted customer retention using ensemble models.",
-                        details: [
-                            "Engineered behavioral features",
-                            "Compared Random Forest and XGBoost",
-                            "Evaluated with ROC-AUC",
-                        ],
+                        details: `
+                            - Engineered behavioral features
+                            - Compared Random Forest and XGBoost
+                            - Evaluated with ROC-AUC
+                        `,
                     }),
                     createItem({
                         title: "House Price Estimation",
@@ -44,11 +44,11 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
                         tags: ["ML", "Python", "scikit-learn", "Pandas"],
                         description:
                             "Built regression models for property valuation using tabular housing data, missing-value handling, feature selection, and error analysis.",
-                        details: [
-                            "Performed feature selection",
-                            "Handled missing values",
-                            "Measured performance with RMSE",
-                        ],
+                        details: `
+                            - Performed feature selection
+                            - Handled missing values
+                            - Measured performance with RMSE
+                        `,
                     }),
                 ],
             }),
@@ -58,11 +58,11 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
                 end_date: "2023-06-30",
                 tags: ["Keras", "TensorFlow", "Forecasting"],
                 description: "Forecasted demand using recurrent neural networks.",
-                details: [
-                    "Prepared temporal datasets",
-                    "Built LSTM models",
-                    "Analyzed prediction drift",
-                ],
+                details: `
+                    - Prepared temporal datasets
+                    - Built LSTM models
+                    - Analyzed prediction drift
+                `,
             }),
             createItem({
                 title: "Fraud Detection Prototype",
@@ -71,11 +71,11 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
                 tags: ["Keras", "TensorFlow", "Anomaly Detection"],
                 description:
                     "Explored neural anomaly detection methods for identifying suspicious financial transaction patterns under class imbalance.",
-                details: [
-                    "Generated synthetic fraud samples",
-                    "Tested autoencoder architectures",
-                    "Evaluated precision and recall",
-                ],
+                details: `
+                    - Generated synthetic fraud samples
+                    - Tested autoencoder architectures
+                    - Evaluated precision and recall
+                `,
             }),
             createFolder({
                 title: "Data Analysis",
@@ -88,11 +88,11 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
                         tags: ["NetworkX", "Python", "Graph Analysis"],
                         description:
                             "Investigated social graph structure using centrality metrics, community detection, and visual network exploration.",
-                        details: [
-                            "Computed centrality measures",
-                            "Detected graph communities",
-                            "Visualized network structures",
-                        ],
+                        details: `
+                            - Computed centrality measures
+                            - Detected graph communities
+                            - Visualized network structures
+                        `,
                     }),
                     createItem({
                         title: "Interactive Sales Dashboard",
@@ -100,11 +100,11 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
                         end_date: "2024-09-30",
                         tags: ["Pandas", "Python", "Visualization"],
                         description: "Created visual analytics for business metrics.",
-                        details: [
-                            "Built KPI dashboards",
-                            "Aggregated transactional data",
-                            "Produced interactive visual reports",
-                        ],
+                        details: `
+                            - Built KPI dashboards
+                            - Aggregated transactional data
+                            - Produced interactive visual reports
+                        `,
                     }),
                 ],
             }),
@@ -115,11 +115,11 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
                 tags: ["Keras", "TensorFlow", "Recommender Systems"],
                 description:
                     "Implemented a recommendation prototype based on user-item interactions, embedding representations, and ranking-quality evaluation.",
-                details: [
-                    "Processed user-item interactions",
-                    "Built embedding-based models",
-                    "Evaluated recommendation quality",
-                ],
+                details: `
+                    - Processed user-item interactions
+                    - Built embedding-based models
+                    - Evaluated recommendation quality
+                `,
             }),
         ],
     }),
@@ -129,11 +129,11 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
         end_date: "2025-06-30",
         tags: ["ML", "Python", "scikit-learn", "Pandas"],
         description: "Predicted shipment volumes across regions.",
-        details: [
-            "Analyzed historical demand",
-            "Built forecasting pipelines",
-            "Visualized seasonal patterns",
-        ],
+        details: `
+            - Analyzed historical demand
+            - Built forecasting pipelines
+            - Visualized seasonal patterns
+        `,
     }),
     createItem({
         title: "Credit Risk Assessment",
@@ -142,11 +142,11 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
         tags: ["ML", "Python", "scikit-learn", "Pandas"],
         description:
             "Classified loan applications by risk level using supervised learning, imbalance handling, model comparison, and explainability reporting.",
-        details: [
-            "Balanced imbalanced datasets",
-            "Compared classification models",
-            "Reported model explainability metrics",
-        ],
+        details: `
+            - Balanced imbalanced datasets
+            - Compared classification models
+            - Reported model explainability metrics
+        `,
     }),
     createFolder({
         title: "Software Engineering",
@@ -199,10 +199,10 @@ export const testExperienceDataWithMissingDates: ExperienceNode[] = [
         tags: ["NLP", "Python", "Machine Learning"],
         description:
             "Suggested academic papers based on user interests using document embeddings, similarity search, and relevance evaluation.",
-        details: [
-            "Generated document embeddings",
-            "Implemented similarity search",
-            "Evaluated recommendation relevance",
-        ],
+        details: `
+            - Generated document embeddings
+            - Implemented similarity search
+            - Evaluated recommendation relevance
+        `,
     }),
 ];
