@@ -12,7 +12,10 @@ export function TagSelector() {
 
     const experienceDataFlat = flattenExperienceTree(experienceData)
 
-    const allTags = [...new Set(experienceDataFlat.flatMap((item) => item.tags ?? []))];
+    const allTags = [...new Set(experienceDataFlat.flatMap((item) => [
+        ...(item.core_tags ?? []),
+        ...(item.secondary_tags ?? [])]
+    ))];
     const fuse = new Fuse(allTags, {
         threshold: 0.4,
     });
@@ -63,7 +66,10 @@ export function TagSelector() {
 
     return (<>
 
-        <p className="tag-controls-tip">Tip about how to use the controls: the default view is a hierarchial structure, standard as if sending a resume. If you seek for concrete skills and knowledge, use the tag selector to filter by the skills or technologies you are interested in. I also recommend to try the flat view, where you can find relevant experience even faster, without navigation in the tree.</p>
+        <p className="tag-controls-tip">Tip about how to use the controls: the default view is a hierarchial structure,
+            standard as if sending a resume. If you seek for concrete skills and knowledge, use the tag selector to
+            filter by the skills or technologies you are interested in. I also recommend to try the flat view, where you
+            can find relevant experience even faster, without navigation in the tree.</p>
 
         <div className="tag-selector">
             <div ref={inputAreaRef}>

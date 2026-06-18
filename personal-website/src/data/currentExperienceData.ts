@@ -21,7 +21,7 @@ export const currentExperienceData: ExperienceNode[] = [
                             - Calculated retention of users segmented by groups,
                                 - Conducted tests of independence between groups for correct interpretation of the results.
                         `,
-                        tags: ["Data Analysis", "Statistics", "Bootstrap"],
+                        core_tags: ["Data Analysis", "Statistics", "Bootstrap"],
                     }),
                     createItem({
                         title: "Intern Data Analyst",
@@ -35,7 +35,8 @@ export const currentExperienceData: ExperienceNode[] = [
                                 - Studied state-of-the-art methods,
                                 - Compared and presented to the team of Data Analysts.
                         `,
-                        tags: ["Data Analysis"],
+                        core_tags: ["Data Analysis", "Python"],
+                        secondary_tags: []
                     }),
                 ]
             }),
@@ -46,7 +47,7 @@ export const currentExperienceData: ExperienceNode[] = [
                 start_date: "2024-07-22",
                 end_date: "2024-07-25",
                 description: "As an AI program student I was as a technical assistant to lectors, guiding students technically and making one technical presentation for them.",
-                tags: ["Education"],
+                core_tags: ["Education"],
                 details: `
                     - Guided teams of teenage students in their sprints of creating AI applications,
                     - Advised on some technical details regarding AI models and principles how it works,
@@ -60,28 +61,31 @@ export const currentExperienceData: ExperienceNode[] = [
                         createItem({
                             title: "Head of Sports",
                             summary: "Assigned to build a gym for the student club.",
-                            start_date: "2023-09-01",
-                            end_date: "2025-010-01",
+                            start_date: "2023-09",
+                            end_date: "2025-11",
                             details: `
                                 - Worked with other people on building a gym, as a responsible person for the final result,
                                 - Managed and negotiated budget, responsible for creating a purchase and assets location plan,
                                 - Greatly contributed in creating an operational order and finding people to keep the gym in operation.
                             `,
-                            tags: ["Management"],
+                            core_tags: ["Management"],
+                            secondary_tags: ["Human Resources", "Communication"],
                         }),
                         createItem({
                             title: "Board Member",
                             summary: "Volunteering to rebuild a student club Buben.",
-                            start_date: "2023-09-01",
-                            end_date: "2025-02-01",
+                            start_date: "2023-09",
+                            end_date: "2025-02",
                             description: "Contributed in various parts of the club rebuilding, but greatly in gym rebuilding.",
-                            tags: ["Management"],
+                            core_tags: ["Management"],
+                            secondary_tags: ["Communication"]
                         }),
                     ]
                 }
             ),
             createFolder({
                 title: "University Activities",
+                description: "Activities during my education period at FIT CTU.",
                 children: [
                     createItem({
                         title: "Freelance university activities",
@@ -92,13 +96,22 @@ export const currentExperienceData: ExperienceNode[] = [
                             - Helped with organizations of events,
                             - Helped with coordination of certain parts of events,
                             - Mainly worked with people presenting faculty and conveying some useful information.
-                        `
+                        `,
+                        core_tags: ["Communication", "Presentation", "Robotics"]
+
                     }),
                     createItem({
                         title: "Research Summer",
-                        summary: "Faculty of Information Technology at Czech Technical University.",
-                        start_date: "2023-06-01",
-                        end_date: "2026-02-01",
+                        summary: "Research project on fuzzy keyword matching.",
+                        start_date: "2023-06",
+                        end_date: "2023-09",
+                        details: `
+                            - Worked under mentoring of PhD Researchers,
+                            - Created a small dataset and used state-of-the-art models to establish a baseline,
+                                - Worked with Hugging Face and other frameworks to use BERT, Word2Vec and other models.
+                        `,
+                        core_tags: ["Hugging Face", "Python", "Pandas", "NumPy", "Research", "Transformers", "NLP", "PyTorch", "Machine Learning", "Deep Learning"],
+                        secondary_tags: ["Git"]
                     })
                 ]
             })
@@ -107,32 +120,42 @@ export const currentExperienceData: ExperienceNode[] = [
     }),
     createFolder({
         title: "Education",
+        summary: "Formal education in university or some other courses.",
+        description: "So far I have only the Bc program studied at Faculty of Information Technologies in Czech Technical University in Prague.",
         priority: 2,
         children: [
             createFolder({
                 title: "Bachelor Program",
+                summary: "Description of my thesis and other core projects during my studies.",
+                description: "I started as a software engineer and later switched to data science program.",
                 start_date: "2022-09-01",
                 end_date: "2026-06-24",
                 children: [
                     createFolder({
                         title: "Data Science Program",
-                        start_date: "2024-09-01",
-                        end_date: "2025-09-01",
-                        children: []
+                        summary: "My major program.",
+                        start_date: "2023-09-01",
+                        end_date: "2026-06-24",
+                        children: [
+
+                        ]
 
                     }),
                     createFolder({
                         title: "Software Engineering Program",
-                        start_date: "2024-09-01",
-                        end_date: "2025-09-01",
+                        summary: "My first interest, which is secondary to Data Science.",
+                        start_date: "2021-09-01",
+                        end_date: "2023-09-01",
                         children: []
 
                     }),
                     createItem({
                         title: "Research Summer",
-                        summary: "Faculty of Information Technology at Czech Technical University.",
+                        summary: "Research project on fuzzy keyword matching.",
                         start_date: "2023-06-01",
                         end_date: "2026-02-01",
+                        show_in_list_view: false,
+                        include_tags_in_statistics: false
                     })
                 ]
             }),
@@ -160,6 +183,7 @@ export const currentExperienceData: ExperienceNode[] = [
                 start_date: "2023-07-01",
                 end_date: "2026-02-01",
                 show_in_list_view: false,
+                include_tags_in_statistics: false
             })
         ]
     })

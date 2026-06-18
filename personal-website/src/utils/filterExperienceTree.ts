@@ -12,8 +12,12 @@ export function filterExperienceTree(
     return nodes
         .map((node) => {
             if (node.type === "item") {
-                const matches = selectedTags.every((tag) =>
-                    node.tags !== undefined ? node.tags.includes(tag) : false
+                const allNodeTags = [...new Set([
+                    ...(node.core_tags ?? []),
+                    ...(node.secondary_tags ?? [])])];
+                const matches = selectedTags.every((tag) => {
+                        return allNodeTags.includes(tag);
+                    }
                 );
 
                 return matches ? node : null;

@@ -8,11 +8,15 @@ export function createFolder(
 }
 
 export function createItem(
-    data: Omit<ExperienceItem, "type" | "show_in_list_view"> & { show_in_list_view?: boolean }
+    data: Omit<ExperienceItem, "type" | "show_in_list_view" | "include_tags_in_statistics"> & {
+        show_in_list_view?: boolean;
+        include_tags_in_statistics?: boolean;
+    }
 ): ExperienceItem {
     return {
         type: "item",
         show_in_list_view: true,
+        include_tags_in_statistics: true,
         ...data,
     };
 }
@@ -37,11 +41,13 @@ export type ExperienceItem = {
     end_date?: string;
     priority?: number;
     title: string;
-    tags?: string[];
+    core_tags?: string[];
+    secondary_tags?: string[];
     summary?: string;
     description?: string;
     details?: string;
     show_in_list_view: boolean;
+    include_tags_in_statistics: boolean;
 };
 
 export type ExperienceNode =
