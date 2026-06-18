@@ -138,6 +138,7 @@ export const currentExperienceData: ExperienceNode[] = [
                         end_date: "2026-06-24",
                         children: [
 
+
                         ]
 
                     }),
@@ -155,7 +156,12 @@ export const currentExperienceData: ExperienceNode[] = [
                         start_date: "2023-06-01",
                         end_date: "2026-02-01",
                         show_in_list_view: false,
-                        include_tags_in_statistics: false
+                        include_tags_in_tags_count_statistics: false,
+                        details: `
+                            - Worked under mentoring of PhD Researchers,
+                            - Created a small dataset and used state-of-the-art models to establish a baseline,
+                                - Worked with Hugging Face and other frameworks to use BERT, Word2Vec and other models.
+                                `
                     })
                 ]
             }),
@@ -183,7 +189,7 @@ export const currentExperienceData: ExperienceNode[] = [
                 start_date: "2023-07-01",
                 end_date: "2026-02-01",
                 show_in_list_view: false,
-                include_tags_in_statistics: false
+                include_tags_in_tags_count_statistics: false
             })
         ]
     })
