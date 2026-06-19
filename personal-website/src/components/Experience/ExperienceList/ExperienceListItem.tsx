@@ -3,6 +3,7 @@ import {useLayoutEffect, useRef, useState} from "react";
 import "./ExperienceListItem.css"
 import ReactMarkdown from "react-markdown";
 import {dedent} from "ts-dedent";
+import {ItemInnerContent} from "../ExperienceItemShared/ItemInnerContent.tsx";
 
 type Props = {
     item: ExperienceItem;
@@ -58,29 +59,8 @@ export function ExperienceListItem({item, originPath}: Props) {
                 className="experience-list-item-details "
                 style={{maxHeight: isOpen ? `${contentHeight}px` : "0px"}}
             >
-                <div ref={contentRef} className="details-content-inner">
-                    {item.description && (
-                        <div className="experience-item-description">
-                            <ReactMarkdown>
-                                {dedent(item.description)}
-                            </ReactMarkdown>
-                        </div>
-                    )}
+                <ItemInnerContent item={item} contentRef={contentRef}/>
 
-                    {item.details && (
-                        <div className="details-list experience-item-padded-content">
-                            <ReactMarkdown>
-                                {dedent(item.details)}
-                            </ReactMarkdown>
-                        </div>
-                    )}
-
-                    {item.postscriptum && (
-                        <div className="experience-tree-item-postscriptum">
-                            <ReactMarkdown>{dedent(item.postscriptum)}</ReactMarkdown>
-                        </div>
-                    )}
-                </div>
             </div>
         </div>
     );

@@ -4,6 +4,7 @@ import {ExperienceContentNode, ExperienceContentTree} from "../../../models/Expe
 import "./ExperienceTreeItem.css";
 import ReactMarkdown from "react-markdown";
 import {dedent} from "ts-dedent";
+import {ItemInnerContent} from "../ExperienceItemShared/ItemInnerContent.tsx";
 
 type ExperienceItemProps = {
     item: ExperienceItem;
@@ -77,30 +78,9 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
 
             <div className="details-content experience-item-padded-content"
                  style={{maxHeight: isOpen ? `${contentHeight ?? 0}px` : "0px"}}>
-                <div ref={contentRef} className="details-content-inner">
-                    {item.description && (
-                        <div className="experience-item-description">
-                            <ReactMarkdown>
-                                {dedent(item.description)}
-                            </ReactMarkdown>
-                        </div>
-                    )}
 
-                    {item.details && (
-                        <div className="details-list">
-                            <ReactMarkdown>
-                                {dedent(item.details)}
-                            </ReactMarkdown>
-                        </div>
-                    )}
+                   <ItemInnerContent item={item} contentRef={contentRef} />
 
-                    {item.postscriptum && (
-                        <div className="experience-tree-item-postscriptum">
-                            <ReactMarkdown>{dedent(item.postscriptum)}</ReactMarkdown>
-                        </div>
-                    )}
-
-                </div>
             </div>
         </div>
     );
