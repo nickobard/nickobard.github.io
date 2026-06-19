@@ -60,7 +60,11 @@ export function ExperienceListItem({item, originPath}: Props) {
             >
                 <div ref={contentRef} className="details-content-inner">
                     {item.description && (
-                        <p className="experience-item-description">{item.description}</p>
+                        <p className="experience-item-description">
+                            <ReactMarkdown>
+                                {dedent(item.description)}
+                            </ReactMarkdown>
+                        </p>
                     )}
 
                     {item.details && (
@@ -68,6 +72,12 @@ export function ExperienceListItem({item, originPath}: Props) {
                             <ReactMarkdown>
                                 {dedent(item.details)}
                             </ReactMarkdown>
+                        </div>
+                    )}
+
+                    {item.postscriptum && (
+                        <div className="experience-tree-item-postscriptum">
+                            {item.postscriptum}
                         </div>
                     )}
                 </div>

@@ -32,6 +32,7 @@ export type ExperienceFolder = {
     summary?: string;
     description?: string;
     children: ExperienceNode[];
+    postscriptum?: string;
 };
 
 export type ExperienceItem = {
@@ -46,6 +47,7 @@ export type ExperienceItem = {
     summary?: string;
     description?: string;
     details?: string;
+    postscriptum?: string;
     show_in_list_view: boolean;
     include_tags_in_tags_count_statistics: boolean;
 };

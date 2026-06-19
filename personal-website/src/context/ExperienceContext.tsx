@@ -1,6 +1,6 @@
 import {createContext, useContext, useRef, useState} from "react";
 import type {ExperienceNode} from "../types/experienceNodes.ts";
-import {currentExperienceData} from "../data/currentExperienceData.ts";
+import {currentExperienceData} from "../data/currentExperienceData.tsx";
 
 type ExperienceContextValue = {
     selectedTags: string[];

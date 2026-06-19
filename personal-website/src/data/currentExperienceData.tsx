@@ -133,25 +133,108 @@ export const currentExperienceData: ExperienceNode[] = [
                 children: [
                     createFolder({
                         title: "Data Science Program",
+                        priority: 1,
                         summary: "My major program.",
                         start_date: "2023-09-01",
                         end_date: "2026-06-24",
                         children: [
+                            createItem({
+                                title: "Enhancing Fake News Classification with Advanced NLP Models",
+                                summary: "Bachelor Thesis",
+                                description: "This is my bachelor thesis where I used transformers for fake news classification.",
+                                start_date: "2024-09-01",
+                                end_date: "2026-06-24",
+                                details: `
+                                    - Analyzed datasets for additional insights about articles token lengths,
+                                    - Used transformer models like BERT, GPT2, RoBERTa, DistilBERT to improve classification scores,
+                                        - Achieved higher scores (80% - 100%, depending on dataset), even with simplified models.
+                                    - Implemented everything in tandem with MLFlow for proper training monitoring.
+                                `
+                            }),
+                            createItem({
+                                title: "Machine and Deep Learning Courses",
+                                start_date: "2024-09",
+                                end_date: "2025-07",
+                                details: `
+                                    - Used classic Machine Learning models to perform different tasks on different datasets,
+                                        - Decision Trees, Regressions, SVMs, PCA, LDA, etc. etc. etc. 
+                                    - Did some Deep Learning tasks in Deep Learning course
+                                        - Neural Networks, Convolutions,
+                                        - Manually computed backpropagation for a simple neural network to understand the mechanism closely                                
+                                `
+                            }),
+                            createItem({
+                                title: "Data Analysis Courses",
+                                start_date: "2024-09",
+                                end_date: "2025-07",
+                                details: `
+                                    - Performed simple explorative data analysis on different datasets,
+                                    - Extracted some insights from the data,
+                                    - Used predictive models to automatically extract some knowledge form the data
+                                `
+                            }),
+                            createItem({
+                                title: "Dungeon Keeper Database",
+                                summary: 'Database for Devils to facilitate their Soul Farms',
+                                start_date: "2023-02",
+                                end_date: "2023-07",
+                                details: `
+                                    - Database with 12 entities and non-trivial relationships between them
+                                        - Including at least one loop relation
+                                    - Conducted 27 queries, covering most of the queries types the language can provide
+                                `
+                            }),
+                            createItem({
+                                title: "Other courses in Data Science Program",
+                                start_date: "2023-09-01",
+                                end_date: "2026-06-24",
+                                description: "There were a lot of other courses during the program, i.e. mathematical or other DS courses like Knowledge Systems, etc. The full list of courses you can find on [my absolved courses](https://github.com/nickobard/Education-The-Bachelors-Program) pages."
 
-
+                            })
                         ]
-
                     }),
                     createFolder({
                         title: "Software Engineering Program",
+                        priority: 3,
                         summary: "My first interest, which is secondary to Data Science.",
                         start_date: "2021-09-01",
                         end_date: "2023-09-01",
-                        children: []
-
+                        children: [
+                            createItem({
+                                title: "Wizview - Team Software Project",
+                                description: "I was a backend lead at this project, mainly because nobody new python except me.",
+                                start_date: "2023-02",
+                                end_date: "2023-07",
+                                details: `
+                                    - Set up the communication infrastructure with the team (Discord),
+                                    - Set up environment for team members to start development,
+                                    - Monitored the tasks completion and set up the baseline for fair evaluation of members,
+                                    - Set up DevOps for backend, and conducted code reviews for the rest. 
+                                `
+                            }),
+                            createItem({
+                                title: 'Time Tracker App',
+                                summary: "Ala Toggl Track",
+                                start_date: "2023-09",
+                                end_date: "2024-01",
+                                description: "Full Stack application (backend, fronted and devops) for measuring (precious) time."
+                            }),
+                            createItem({
+                                title: 'Pacman Game',
+                                summary: 'Hardcore C++ app ([BFG Division](https://www.youtube.com/watch?v=QHRuTYtSbJQ) vibes turned on)',
+                                start_date: "2023-02",
+                                end_date: "2023-07",
+                                details: `
+                                    - Created a Pacman game with simple AI ghost with great retro visuals,
+                                    - Used OOP programming, inheritance and polymorphism to create extensible code,
+                                    - Used Game Design patterns to create a good architecture of the game engine.
+                                `
+                            })
+                        ]
                     }),
                     createItem({
                         title: "Research Summer",
+                        priority: 2,
                         summary: "Research project on fuzzy keyword matching.",
                         start_date: "2023-06-01",
                         end_date: "2026-02-01",

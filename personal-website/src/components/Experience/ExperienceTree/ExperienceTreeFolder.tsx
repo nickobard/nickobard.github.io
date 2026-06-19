@@ -6,6 +6,7 @@ import './ExperienceTreeFolder.css'
 import {ExperienceContentNode, ExperienceContentTree} from "../../../models/ExperienceContentTree.ts";
 import type {ExperienceSortDirection} from "../../../utils/sortExperienceNodesByInterval.ts";
 import {sortExperienceNodesByCumulativeMedian} from "../../../utils/sortExperienceNodesByCumulativeMedian.ts";
+import ReactMarkdown from "react-markdown";
 
 
 type Props = {
@@ -90,7 +91,11 @@ export function ExperienceTreeFolder({
                 <div ref={contentRef} className="folder-details-content-inner">
 
                     {folderNode.description && (
-                        <p className={"experience-folder-description"}>{folderNode.description}</p>
+                        <p className={"experience-folder-description"}>
+                            <ReactMarkdown>
+                                {folderNode.description}
+                            </ReactMarkdown>
+                        </p>
                     )}
 
 
@@ -118,6 +123,11 @@ export function ExperienceTreeFolder({
                             )
                         ))}
                     </ul>
+                    {folderNode.postscriptum && (
+                        <div className="experience-tree-item-postscriptum">
+                            {folderNode.postscriptum}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
