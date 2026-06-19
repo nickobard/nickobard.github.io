@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type {MediaItem} from "../../../types/MediaItem.ts";
+import './MediaContent.css'
 
 type MediaGalleryButtonProps = {
     media: MediaItem[];
@@ -30,6 +31,7 @@ export function MediaGalleryButton({ media }: MediaGalleryButtonProps) {
                         </button>
 
                         <div className="modal-content">
+                            <p> Some test text</p>
                             {media.map((item, index) => (
                                 <div className="media-item" key={index}>
                                     {item.type === "image" ? (

@@ -228,7 +228,13 @@ export const currentExperienceData: ExperienceNode[] = [
                                     - Created a Pacman game with simple AI ghost with great retro visuals,
                                     - Used OOP programming, inheritance and polymorphism to create extensible code,
                                     - Used Game Design patterns to create a good architecture of the game engine.
-                                `
+                                `,
+                                media_files: [
+                                    {
+                                        type: "image",
+                                        src: '/media/pacmang_game.jpg'
+                                    }
+                                ]
                             })
                         ]
                     }),
