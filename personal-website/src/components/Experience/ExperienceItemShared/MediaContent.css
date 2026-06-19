@@ -1,0 +1,41 @@
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-window {
+    position: relative;
+    width: min(900px, 90vw);
+    max-height: 85vh;
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    border: none;
+    background: none;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.media-item img,
+.media-item video {
+    width: 100%;
+    border-radius: 12px;
+}
