@@ -1,5 +1,5 @@
-import type {ExperienceNode} from "../types/experienceNodes.ts";
-import {createFolder, createItem} from "../types/experienceNodes.ts";
+import type {ExperienceNode} from "../types/ExperienceNode.ts";
+import {createFolder, createItem} from "../types/ExperienceNode.ts";
 
 export const testExperienceData: ExperienceNode[] = [
     createFolder({

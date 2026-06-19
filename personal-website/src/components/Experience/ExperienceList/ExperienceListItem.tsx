@@ -1,4 +1,4 @@
-import type {ExperienceItem} from "../../../types/experienceNodes.ts";
+import type {ExperienceItem} from "../../../types/ExperienceNode.ts";
 import {useLayoutEffect, useRef, useState} from "react";
 import "./ExperienceListItem.css"
 import ReactMarkdown from "react-markdown";
@@ -49,7 +49,7 @@ export function ExperienceListItem({item, originPath}: Props) {
 
                 {item.summary && (
                     <div className="experience-list-item-summary">
-                        {item.summary}
+                        <ReactMarkdown>{dedent(item.summary)}</ReactMarkdown>
                     </div>
                 )}
             </button>
@@ -60,11 +60,11 @@ export function ExperienceListItem({item, originPath}: Props) {
             >
                 <div ref={contentRef} className="details-content-inner">
                     {item.description && (
-                        <p className="experience-item-description">
+                        <div className="experience-item-description">
                             <ReactMarkdown>
                                 {dedent(item.description)}
                             </ReactMarkdown>
-                        </p>
+                        </div>
                     )}
 
                     {item.details && (
@@ -77,7 +77,7 @@ export function ExperienceListItem({item, originPath}: Props) {
 
                     {item.postscriptum && (
                         <div className="experience-tree-item-postscriptum">
-                            {item.postscriptum}
+                            <ReactMarkdown>{dedent(item.postscriptum)}</ReactMarkdown>
                         </div>
                     )}
                 </div>

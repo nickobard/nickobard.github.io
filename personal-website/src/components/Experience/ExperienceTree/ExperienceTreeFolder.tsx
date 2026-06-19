@@ -1,4 +1,4 @@
-import type {ExperienceFolder} from "../../../types/experienceNodes.ts";
+import type {ExperienceFolder} from "../../../types/ExperienceNode.ts";
 import {ExperienceTreeItem} from "./ExperienceTreeItem.tsx";
 import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import './ExperienceTree.css'
@@ -7,6 +7,7 @@ import {ExperienceContentNode, ExperienceContentTree} from "../../../models/Expe
 import type {ExperienceSortDirection} from "../../../utils/sortExperienceNodesByInterval.ts";
 import {sortExperienceNodesByCumulativeMedian} from "../../../utils/sortExperienceNodesByCumulativeMedian.ts";
 import ReactMarkdown from "react-markdown";
+import {dedent} from "ts-dedent";
 
 
 type Props = {
@@ -81,7 +82,7 @@ export function ExperienceTreeFolder({
 
                 {folderNode.summary && (
                     <div className="experience-folder-summary">
-                        {folderNode.summary}
+                        <ReactMarkdown>{dedent(folderNode.summary)}</ReactMarkdown>
                     </div>
                 )}
             </button>
@@ -91,11 +92,11 @@ export function ExperienceTreeFolder({
                 <div ref={contentRef} className="folder-details-content-inner">
 
                     {folderNode.description && (
-                        <p className={"experience-folder-description"}>
+                        <div className={"experience-folder-description"}>
                             <ReactMarkdown>
-                                {folderNode.description}
+                                {dedent(folderNode.description)}
                             </ReactMarkdown>
-                        </p>
+                        </div>
                     )}
 
 
@@ -125,7 +126,7 @@ export function ExperienceTreeFolder({
                     </ul>
                     {folderNode.postscriptum && (
                         <div className="experience-tree-item-postscriptum">
-                            {folderNode.postscriptum}
+                            <ReactMarkdown>{dedent(folderNode.postscriptum)}</ReactMarkdown>
                         </div>
                     )}
                 </div>

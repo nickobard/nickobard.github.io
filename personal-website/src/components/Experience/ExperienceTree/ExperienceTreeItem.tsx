@@ -1,4 +1,4 @@
-import type {ExperienceItem} from "../../../types/experienceNodes.ts";
+import type {ExperienceItem} from "../../../types/ExperienceNode.ts";
 import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import {ExperienceContentNode, ExperienceContentTree} from "../../../models/ExperienceContentTree.ts";
 import "./ExperienceTreeItem.css";
@@ -67,20 +67,23 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
 
                 </div>
 
-                <div className="experience-item-summary experience-item-padded-content">
-                    {item.summary}
-                </div>
+                {item.summary && (
+                    <div className="experience-item-summary experience-item-padded-content">
+                        <ReactMarkdown>{dedent(item.summary)}</ReactMarkdown>
+                    </div>
+                )}
+
             </button>
 
             <div className="details-content experience-item-padded-content"
                  style={{maxHeight: isOpen ? `${contentHeight ?? 0}px` : "0px"}}>
                 <div ref={contentRef} className="details-content-inner">
                     {item.description && (
-                        <p className="experience-item-description">
+                        <div className="experience-item-description">
                             <ReactMarkdown>
                                 {dedent(item.description)}
                             </ReactMarkdown>
-                        </p>
+                        </div>
                     )}
 
                     {item.details && (
@@ -93,7 +96,7 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
 
                     {item.postscriptum && (
                         <div className="experience-tree-item-postscriptum">
-                            {item.postscriptum}
+                            <ReactMarkdown>{dedent(item.postscriptum)}</ReactMarkdown>
                         </div>
                     )}
 

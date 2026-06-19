@@ -1,4 +1,4 @@
-import type {ExperienceItem, ExperienceNode} from "../types/experienceNodes.ts";
+import type {ExperienceItem, ExperienceNode} from "../types/ExperienceNode.ts";
 
 export type FlattenedExperienceItem = {
     item: ExperienceItem;

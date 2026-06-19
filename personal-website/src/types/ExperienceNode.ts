@@ -1,3 +1,6 @@
+import type {Media} from "./Media.ts";
+
+
 export function createFolder(
     data: Omit<ExperienceFolder, "type">
 ): ExperienceFolder {
@@ -50,6 +53,7 @@ export type ExperienceItem = {
     postscriptum?: string;
     show_in_list_view: boolean;
     include_tags_in_tags_count_statistics: boolean;
+    media_files?: Media[];
 };
 
 export type ExperienceNode =

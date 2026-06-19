@@ -1,4 +1,4 @@
-import type {ExperienceFolder, ExperienceItem, ExperienceNode} from "../types/experienceNodes.ts";
+import type {ExperienceFolder, ExperienceItem, ExperienceNode} from "../types/ExperienceNode.ts";
 
 const MONTH_LABELS = [
     "Jan",

@@ -1,4 +1,4 @@
-import type {ExperienceNode} from "../../../types/experienceNodes.ts";
+import type {ExperienceNode} from "../../../types/ExperienceNode.ts";
 import {ExperienceTreeItem} from "./ExperienceTreeItem.tsx";
 import {useMemo} from "react";
 import './ExperienceTree.css'

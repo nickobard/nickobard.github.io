@@ -1,4 +1,4 @@
-import type {ExperienceNode} from "../../../types/experienceNodes.ts";
+import type {ExperienceNode} from "../../../types/ExperienceNode.ts";
 import {flattenExperienceTreeWithPath} from "../../../utils/flattenExperienceTree.ts";
 import {ExperienceListItem} from "./ExperienceListItem.tsx";
 import "./ExperienceList.css"

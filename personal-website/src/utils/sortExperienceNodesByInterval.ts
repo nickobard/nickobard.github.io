@@ -1,4 +1,4 @@
-import type {ExperienceNode} from "../types/experienceNodes.ts";
+import type {ExperienceNode} from "../types/ExperienceNode.ts";
 
 type SortableExperienceInterval = {
     start_date?: string;
