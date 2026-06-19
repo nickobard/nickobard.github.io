@@ -49,34 +49,12 @@ function median(values: number[]): number {
     return (sortedValues[middle - 1] + sortedValues[middle]) / 2;
 }
 
-function priorityValue(priority?: number): number {
-    return priority !== undefined && priority >= 0
-        ? priority
-        : Number.NEGATIVE_INFINITY;
-}
-
 function compareByMedian(
     a: NodeWithDatePoints,
     b: NodeWithDatePoints,
     direction: ExperienceSortDirection
 ): number {
     const directionMultiplier = direction === "asc" ? 1 : -1;
-    const aPriority = priorityValue(a.node.priority);
-    const bPriority = priorityValue(b.node.priority);
-    const aHasPriority = Number.isFinite(aPriority);
-    const bHasPriority = Number.isFinite(bPriority);
-
-    if (aHasPriority && !bHasPriority) {
-        return -1;
-    }
-
-    if (!aHasPriority && bHasPriority) {
-        return 1;
-    }
-
-    if (aPriority !== bPriority) {
-        return aPriority - bPriority;
-    }
 
     if (a.sortMedian < b.sortMedian) {
         return -1 * directionMultiplier;

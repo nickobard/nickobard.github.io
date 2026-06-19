@@ -17,10 +17,9 @@ export function ExperienceList({nodes, sortDirection = "desc"}: Props) {
             const flattened = flattenExperienceTreeWithPath(nodes);
             const filtered = flattened.filter(({item}) => item.show_in_list_view)
             return sortByCumulativeMedian(
-                filtered,
-                ({item}) => item,
-                sortDirection
-            );
+                    filtered,
+                    ({item}) => item,
+                    sortDirection);
         },
         [nodes, sortDirection]
     );

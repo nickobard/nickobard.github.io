@@ -6,6 +6,7 @@ import {ExperienceContentTree} from "../../../models/ExperienceContentTree.ts";
 import {ExperienceTreeFolder} from "./ExperienceTreeFolder.tsx";
 import type {ExperienceSortDirection} from "../../../utils/sortExperienceNodesByInterval.ts";
 import {sortExperienceNodesByCumulativeMedian} from "../../../utils/sortExperienceNodesByCumulativeMedian.ts";
+import {sortExperienceNodesByPriority} from "../../../utils/sortExperienceNodesByPriority.ts";
 
 type Props = {
     nodes: ExperienceNode[];
@@ -15,7 +16,9 @@ type Props = {
 export function ExperienceTree({nodes, sortDirection = "desc"}: Props) {
 
     const sortedNodes = useMemo(
-        () => sortExperienceNodesByCumulativeMedian(nodes, sortDirection),
+        () => sortExperienceNodesByPriority(
+            sortExperienceNodesByCumulativeMedian(nodes, sortDirection)
+        ),
         [nodes, sortDirection]
     );
 
