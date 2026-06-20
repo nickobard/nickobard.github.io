@@ -1,8 +1,8 @@
-import type {ExperienceNode} from "../types/ExperienceNode.ts";
+import type {ExperienceNodeBase} from "../types/ExperienceNode.ts";
 import type {ExperienceSortDirection} from "./sortExperienceNodesByInterval.ts";
 
 type NodeWithDatePoints = {
-    node: ExperienceNode;
+    node: ExperienceNodeBase;
     datePoints: number[];
     sortMedian: number;
 };
@@ -21,7 +21,7 @@ function endDateValue(date?: string): number {
     return dateValue(date) ?? Number.POSITIVE_INFINITY;
 }
 
-function datePointsForNode(node: ExperienceNode): number[] {
+function datePointsForNode(node: ExperienceNodeBase): number[] {
     if (node.type === "folder") {
         return node.children.flatMap(datePointsForNode);
     }
@@ -69,7 +69,7 @@ function compareByMedian(
 
 export function sortByCumulativeMedian<T>(
     items: T[],
-    getNode: (item: T) => ExperienceNode,
+    getNode: (item: T) => ExperienceNodeBase,
     direction: ExperienceSortDirection
 ): T[] {
     const itemsWithDatePoints = items.map((item) => {
@@ -90,7 +90,7 @@ export function sortByCumulativeMedian<T>(
 }
 
 function sortNodeWithDatePoints(
-    node: ExperienceNode,
+    node: ExperienceNodeBase,
     direction: ExperienceSortDirection
 ): NodeWithDatePoints {
     if (node.type !== "folder") {
@@ -118,9 +118,9 @@ function sortNodeWithDatePoints(
 }
 
 export function sortExperienceNodesByCumulativeMedian(
-    nodes: ExperienceNode[],
+    nodes: ExperienceNodeBase[],
     direction: ExperienceSortDirection = "asc"
-): ExperienceNode[] {
+): ExperienceNodeBase[] {
     return sortByCumulativeMedian(
         nodes.map((node) => sortNodeWithDatePoints(node, direction)),
         ({node}) => node,

@@ -1,4 +1,4 @@
-import type {ExperienceNode} from "../types/ExperienceNode.ts";
+import type {ExperienceNodeBase} from "../types/ExperienceNode.ts";
 
 type Prioritized = {
     priority?: number;
@@ -34,7 +34,7 @@ export function sortByPriority<T>(
     });
 }
 
-function sortNodeChildrenByPriority(node: ExperienceNode): ExperienceNode {
+function sortNodeChildrenByPriority(node: ExperienceNodeBase): ExperienceNodeBase {
     if (node.type !== "folder") {
         return node;
     }
@@ -46,8 +46,8 @@ function sortNodeChildrenByPriority(node: ExperienceNode): ExperienceNode {
 }
 
 export function sortExperienceNodesByPriority(
-    nodes: ExperienceNode[]
-): ExperienceNode[] {
+    nodes: ExperienceNodeBase[]
+): ExperienceNodeBase[] {
     return sortByPriority(
         nodes.map(sortNodeChildrenByPriority),
         (node) => node

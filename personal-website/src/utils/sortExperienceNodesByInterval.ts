@@ -1,4 +1,4 @@
-import type {ExperienceNode} from "../types/ExperienceNode.ts";
+import type {ExperienceNodeBase} from "../types/ExperienceNode.ts";
 
 type SortableExperienceInterval = {
     start_date?: string;
@@ -39,9 +39,9 @@ export function sortByInterval<T>(
 }
 
 function sortNodeChildren(
-    node: ExperienceNode,
+    node: ExperienceNodeBase,
     direction: ExperienceSortDirection
-): ExperienceNode {
+): ExperienceNodeBase {
     if (node.type !== "folder") {
         return node;
     }
@@ -53,9 +53,9 @@ function sortNodeChildren(
 }
 
 export function sortExperienceNodesByInterval(
-    nodes: ExperienceNode[],
+    nodes: ExperienceNodeBase[],
     direction: ExperienceSortDirection = "asc"
-): ExperienceNode[] {
+): ExperienceNodeBase[] {
     return sortByInterval(
         nodes.map((node) => sortNodeChildren(node, direction)),
         (node) => node,

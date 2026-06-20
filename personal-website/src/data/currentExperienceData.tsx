@@ -1,7 +1,8 @@
-import type {ExperienceNode} from "../types/ExperienceNode.ts";
+import type {ExperienceNodeBase} from "../types/ExperienceNode.ts";
 import {createFolder, createItem} from "../types/ExperienceNode.ts";
+import {createMediaItem, createTextItem} from "../types/GalleryItem.ts";
 
-export const currentExperienceData: ExperienceNode[] = [
+export const currentExperienceData: ExperienceNodeBase[] = [
     createFolder({
         title: "Work Experience",
         summary: "Experience doing actual service to someone, instead of just learning or doing pet-projects.",
@@ -229,11 +230,36 @@ export const currentExperienceData: ExperienceNode[] = [
                                     - Used OOP programming, inheritance and polymorphism to create extensible code,
                                     - Used Game Design patterns to create a good architecture of the game engine.
                                 `,
-                                media_files: [
-                                    {
-                                        type: "image",
-                                        src: '/media/pacmang_game.jpg'
-                                    }
+                                gallery: [
+                                    createTextItem({
+                                       text_type: "content_separator",
+                                       title: "Visual Showcase of the Pacman Game",
+                                    }),
+                                    createMediaItem({
+                                        media_type: "image",
+                                        src: '/media/PA2-PacmanGameProjectAssets/pacman_game.jpg',
+                                        alt: "Pacman Game Screenshot",
+                                    }),
+                                    createMediaItem({
+                                        media_type: "video",
+                                        src: '/media/PA2-PacmanGameProjectAssets/pacman_showcase.mp4',
+                                        alt: "Pacman Showcase"
+                                    }),
+                                    createTextItem({
+                                        text_type: "content_separator",
+                                        title: "Showcase of Doxygen Documentation",
+                                        description: "Some pages from documentation. Full documentation PDF is available in [the source code](https://github.com/nickobard/CPP-Pacman-Game/blob/main/refman.pdf).",
+                                    }),
+                                    createMediaItem({
+                                        media_type: "image",
+                                        src: '/media/PA2-PacmanGameProjectAssets/documentation_game_actor.png',
+                                        alt: "Documentation Game Actor"
+                                    }),
+                                    createMediaItem({
+                                        media_type: "image",
+                                        src: '/media/PA2-PacmanGameProjectAssets/documentation_game_manager.png',
+                                        alt: "Documentation Game Manager"
+                                    })
                                 ]
                             })
                         ]

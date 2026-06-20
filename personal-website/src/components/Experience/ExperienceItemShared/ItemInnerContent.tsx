@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown";
 import {dedent} from "ts-dedent";
 import type {ExperienceItem} from "../../../types/ExperienceNode.ts";
 import './ItemInnerContent.css'
-import {MediaGalleryButton} from "./MediaContent.tsx";
+import {MediaGalleryButton} from "./Gallery.tsx";
 
 type Props = {
     item: ExperienceItem;
@@ -29,8 +29,8 @@ export function ItemInnerContent({item, contentRef}: Props) {
                 </div>
             )}
 
-            {item.media_files && item.media_files.length > 0 &&
-                <MediaGalleryButton media={item.media_files}/>
+            {item.gallery && item.gallery.length > 0 &&
+                <MediaGalleryButton items={item.gallery}/>
             }
 
             {item.postscriptum && (

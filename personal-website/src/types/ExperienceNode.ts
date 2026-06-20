@@ -1,4 +1,4 @@
-import type {MediaItem} from "./MediaItem.ts";
+import type {GalleryItem} from "./GalleryItem.ts";
 
 
 export function createFolder(
@@ -24,38 +24,33 @@ export function createItem(
     };
 }
 
-
-export type ExperienceFolder = {
-    type: "folder";
+type ExperienceNodeBase = {
+    priority?: number;
     title: string;
     date_label?: string;
     start_date?: string;
     end_date?: string;
-    priority?: number;
     summary?: string;
     description?: string;
-    children: ExperienceNode[];
     postscriptum?: string;
+}
+
+
+export type ExperienceFolder = ExperienceNodeBase & {
+    type: "folder";
+    children: ExperienceNodeBase[];
 };
 
-export type ExperienceItem = {
+export type ExperienceItem = ExperienceNodeBase & {
     type: "item";
-    date_label?: string;
     start_date: string;
-    end_date?: string;
-    priority?: number;
-    title: string;
     core_tags?: string[];
     secondary_tags?: string[];
-    summary?: string;
-    description?: string;
     details?: string;
-    postscriptum?: string;
     show_in_list_view: boolean;
     include_tags_in_tags_count_statistics: boolean;
-    media_files?: MediaItem[];
+    gallery?: GalleryItem[];
 };
 
-export type ExperienceNode =
-    | ExperienceFolder
-    | ExperienceItem;
+export type ExperienceNode = ExperienceFolder | ExperienceItem;
+
