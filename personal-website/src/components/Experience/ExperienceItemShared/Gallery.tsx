@@ -15,9 +15,24 @@ export function MediaGalleryButton({items}: MediaGalleryButtonProps) {
 
     return (
         <>
-            <button onClick={() => setOpen(true)}>
-                View media
-            </button>
+            <div style={{
+                display: "flex",
+            }}>
+                <button className="gallery-open-button" onClick={() => setOpen(true)}>
+                    <span>View media</span>
+
+                    <svg
+                        className="gallery-open-button-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2ZM8.5 11.5l2.5 3.01L14.5 10l4.5 6H5l3.5-4.5Z"
+                        />
+                    </svg>
+                </button>
+            </div>
 
             {open && (
                 <div className="modal-backdrop" onClick={() => setOpen(false)}>
