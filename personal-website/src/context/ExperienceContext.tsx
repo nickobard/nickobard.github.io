@@ -1,11 +1,11 @@
 import {createContext, useContext, useRef, useState} from "react";
-import type {ExperienceNodeBase} from "../types/ExperienceNode.ts";
+import type {ExperienceNode} from "../types/ExperienceNode.ts";
 import {currentExperienceData} from "../data/currentExperienceData.tsx";
 
 type ExperienceContextValue = {
     selectedTags: string[];
     toggleTag: (tag: string) => void;
-    experienceData: ExperienceNodeBase[];
+    experienceData: ExperienceNode[];
     experienceViewControlsRef: React.RefObject<HTMLDivElement | null>;
 };
 

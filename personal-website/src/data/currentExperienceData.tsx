@@ -1,8 +1,8 @@
-import type {ExperienceNodeBase} from "../types/ExperienceNode.ts";
+import type {ExperienceNode} from "../types/ExperienceNode.ts";
 import {createFolder, createItem} from "../types/ExperienceNode.ts";
 import {createMediaItem, createTextItem} from "../types/GalleryItem.ts";
 
-export const currentExperienceData: ExperienceNodeBase[] = [
+export const currentExperienceData: ExperienceNode[] = [
     createFolder({
         title: "Work Experience",
         summary: "Experience doing actual service to someone, instead of just learning or doing pet-projects.",
@@ -260,7 +260,8 @@ export const currentExperienceData: ExperienceNodeBase[] = [
                                         src: '/media/PA2-PacmanGameProjectAssets/documentation_game_manager.png',
                                         alt: "Documentation Game Manager"
                                     })
-                                ]
+                                ],
+                                postscriptum: '[Link to full source code.](https://github.com/nickobard/CPP-Pacman-Game)'
                             })
                         ]
                     }),

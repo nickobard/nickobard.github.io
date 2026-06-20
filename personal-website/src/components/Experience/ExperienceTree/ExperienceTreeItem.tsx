@@ -69,7 +69,7 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
                 </div>
 
                 {item.summary && (
-                    <div className="experience-item-summary experience-item-padded-content">
+                    <div className="experience-node-summary experience-item-padded-content">
                         <ReactMarkdown>{dedent(item.summary)}</ReactMarkdown>
                     </div>
                 )}
@@ -79,7 +79,7 @@ export function ExperienceTreeItem({item, parentContentNode}: ExperienceItemProp
             <div className="details-content experience-item-padded-content"
                  style={{maxHeight: isOpen ? `${contentHeight ?? 0}px` : "0px"}}>
 
-                   <ItemInnerContent item={item} contentRef={contentRef} />
+                <ItemInnerContent item={item} contentRef={contentRef}/>
 
             </div>
         </div>

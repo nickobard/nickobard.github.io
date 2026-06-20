@@ -1,3 +1,5 @@
+@import "../ExperienceItemShared/experience-node-summary.css";
+
 .experience-list-item-summary-button {
     width: 100%;
     padding: 0;
@@ -37,12 +39,6 @@
     color: #999;
     font-size: 0.787rem;
     font-weight: 400;
-}
-
-.experience-list-item-summary {
-    color: #999;
-    font-size: 0.9rem;
-    text-align: left;
 }
 
 .experience-list-item-arrow {

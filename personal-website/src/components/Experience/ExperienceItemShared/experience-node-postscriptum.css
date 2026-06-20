@@ -1,0 +1,17 @@
+.experience-node-postscriptum {
+    text-align: left;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.experience-node-postscriptum a {
+    color: #999;
+}
+
+.experience-node-postscriptum a:hover {
+    color: #686868;
+}
+
+.experience-node-postscriptum a:visited {
+    color: #9972b3;
+}

@@ -84,7 +84,7 @@ export function ExperienceTreeFolder({
                 </div>
 
                 {folderNode.summary && (
-                    <div className="experience-folder-summary">
+                    <div className="experience-node-summary">
                         <ReactMarkdown>{dedent(folderNode.summary)}</ReactMarkdown>
                     </div>
                 )}
@@ -128,7 +128,7 @@ export function ExperienceTreeFolder({
                         ))}
                     </ul>
                     {folderNode.postscriptum && (
-                        <div className="experience-tree-item-postscriptum">
+                        <div className="experience-node-postscriptum">
                             <ReactMarkdown>{dedent(folderNode.postscriptum)}</ReactMarkdown>
                         </div>
                     )}

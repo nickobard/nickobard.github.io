@@ -34,7 +34,7 @@ export function MediaGalleryButton({items}: MediaGalleryButtonProps) {
 
                         <div className="modal-content">
 
-                            <p className="modal-window-title">Gallery</p>
+                            <div className="modal-window-title">Gallery</div>
 
                             {items.map((item, index) => (
                                 <div className="gallery-item" key={index}>
@@ -45,11 +45,8 @@ export function MediaGalleryButton({items}: MediaGalleryButtonProps) {
                                                 <ReactMarkdown>
                                                     {dedent(item.description)}
                                                 </ReactMarkdown>
-
-
                                             }
                                         </div>
-
                                     ) : (
                                         <div className="gallery-media-item">
                                             {item.media_type === "image" ? (
@@ -61,7 +58,6 @@ export function MediaGalleryButton({items}: MediaGalleryButtonProps) {
                                             )}
                                         </div>
                                     )}
-
                                 </div>
                             ))}
                         </div>

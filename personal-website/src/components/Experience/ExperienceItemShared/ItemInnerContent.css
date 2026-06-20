@@ -1,3 +1,5 @@
+@import "./experience-node-postscriptum.css";
+
 .experience-item-description {
     padding-top: 0.45rem;
     text-align: left;
@@ -24,3 +26,4 @@
 
     padding-bottom: 0.25rem;
 }
+

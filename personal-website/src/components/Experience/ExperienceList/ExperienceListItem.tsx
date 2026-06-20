@@ -49,7 +49,7 @@ export function ExperienceListItem({item, originPath}: Props) {
                 </div>
 
                 {item.summary && (
-                    <div className="experience-list-item-summary">
+                    <div className="experience-node-summary">
                         <ReactMarkdown>{dedent(item.summary)}</ReactMarkdown>
                     </div>
                 )}

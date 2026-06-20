@@ -1,3 +1,5 @@
+@import "../ExperienceItemShared/experience-node-summary.css";
+
 .experience-item {
 
 }
@@ -48,14 +50,6 @@
 .experience-item-padded-content {
     padding-left: 1.5rem;
 }
-
-.experience-item-summary {
-    text-align: left;
-    font-size: 0.9rem;
-    color: #999;
-}
-
-
 
 .experience-item-arrow {
     font-size: 1.2rem;

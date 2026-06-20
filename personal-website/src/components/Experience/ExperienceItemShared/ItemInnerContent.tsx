@@ -34,7 +34,7 @@ export function ItemInnerContent({item, contentRef}: Props) {
             }
 
             {item.postscriptum && (
-                <div className="experience-tree-item-postscriptum">
+                <div className="experience-node-postscriptum">
                     <ReactMarkdown>{dedent(item.postscriptum)}</ReactMarkdown>
                 </div>
             )}
