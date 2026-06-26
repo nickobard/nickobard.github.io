@@ -1,7 +1,7 @@
-import type {ExperienceNodeBase} from "../types/ExperienceNode.ts";
+import type {ExperienceNode} from "../types/ExperienceNode.ts";
 import {createFolder, createItem} from "../types/ExperienceNode.ts";
 
-export const testExperienceData: ExperienceNodeBase[] = [
+export const testExperienceData: ExperienceNode[] = [
     createFolder({
         title: "Data Science",
         date_label: "Feb 2022 - Mar 2025",

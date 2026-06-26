@@ -1,4 +1,4 @@
-import type {ExperienceFolder, ExperienceItem, ExperienceNodeBase} from "../types/ExperienceNode.ts";
+import type {ExperienceFolder, ExperienceItem, ExperienceNode} from "../types/ExperienceNode.ts";
 
 const MONTH_LABELS = [
     "Jan",
@@ -81,7 +81,7 @@ function imputeFolderDates(folder: ExperienceFolder): ExperienceFolder {
     };
 }
 
-export function imputeExperienceFolderDates(node: ExperienceNodeBase): ExperienceNodeBase {
+export function imputeExperienceFolderDates(node: ExperienceNode): ExperienceNode {
     if (node.type === "item") {
         return imputeItemDateLabel(node);
     }
@@ -89,6 +89,6 @@ export function imputeExperienceFolderDates(node: ExperienceNodeBase): Experienc
     return imputeFolderDates(node);
 }
 
-export function imputeExperienceTreeFolderDates(nodes: ExperienceNodeBase[]): ExperienceNodeBase[] {
+export function imputeExperienceTreeFolderDates(nodes: ExperienceNode[]): ExperienceNode[] {
     return nodes.map(imputeExperienceFolderDates);
 }

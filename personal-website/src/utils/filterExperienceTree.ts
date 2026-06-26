@@ -1,10 +1,10 @@
-import type {ExperienceNodeBase} from "../types/ExperienceNode.ts";
+import type {ExperienceNode} from "../types/ExperienceNode.ts";
 
 
 export function filterExperienceTree(
-    nodes: ExperienceNodeBase[],
+    nodes: ExperienceNode[],
     selectedTags: string[]
-): ExperienceNodeBase[] {
+): ExperienceNode[] {
     if (selectedTags.length === 0) {
         return nodes;
     }
@@ -37,5 +37,5 @@ export function filterExperienceTree(
                 children: filteredChildren,
             };
         })
-        .filter((node): node is ExperienceNodeBase => node !== null);
+        .filter((node): node is ExperienceNode => node !== null);
 }

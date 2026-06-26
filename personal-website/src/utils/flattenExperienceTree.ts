@@ -1,11 +1,11 @@
-import type {ExperienceItem, ExperienceNodeBase} from "../types/ExperienceNode.ts";
+import type {ExperienceItem, ExperienceNode} from "../types/ExperienceNode.ts";
 
 export type FlattenedExperienceItem = {
     item: ExperienceItem;
     path: string[];
 };
 
-export function flattenExperienceTree(nodes: ExperienceNodeBase[]): ExperienceItem[] {
+export function flattenExperienceTree(nodes: ExperienceNode[]): ExperienceItem[] {
     return nodes.flatMap((node) =>
         node.type === "folder"
             ? flattenExperienceTree(node.children)
@@ -14,7 +14,7 @@ export function flattenExperienceTree(nodes: ExperienceNodeBase[]): ExperienceIt
 }
 
 export function flattenExperienceTreeWithPath(
-    nodes: ExperienceNodeBase[],
+    nodes: ExperienceNode[],
     path: string[] = []
 ): FlattenedExperienceItem[] {
     return nodes.flatMap((node) =>

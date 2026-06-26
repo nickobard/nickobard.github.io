@@ -38,7 +38,7 @@ type ExperienceNodeBase = {
 
 export type ExperienceFolder = ExperienceNodeBase & {
     type: "folder";
-    children: ExperienceNodeBase[];
+    children: ExperienceNode[];
 };
 
 export type ExperienceItem = ExperienceNodeBase & {
