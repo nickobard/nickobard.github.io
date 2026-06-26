@@ -35,7 +35,7 @@ export function TagSelector() {
             ? countedAllTags
             : fuse.search(tagQuery).map((result) => result.item);
     const countedTagsByName = new Map(countedAllTags.map((countedTag) => [countedTag.tag, countedTag]));
-    const selectedCountedTags = selectedTags.map((tag) => countedTagsByName.get(tag) ?? {tag, count: 0});
+    const selectedCountedTags = sortCountedTags(selectedTags.map((tag) => countedTagsByName.get(tag) ?? {tag, count: 0}));
 
     const inputAreaRef = useRef<HTMLDivElement | null>(null);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
