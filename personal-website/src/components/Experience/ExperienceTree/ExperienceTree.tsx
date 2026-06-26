@@ -1,4 +1,4 @@
-import type {ExperienceNodeBase} from "../../../types/ExperienceNode.ts";
+import type {ExperienceNode} from "../../../types/ExperienceNode.ts";
 import {ExperienceTreeItem} from "./ExperienceTreeItem.tsx";
 import {useMemo} from "react";
 import './ExperienceTree.css'
@@ -9,7 +9,7 @@ import {sortExperienceNodesByCumulativeMedian} from "../../../utils/sortExperien
 import {sortExperienceNodesByPriority} from "../../../utils/sortExperienceNodesByPriority.ts";
 
 type Props = {
-    nodes: ExperienceNodeBase[];
+    nodes: ExperienceNode[];
     sortDirection?: ExperienceSortDirection;
 };
 
