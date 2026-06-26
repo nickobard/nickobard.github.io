@@ -8,6 +8,7 @@ import {tagGraph} from "../data/tagTrees.ts";
 import {countTags, sortCountedTags} from "../utils/countTags.ts";
 import {imputeExperienceTreeFolderDates} from "../utils/imputeExperienceFolderDates.ts";
 import {filterExperienceTree} from "../utils/filterExperienceTree.ts";
+import {Tag} from "./Tag.tsx";
 
 
 export function TagSelector() {
@@ -106,15 +107,13 @@ export function TagSelector() {
 
             {isTagDropdownOpen && (
                 <div className="tag-dropdown" ref={dropdownRef}>
-                    {visibleTags.map(({tag}) => (
-                        <button
-                            key={tag}
-                            type="button"
-                            className={selectedTags.includes(tag) ? "tag active" : "tag"}
-                            onClick={() => toggleTag(tag)}
-                        >
-                            {tag}
-                        </button>
+                    {visibleTags.map((countedTag) => (
+                        <Tag
+                            key={countedTag.tag}
+                            countedTag={countedTag}
+                            isSelected={selectedTags.includes(countedTag.tag)}
+                            onToggle={toggleTag}
+                        />
                     ))}
                 </div>
             )}

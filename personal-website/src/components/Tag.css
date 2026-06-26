@@ -1,0 +1,21 @@
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.tag-count {
+    min-width: 1.35rem;
+    padding: 0.1rem 0.35rem;
+    border-radius: 999px;
+    background: #333;
+    color: white;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.tag.active .tag-count {
+    background: white;
+    color: #333;
+}
