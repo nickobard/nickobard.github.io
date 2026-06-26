@@ -3,11 +3,10 @@ import {useExperienceContext} from "../context/ExperienceContext.tsx";
 import Fuse from "fuse.js"
 import './TagSelector.css'
 import {flattenExperienceTree} from "../utils/flattenExperienceTree.ts";
-import {imputeExperienceTags} from "../utils/imputeTransitiveClosureTags.ts";
+import {imputeExperienceItemsTags} from "../utils/imputeTransitiveClosureTags.ts";
 import {tagGraph} from "../data/tagTrees.ts";
 import {countTags, sortCountedTags} from "../utils/countTags.ts";
-import {imputeExperienceTreeFolderDates} from "../utils/imputeExperienceFolderDates.ts";
-import {filterExperienceTree} from "../utils/filterExperienceTree.ts";
+import {filterExperienceItemsByTags} from "../utils/filterExperienceByTags.ts";
 import {Tag} from "./Tag.tsx";
 
 
@@ -15,17 +14,13 @@ export function TagSelector() {
 
     const {experienceData, selectedTags, toggleTag, experienceViewControlsRef} = useExperienceContext();
 
-    const filteredExperienceData = useMemo(
-        () => imputeExperienceTreeFolderDates(
-            filterExperienceTree(experienceData, selectedTags)
-        ),
-        [experienceData, selectedTags]
-    );
+    const filteredExperienceItems = useMemo(() => {
+        const experienceDataFlat = flattenExperienceTree(experienceData);
+        const experienceDataFlatWithTagImputation = imputeExperienceItemsTags(experienceDataFlat, tagGraph);
+        return filterExperienceItemsByTags(experienceDataFlatWithTagImputation, selectedTags);
+    }, [experienceData, selectedTags]);
 
-    const experienceDataFlat = flattenExperienceTree(filteredExperienceData)
-
-    const experienceDataFlatWithTagImputation = imputeExperienceTags(experienceDataFlat, tagGraph)
-    const countedAllTags = sortCountedTags(countTags(experienceDataFlatWithTagImputation));
+    const countedAllTags = sortCountedTags(countTags(filteredExperienceItems));
 
     const fuse = new Fuse(countedAllTags, {
         keys: ["tag"],
