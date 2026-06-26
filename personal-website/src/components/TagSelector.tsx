@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 import {useExperienceContext} from "../context/ExperienceContext.tsx";
 import Fuse from "fuse.js"
 import './TagSelector.css'
@@ -6,14 +6,22 @@ import {flattenExperienceTree} from "../utils/flattenExperienceTree.ts";
 import {imputeExperienceTags} from "../utils/imputeTransitiveClosureTags.ts";
 import {tagGraph} from "../data/tagTrees.ts";
 import {countTags, sortCountedTags} from "../utils/countTags.ts";
+import {imputeExperienceTreeFolderDates} from "../utils/imputeExperienceFolderDates.ts";
+import {filterExperienceTree} from "../utils/filterExperienceTree.ts";
 
 
 export function TagSelector() {
 
-    const {experienceData} = useExperienceContext();
+    const {experienceData, selectedTags, toggleTag, experienceViewControlsRef} = useExperienceContext();
 
+    const filteredExperienceData = useMemo(
+        () => imputeExperienceTreeFolderDates(
+            filterExperienceTree(experienceData, selectedTags)
+        ),
+        [experienceData, selectedTags]
+    );
 
-    const experienceDataFlat = flattenExperienceTree(experienceData)
+    const experienceDataFlat = flattenExperienceTree(filteredExperienceData)
 
     const experienceDataFlatWithTagImputation = imputeExperienceTags(experienceDataFlat, tagGraph)
     const countedAllTags = sortCountedTags(countTags(experienceDataFlatWithTagImputation));
@@ -22,9 +30,6 @@ export function TagSelector() {
         keys: ["tag"],
         threshold: 0.4,
     });
-
-
-    const {selectedTags, toggleTag} = useExperienceContext();
 
     const [tagQuery, setTagQuery] = useState("");
     const [isTagDropdownOpen, setIsTagDropdownOpen] = useState(false);
@@ -37,9 +42,6 @@ export function TagSelector() {
     const inputAreaRef = useRef<HTMLDivElement | null>(null);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
     const selectedTagsRef = useRef<HTMLDivElement | null>(null);
-    const {experienceViewControlsRef} = useExperienceContext();
-
-
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
 
@@ -62,7 +64,7 @@ export function TagSelector() {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, []);
+    }, [experienceViewControlsRef]);
 
     const inputRef = useRef<HTMLInputElement | null>(null);
     const wasInputFocusedBeforeClick = useRef(false);
@@ -134,4 +136,3 @@ export function TagSelector() {
         )}
     </>);
 }
-
