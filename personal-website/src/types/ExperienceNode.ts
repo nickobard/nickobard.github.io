@@ -46,6 +46,7 @@ export type ExperienceItem = ExperienceNodeBase & {
     start_date: string;
     core_tags?: string[];
     secondary_tags?: string[];
+    minor_tags?: string[];
     details?: string;
     show_in_list_view: boolean;
     include_tags_in_tags_count_statistics: boolean;

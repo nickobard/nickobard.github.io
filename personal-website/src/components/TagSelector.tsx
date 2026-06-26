@@ -3,6 +3,9 @@ import {useExperienceContext} from "../context/ExperienceContext.tsx";
 import Fuse from "fuse.js"
 import './TagSelector.css'
 import {flattenExperienceTree} from "../utils/flattenExperienceTree.ts";
+import {imputeExperienceTags} from "../utils/imputeTransitiveClosureTags.ts";
+import {tagGraph} from "../data/tagTrees.ts";
+import {countTags, sortCountedTags} from "../utils/countTags.ts";
 
 
 export function TagSelector() {
@@ -12,11 +15,11 @@ export function TagSelector() {
 
     const experienceDataFlat = flattenExperienceTree(experienceData)
 
-    const allTags = [...new Set(experienceDataFlat.flatMap((item) => [
-        ...(item.core_tags ?? []),
-        ...(item.secondary_tags ?? [])]
-    ))];
-    const fuse = new Fuse(allTags, {
+    const experienceDataFlatWithTagImputation = imputeExperienceTags(experienceDataFlat, tagGraph)
+    const countedAllTags = sortCountedTags(countTags(experienceDataFlatWithTagImputation));
+
+    const fuse = new Fuse(countedAllTags, {
+        keys: ["tag"],
         threshold: 0.4,
     });
 
@@ -28,7 +31,7 @@ export function TagSelector() {
 
     const visibleTags =
         tagQuery.trim() === ""
-            ? allTags
+            ? countedAllTags
             : fuse.search(tagQuery).map((result) => result.item);
 
     const inputAreaRef = useRef<HTMLDivElement | null>(null);
@@ -101,7 +104,7 @@ export function TagSelector() {
 
             {isTagDropdownOpen && (
                 <div className="tag-dropdown" ref={dropdownRef}>
-                    {visibleTags.map((tag) => (
+                    {visibleTags.map(({tag}) => (
                         <button
                             key={tag}
                             type="button"
@@ -131,5 +134,4 @@ export function TagSelector() {
         )}
     </>);
 }
-
 

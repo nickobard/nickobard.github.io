@@ -1,4 +1,5 @@
 import {tag, type TagTreeNode} from "../types/TagGraph";
+import {buildTagGraph} from "../utils/tagGraph.ts";
 
 const AITree = tag(
     "Artificial Intelligence",
@@ -22,3 +23,5 @@ const ProgrammingTree = tag(
 export const tagTrees = [
     AITree, ProgrammingTree
 ] satisfies TagTreeNode[];
+
+export const tagGraph = buildTagGraph(tagTrees);
