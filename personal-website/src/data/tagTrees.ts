@@ -1,27 +1,36 @@
 import {tag, type TagTreeNode} from "../types/TagGraph";
 import {buildTagGraph} from "../utils/tagGraph.ts";
 
-const AITree = tag(
-    "Artificial Intelligence",
-    tag(
-        "Machine Learning",
-        tag("Linear Regression"),
-        tag("Logistic Regression"),
-        tag("Neural Networks"),
-    ),
-);
-
-const ProgrammingTree = tag(
-    "Programming",
-    tag(
-        "Frontend",
-        tag("React"),
-        tag("CSS"),
-    ),
-);
-
 export const tagTrees = [
-    AITree, ProgrammingTree
+    tag(
+        "Artificial Intelligence",
+        tag(
+            "Machine Learning",
+            tag(["Linear Regression", "Logistic Regression", "Neural Networks", "NLP"]),
+            tag(
+                "Deep Learning",
+                tag(["Transformers", "PyTorch"]),
+            ),
+        ),
+    ),
+    tag(
+        "Programming",
+        tag("Frontend", tag(["React", "CSS"])),
+        tag(
+            "Python",
+            tag(["Pandas", "NumPy"]),
+            tag(["PyTorch", "Hugging Face"]),
+        ),
+    ),
+    tag(
+        "Data Analysis",
+        tag(["Pandas", "NumPy"]),
+        tag("Bootstrap"),
+    ),
+    tag(
+        "Statistics",
+        tag("Bootstrap"),
+    ),
 ] satisfies TagTreeNode[];
 
 export const tagGraph = buildTagGraph(tagTrees);

@@ -3,20 +3,26 @@ import type {TagGraph, TagTreeNode} from "../types/TagGraph";
 export function buildTagGraph(trees: TagTreeNode[]): TagGraph {
     const graph: TagGraph = new Map();
 
-    function visit(node: TagTreeNode, parent?: string) {
-        if (parent) {
-            let parents = graph.get(node.name);
+    function addParents(tagName: string, parentNames: string[]) {
+        let parents = graph.get(tagName);
 
-            if (!parents) {
-                parents = new Set();
-                graph.set(node.name, parents);
-            }
-
-            parents.add(parent);
+        if (!parents) {
+            parents = new Set();
+            graph.set(tagName, parents);
         }
 
+        for (const parentName of parentNames) {
+            parents.add(parentName);
+        }
+    }
+
+    function visit(node: TagTreeNode) {
         for (const child of node.children ?? []) {
-            visit(child, node.name);
+            for (const tagName of child.name) {
+                addParents(tagName, node.name);
+            }
+
+            visit(child);
         }
     }
 

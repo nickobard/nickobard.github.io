@@ -1,13 +1,16 @@
 export type TagTreeNode = {
-    name: string;
+    name: string[];
     children?: TagTreeNode[];
 }
 
 export type TagGraph = Map<string, Set<string>>;
 
 export function tag(
-    name: string,
+    name: string | string[],
     ...children: TagTreeNode[]
 ): TagTreeNode {
-    return {name, children};
+    return {
+        name: Array.isArray(name) ? name : [name],
+        children,
+    };
 }
