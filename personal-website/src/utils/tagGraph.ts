@@ -1,14 +1,18 @@
-import type {TagEdge, TagTreeNode} from "../types/TagGraph";
+import type {TagGraph, TagTreeNode} from "../types/TagGraph";
 
-export function buildTagEdges(trees: TagTreeNode[]): TagEdge[] {
-    const edges: TagEdge[] = [];
+export function buildTagGraph(trees: TagTreeNode[]): TagGraph {
+    const graph: TagGraph = new Map();
 
     function visit(node: TagTreeNode, parent?: string) {
         if (parent) {
-            edges.push({
-                child: node.name,
-                parent,
-            });
+            let parents = graph.get(node.name);
+
+            if (!parents) {
+                parents = new Set();
+                graph.set(node.name, parents);
+            }
+
+            parents.add(parent);
         }
 
         for (const child of node.children ?? []) {
@@ -20,5 +24,5 @@ export function buildTagEdges(trees: TagTreeNode[]): TagEdge[] {
         visit(tree);
     }
 
-    return edges;
+    return graph;
 }

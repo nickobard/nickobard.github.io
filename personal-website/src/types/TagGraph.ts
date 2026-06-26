@@ -3,10 +3,7 @@ export type TagTreeNode = {
     children?: TagTreeNode[];
 }
 
-export type TagEdge = {
-    child: string;
-    parent: string;
-}
+export type TagGraph = Map<string, Set<string>>;
 
 export function tag(
     name: string,
