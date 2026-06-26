@@ -8,6 +8,13 @@ type TagProps = {
 };
 
 export function Tag({countedTag, isSelected, onToggle}: TagProps) {
+    const countLabel = String(countedTag.count);
+    const countFontSize = countLabel.length <= 2
+        ? "0.75rem"
+        : countLabel.length === 3
+            ? "0.62rem"
+            : "0.5rem";
+
     return (
         <button
             type="button"
@@ -15,7 +22,7 @@ export function Tag({countedTag, isSelected, onToggle}: TagProps) {
             onClick={() => onToggle(countedTag.tag)}
         >
             <span className="tag-label">{countedTag.tag}</span>
-            <span className="tag-count">{countedTag.count}</span>
+            <span className="tag-count" style={{fontSize: countFontSize}}>{countLabel}</span>
         </button>
     );
 }

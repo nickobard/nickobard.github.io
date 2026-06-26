@@ -66,12 +66,3 @@
     flex-wrap: wrap;
     gap: 0.5rem;
 }
-
-.selected-tag {
-    padding: 0.45rem 0.8rem;
-    border-radius: 999px;
-    border: 1px solid var(--text-color);
-    background: gray;
-    color: white;
-    cursor: pointer;
-}

@@ -34,6 +34,8 @@ export function TagSelector() {
         tagQuery.trim() === ""
             ? countedAllTags
             : fuse.search(tagQuery).map((result) => result.item);
+    const countedTagsByName = new Map(countedAllTags.map((countedTag) => [countedTag.tag, countedTag]));
+    const selectedCountedTags = selectedTags.map((tag) => countedTagsByName.get(tag) ?? {tag, count: 0});
 
     const inputAreaRef = useRef<HTMLDivElement | null>(null);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -116,15 +118,13 @@ export function TagSelector() {
 
         {selectedTags.length > 0 && (
             <div className="selected-tags" ref={selectedTagsRef}>
-                {selectedTags.map((tag) => (
-                    <button
-                        key={tag}
-                        type="button"
-                        className="selected-tag"
-                        onClick={() => toggleTag(tag)}
-                    >
-                        {tag} ×
-                    </button>
+                {selectedCountedTags.map((countedTag) => (
+                    <Tag
+                        key={countedTag.tag}
+                        countedTag={countedTag}
+                        isSelected={true}
+                        onToggle={toggleTag}
+                    />
                 ))}
             </div>
         )}
