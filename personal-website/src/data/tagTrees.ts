@@ -1,39 +1,36 @@
-import {tag, type TagTreeNode} from "../types/TagGraph";
 import {buildTagGraph} from "../utils/tagGraph.ts";
+import {parseTagTrees} from "../utils/parseTagTrees.ts";
 
 
-const AI = tag(
-    "Artificial Intelligence",
-    tag(
-        "Machine Learning",
-        tag(["Linear Regression", "Logistic Regression", "Neural Networks", "NLP"]),
-        tag(
-            "Deep Learning",
-            tag(["Transformers", "PyTorch"]),
-        ),
-    ),
-);
+const AI = `
+    Artificial Intelligence, Data Science
+        Machine Learning
+            Logistic Regression, Linear Regression, Neural Networks, NLP
+            Deep Learning
+                Transformers, PyTorch
+                `;
 
-const Programming = tag(
-    "Programming",
-    tag("Frontend", tag(["React", "CSS"])),
-    tag(
-        "Python",
-        tag(["Pandas", "NumPy"]),
-        tag(["PyTorch", "Hugging Face"]),
-    ),
-);
+const Programming = `
+    Programming
+        Frontend
+            React, CSS
+        Python
+            Pandas, NumPy
+            PyTorch, Hugging Face
+`;
 
-const DataAnalysis = tag(
-    "Data Analysis",
-    tag(["Pandas", "NumPy"]),
-    tag("Statistics",
-        tag("Bootstrap")),
-);
+const DataAnalysis = `
+    Data Analysis
+        Pandas, NumPy
+        Statistics
+            Bootstrap
+`;
 
 
 export const tagTrees = [
     AI, Programming, DataAnalysis
-] satisfies TagTreeNode[];
+] satisfies string[];
 
-export const tagGraph = buildTagGraph(tagTrees);
+const parsedTrees = parseTagTrees(tagTrees);
+
+export const tagGraph = buildTagGraph(parsedTrees);

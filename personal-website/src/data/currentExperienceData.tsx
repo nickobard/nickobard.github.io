@@ -22,7 +22,8 @@ export const currentExperienceData: ExperienceNode[] = [
                             - Calculated retention of users segmented by groups,
                                 - Conducted tests of independence between groups for correct interpretation of the results.
                         `,
-                        core_tags: ["Data Analysis", "Statistics", "Bootstrap"],
+                        core_tags: ["Data Analysis", "Statistics"],
+                        secondary_tags: ["Bootstrap", "A/B Tests"]
                     }),
                     createItem({
                         title: "Intern Data Analyst",
@@ -36,8 +37,7 @@ export const currentExperienceData: ExperienceNode[] = [
                                 - Studied state-of-the-art methods,
                                 - Compared and presented to the team of Data Analysts.
                         `,
-                        core_tags: ["Data Analysis", "Python"],
-                        secondary_tags: []
+                        core_tags: ["Data Analysis", "Python", "Statistics", "Mathematics", "Multithreading", "Research"]
                     }),
                 ]
             }),
@@ -48,12 +48,16 @@ export const currentExperienceData: ExperienceNode[] = [
                 start_date: "2024-07-22",
                 end_date: "2024-07-25",
                 description: "As an AI program student I was as a technical assistant to lectors, guiding students technically and making one technical presentation for them.",
-                core_tags: ["Education"],
+                core_tags: ["Teaching", "Supervising", "Python", "Presentation"],
                 details: `
                     - Guided teams of teenage students in their sprints of creating AI applications,
                     - Advised on some technical details regarding AI models and principles how it works,
                     - Created a presentation about data poisoning of neural network, showing the students dangers of improperly trained networks.
-                `
+                `,
+                gallery: [
+
+                ],
+                postscriptum: "[Source code](https://github.com/nickobard/ai-summer-school)"
             }),
             createFolder({
                     title: 'Management at student club',

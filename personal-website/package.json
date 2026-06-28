@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate:tags": "tsx src/data/scripts/generateTagGraph.ts"
+    "generate:tags": "tsx scripts/generateTagGraph.ts"
   },
   "dependencies": {
     "fuse.js": "^7.3.0",
