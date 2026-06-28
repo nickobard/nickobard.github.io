@@ -1,7 +1,6 @@
 import type {ExperienceNode} from "../types/ExperienceNode.ts";
 import {createFolder, createItem} from "../types/ExperienceNode.ts";
 import {createMediaItem, createTextItem} from "../types/GalleryItem.ts";
-import {JBDataAnalystTags} from "./tags/jetbrains/tags.ts";
 
 export const currentExperienceData: ExperienceNode[] = [
     createFolder({
@@ -23,7 +22,7 @@ export const currentExperienceData: ExperienceNode[] = [
                             - Calculated retention of users segmented by groups,
                                 - Conducted tests of independence between groups for correct interpretation of the results.
                         `,
-                        core_tags: ["Data Analysis", "Statistics", ...JBDataAnalystTags],
+                        core_tags: ["Data Analysis", "Statistics", ""],
                         secondary_tags: ["Bootstrap", "A/B Tests"],
                         tags_scopes: ['general', 'jetbrains']
                     }),
