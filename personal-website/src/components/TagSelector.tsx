@@ -4,7 +4,7 @@ import Fuse from "fuse.js"
 import './TagSelector.css'
 import {flattenExperienceTree} from "../utils/flattenExperienceTree.ts";
 import {imputeExperienceItemsTags} from "../utils/imputeTransitiveClosureTags.ts";
-import {tagGraph} from "../data/tagTrees.ts";
+import {tagGraph} from "../data/tags/general.ts";
 import {countTags, sortCountedTags} from "../utils/countTags.ts";
 import {filterExperienceItemsByTags} from "../utils/filterExperienceByTags.ts";
 import {Tag} from "./Tag.tsx";

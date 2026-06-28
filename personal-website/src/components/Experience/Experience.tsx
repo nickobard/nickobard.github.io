@@ -8,7 +8,7 @@ import {ExperienceList} from "./ExperienceList/ExperienceList.tsx";
 import {ExperienceTree} from "./ExperienceTree/ExperienceTree.tsx";
 import {imputeExperienceTreeFolderDates} from "../../utils/imputeExperienceFolderDates.ts";
 import {imputeExperienceTreeTags} from "../../utils/imputeTransitiveClosureTags.ts";
-import {tagGraph} from "../../data/tagTrees.ts";
+import {tagGraph} from "../../data/tags/general.ts";
 
 
 export function Experience() {

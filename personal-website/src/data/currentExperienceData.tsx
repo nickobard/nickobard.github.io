@@ -1,6 +1,7 @@
 import type {ExperienceNode} from "../types/ExperienceNode.ts";
 import {createFolder, createItem} from "../types/ExperienceNode.ts";
 import {createMediaItem, createTextItem} from "../types/GalleryItem.ts";
+import {JBDataAnalystTags} from "./tags/jetbrains/tags.ts";
 
 export const currentExperienceData: ExperienceNode[] = [
     createFolder({
@@ -22,7 +23,7 @@ export const currentExperienceData: ExperienceNode[] = [
                             - Calculated retention of users segmented by groups,
                                 - Conducted tests of independence between groups for correct interpretation of the results.
                         `,
-                        core_tags: ["Data Analysis", "Statistics"],
+                        core_tags: ["Data Analysis", "Statistics", ...JBDataAnalystTags],
                         secondary_tags: ["Bootstrap", "A/B Tests"]
                     }),
                     createItem({
@@ -54,9 +55,7 @@ export const currentExperienceData: ExperienceNode[] = [
                     - Advised on some technical details regarding AI models and principles how it works,
                     - Created a presentation about data poisoning of neural network, showing the students dangers of improperly trained networks.
                 `,
-                gallery: [
-
-                ],
+                gallery: [],
                 postscriptum: "[Source code](https://github.com/nickobard/ai-summer-school)"
             }),
             createFolder({
@@ -236,8 +235,8 @@ export const currentExperienceData: ExperienceNode[] = [
                                 `,
                                 gallery: [
                                     createTextItem({
-                                       text_type: "content_separator",
-                                       title: "Visual Showcase of the Pacman Game",
+                                        text_type: "content_separator",
+                                        title: "Visual Showcase of the Pacman Game",
                                     }),
                                     createMediaItem({
                                         media_type: "image",

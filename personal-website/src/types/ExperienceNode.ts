@@ -11,15 +11,17 @@ export function createFolder(
 }
 
 export function createItem(
-    data: Omit<ExperienceItem, "type" | "show_in_list_view" | "include_tags_in_tags_count_statistics"> & {
+    data: Omit<ExperienceItem, "type" | "show_in_list_view" | "include_tags_in_tags_count_statistics" | "tags_scopes"> & {
         show_in_list_view?: boolean;
         include_tags_in_tags_count_statistics?: boolean;
+        tags_scopes?: string[];
     }
 ): ExperienceItem {
     return {
         type: "item",
         show_in_list_view: true,
         include_tags_in_tags_count_statistics: true,
+        tags_scopes: ["general"],
         ...data,
     };
 }
@@ -47,6 +49,7 @@ export type ExperienceItem = ExperienceNodeBase & {
     core_tags?: string[];
     secondary_tags?: string[];
     minor_tags?: string[];
+    tags_scopes: string[];
     details?: string;
     show_in_list_view: boolean;
     include_tags_in_tags_count_statistics: boolean;
