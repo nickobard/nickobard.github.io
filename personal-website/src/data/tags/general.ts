@@ -4,15 +4,20 @@ import {parseTagTrees} from "../../utils/parseTagTrees.ts";
 import {bottomUpTagTreesString, type TagTreesString, topDownTagTreesString} from "../../types/TagGraph.ts";
 
 
-const AI = topDownTagTreesString(`
+const topDownTrees = topDownTagTreesString(`
     Artificial Intelligence, Data Science
         Machine Learning
             Logistic Regression, Linear Regression, Neural Networks, NLP
             Deep Learning
                 Transformers, PyTorch
+    
+        Data Analysis
+            Pandas, NumPy
+            Statistics
+                Bootstrap
                 `);
 
-const Programming = bottomUpTagTreesString(`
+const bottomUpTrees = bottomUpTagTreesString(`
     PyTorch, Hugging Face, Pandas, NumPy
        Python
           Programming
@@ -20,17 +25,14 @@ const Programming = bottomUpTagTreesString(`
     React, CSS
        Frontend
            Programming
+     
+    Data Analysis
+        Data Science
 `);
 
-const DataAnalysis = topDownTagTreesString(`
-    Data Analysis
-        Pandas, NumPy
-        Statistics
-            Bootstrap
-`);
 
 const tagTreesStrings = [
-    AI, Programming, DataAnalysis
+    topDownTrees, bottomUpTrees
 ] satisfies TagTreesString[];
 
 const parsedTrees = parseTagTrees(tagTreesStrings);

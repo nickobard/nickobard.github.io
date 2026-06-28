@@ -50,6 +50,7 @@ function parseTopDownTagTree(lines: TagTreeLine[]): TagTreeNode[] {
 function parseBottomUpTagTree(lines: TagTreeLine[]): TagTreeNode[] {
     const roots: TagTreeNode[] = [];
     const stack: { indent: number; nodes: TagTreeNode[] }[] = [];
+    const normalizedLines = mergeSameIndentNeighbors(lines);
 
     function flushRootPath() {
         const rootNodes = stack.at(-1)?.nodes;
@@ -61,7 +62,7 @@ function parseBottomUpTagTree(lines: TagTreeLine[]): TagTreeNode[] {
         stack.length = 0;
     }
 
-    for (const {indent, name} of lines) {
+    for (const {indent, name} of normalizedLines) {
         if (stack.length > 0 && indent < stack.at(-1)!.indent) {
             flushRootPath();
         }
@@ -81,6 +82,26 @@ function parseBottomUpTagTree(lines: TagTreeLine[]): TagTreeNode[] {
     flushRootPath();
 
     return roots;
+}
+
+function mergeSameIndentNeighbors(lines: TagTreeLine[]): TagTreeLine[] {
+    const mergedLines: TagTreeLine[] = [];
+
+    for (const line of lines) {
+        const previousLine = mergedLines.at(-1);
+
+        if (previousLine && previousLine.indent === line.indent) {
+            previousLine.name.push(...line.name);
+            continue;
+        }
+
+        mergedLines.push({
+            indent: line.indent,
+            name: [...line.name],
+        });
+    }
+
+    return mergedLines;
 }
 
 

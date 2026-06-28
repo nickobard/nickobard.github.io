@@ -1,17 +1,32 @@
-import {type TagTreesString, bottomUpTagTreesString} from "../../../types/TagGraph.ts";
+import {type TagTreesString, bottomUpTagTreesString, topDownTagTreesString} from "../../../types/TagGraph.ts";
 import {parseTagTrees} from "../../../utils/parseTagTrees.ts";
 import {buildTagGraph} from "../../../utils/tagGraph.ts";
 import {generateTagGraphMmd} from "../../../utils/generateTagGraphMmd.ts";
 
-const JetBrainsDataAnalystTree = bottomUpTagTreesString(
+const topDownTrees = topDownTagTreesString(
+    `
+    
+    `
+)
+
+const bottomUpTrees = bottomUpTagTreesString(
     `
     Spreadsheets
-        Google Spreadsheet, Spreadsheets Programming, Excel, Excel Programming
+        Google Spreadsheet
+        Spreadsheets Programming
+        Excel
+        Excel Programming
+        
+    Data Analysis
+        Data Science
+        
+    Hypothesis Testing
+        Statistics
     `
 )
 
 const tagTreesStrings = [
-    JetBrainsDataAnalystTree
+    bottomUpTrees, topDownTrees
 ] satisfies TagTreesString[];
 
 const parsedTrees = parseTagTrees(tagTreesStrings);

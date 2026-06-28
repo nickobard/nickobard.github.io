@@ -22,9 +22,17 @@ export const currentExperienceData: ExperienceNode[] = [
                             - Calculated retention of users segmented by groups,
                                 - Conducted tests of independence between groups for correct interpretation of the results.
                         `,
-                        core_tags: ["Data Analysis", "Statistics", ""],
-                        secondary_tags: ["Bootstrap", "A/B Tests"],
-                        tags_scopes: ['general', 'jetbrains']
+                        core_tags: [
+                            "Data Analysis",
+                            "Statistics",
+                            "Hypothesis Testing",
+                            "Data Science",
+                            "Python"],
+                        secondary_tags: [
+                            "Bootstrap",
+                            "A/B Tests"
+                        ],
+                        tags_scopes: ["general", "jetbrains"]
                     }),
                     createItem({
                         title: "Intern Data Analyst",
@@ -38,7 +46,14 @@ export const currentExperienceData: ExperienceNode[] = [
                                 - Studied state-of-the-art methods,
                                 - Compared and presented to the team of Data Analysts.
                         `,
-                        core_tags: ["Data Analysis", "Python", "Statistics", "Mathematics", "Multithreading", "Research"],
+                        core_tags: [
+                            "Data Analysis",
+                            "Python",
+                            "Statistics",
+                            "Mathematics",
+                            "Multithreading",
+                            "Research"
+                        ],
                         tags_scopes: ['general', 'jetbrains']
                     }),
                 ]
