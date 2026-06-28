@@ -4,7 +4,6 @@ import Fuse from "fuse.js"
 import './TagSelector.css'
 import {flattenExperienceTree} from "../utils/flattenExperienceTree.ts";
 import {imputeExperienceItemsTags} from "../utils/imputeTransitiveClosureTags.ts";
-import {tagGraph} from "../data/tags/general.ts";
 import {countTags, sortCountedTags} from "../utils/countTags.ts";
 import {filterExperienceItemsByTags} from "../utils/filterExperienceByTags.ts";
 import {Tag} from "./Tag.tsx";
@@ -16,7 +15,7 @@ export function TagSelector() {
 
     const filteredExperienceItems = useMemo(() => {
         const experienceDataFlat = flattenExperienceTree(experienceData);
-        const experienceDataFlatWithTagImputation = imputeExperienceItemsTags(experienceDataFlat, tagGraph);
+        const experienceDataFlatWithTagImputation = imputeExperienceItemsTags(experienceDataFlat);
         return filterExperienceItemsByTags(experienceDataFlatWithTagImputation, selectedTags);
     }, [experienceData, selectedTags]);
 

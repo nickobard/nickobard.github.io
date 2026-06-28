@@ -1,6 +1,7 @@
 import type {TagGraph} from "../../types/TagGraph.ts";
 import {generalTagGraph} from "./general.ts";
 import {JetBrainsTagGraph} from "./jetbrains/tags.ts";
+import {generateTagGraphMmd} from "../../utils/generateTagGraphMmd.ts";
 
 export const tagGraphsLocator = new Map<string, TagGraph>();
 
@@ -38,3 +39,5 @@ export function combineTagGraphs(
 }
 
 export const wholeGraph = combineTagGraphs([...tagGraphsLocator.keys()])
+
+generateTagGraphMmd(wholeGraph, import.meta.url, 'all.mmd');

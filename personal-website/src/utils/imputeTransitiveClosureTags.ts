@@ -1,13 +1,14 @@
 import {imputeParentTags} from "./imputeParentTags.ts";
 import type {ExperienceItem, ExperienceNode} from "../types/ExperienceNode.ts";
-import type {TagGraph} from "../types/TagGraph.ts";
+import {combineTagGraphs, tagGraphsLocator} from "../data/tags/tagGraphsLocator.ts";
 
 function imputeExperienceItemTags(
-    item: ExperienceItem,
-    tagGraph: TagGraph
+    item: ExperienceItem
 ): ExperienceItem {
     const coreTags = item.core_tags ?? [];
     const secondaryTags = item.secondary_tags ?? [];
+
+    const tagGraph = combineTagGraphs(item.tags_scopes, tagGraphsLocator);
 
     const tagsImputedFromCoreTags = new Set(
         coreTags.flatMap((tag) => imputeParentTags(tagGraph, tag))
@@ -40,23 +41,21 @@ function imputeExperienceItemTags(
 
 export function imputeExperienceItemsTags(
     items: ExperienceItem[],
-    tagGraph: TagGraph
 ): ExperienceItem[] {
-    return items.map((item) => imputeExperienceItemTags(item, tagGraph));
+    return items.map((item) => imputeExperienceItemTags(item));
 }
 
 export function imputeExperienceTreeTags(
-    nodes: ExperienceNode[],
-    tagGraph: TagGraph
+    nodes: ExperienceNode[]
 ): ExperienceNode[] {
     return nodes.map((node) => {
         if (node.type === "item") {
-            return imputeExperienceItemTags(node, tagGraph);
+            return imputeExperienceItemTags(node);
         }
 
         return {
             ...node,
-            children: imputeExperienceTreeTags(node.children, tagGraph),
+            children: imputeExperienceTreeTags(node.children),
         };
     });
 }

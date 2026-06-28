@@ -1,16 +1,14 @@
-import {bottomUpTagTreesString, type TagTreesString} from "../../../types/TagGraph.ts";
+import {type TagTreesString, bottomUpTagTreesString} from "../../../types/TagGraph.ts";
 import {parseTagTrees} from "../../../utils/parseTagTrees.ts";
 import {buildTagGraph} from "../../../utils/tagGraph.ts";
+import {generateTagGraphMmd} from "../../../utils/generateTagGraphMmd.ts";
 
-export const JBDataAnalystTags = []
+export const JBDataAnalystTags = ['Spreadsheet']
 
 const JetBrainsDataAnalystTree = bottomUpTagTreesString(
     `
     Spreadsheet
-        Google Spreadsheet
-        Spreadsheets Programming
-        Excel
-        Excel Programming
+        Google Spreadsheet, Spreadsheets Programming, Excel, Excel Programming
     `
 )
 
@@ -22,3 +20,5 @@ const tagTreesStrings = [
 const parsedTrees = parseTagTrees(tagTreesStrings);
 
 export const JetBrainsTagGraph = buildTagGraph(parsedTrees);
+
+generateTagGraphMmd(JetBrainsTagGraph, import.meta.url, 'jetbrains.mmd');

@@ -1,4 +1,5 @@
 import {buildTagGraph} from "../../utils/tagGraph.ts";
+import {generateTagGraphMmd} from "../../utils/generateTagGraphMmd.ts";
 import {parseTagTrees} from "../../utils/parseTagTrees.ts";
 import {bottomUpTagTreesString, type TagTreesString, topDownTagTreesString} from "../../types/TagGraph.ts";
 
@@ -12,8 +13,7 @@ const AI = topDownTagTreesString(`
                 `);
 
 const Programming = bottomUpTagTreesString(`
-    PyTorch, Hugging Face
-    Pandas, NumPy
+    PyTorch, Hugging Face, Pandas, NumPy
        Python
           Programming
          
@@ -36,3 +36,5 @@ const tagTreesStrings = [
 const parsedTrees = parseTagTrees(tagTreesStrings);
 
 export const generalTagGraph = buildTagGraph(parsedTrees);
+
+generateTagGraphMmd(generalTagGraph, import.meta.url, 'general.mmd');
