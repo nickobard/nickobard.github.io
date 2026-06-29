@@ -38,6 +38,11 @@ const bottomUpTrees = bottomUpTagTreesString(`
         Machine Learning
             Artificial Intelligence
             Data Science
+    BERT
+        Transformers
+    
+    Transformers
+        Deep Learning
 `);
 
 

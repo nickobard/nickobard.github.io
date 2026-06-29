@@ -1,5 +1,6 @@
 import type {CountedTag} from "../utils/countTags.ts";
 import "./Tag.css";
+import {round} from "../utils/math.ts";
 
 type TagProps = {
     countedTag: CountedTag;
@@ -8,7 +9,7 @@ type TagProps = {
 };
 
 export function Tag({countedTag, isSelected, onToggle}: TagProps) {
-    const countLabel = String(countedTag.count);
+    const countLabel = String(round(countedTag.count, 1));
     const countFontSize = countLabel.length <= 2
         ? "0.75rem"
         : countLabel.length === 3

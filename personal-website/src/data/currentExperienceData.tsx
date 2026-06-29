@@ -192,8 +192,9 @@ export const currentExperienceData: ExperienceNode[] = [
                             - Helped with coordination of certain parts of events,
                             - Mainly worked with people presenting faculty and conveying some useful information.
                         `,
-                        core_tags: ["Communication", "Presentation", "Robotics"]
-
+                        core_tags: ["Communication", "Presentation"],
+                        secondary_tags: ["Freelancing"],
+                        minor_tags: ['Robotics']
                     }),
                     createItem({
                         title: "Research Summer",
@@ -205,8 +206,23 @@ export const currentExperienceData: ExperienceNode[] = [
                             - Created a small dataset and used state-of-the-art models to establish a baseline,
                                 - Worked with Hugging Face and other frameworks to use BERT, Word2Vec and other models.
                         `,
-                        core_tags: ["Hugging Face", "Python", "Pandas", "NumPy", "Research", "Transformers", "NLP", "PyTorch", "Machine Learning", "Deep Learning"],
-                        secondary_tags: ["Git"]
+                        core_tags: [
+                            "Hugging Face",
+                            "Python",
+                            "Pandas",
+                            "NumPy",
+                            "Research",
+                            "Transformers",
+                            "NLP",
+                            "PyTorch",
+                            "Machine Learning",
+                            "Deep Learning",
+                            "BERT",
+                            "Word2Vec"
+                        ],
+                        secondary_tags: [
+                            "Git",
+                        ]
                     })
                 ]
             })
@@ -244,7 +260,8 @@ export const currentExperienceData: ExperienceNode[] = [
                                     - Used transformer models like BERT, GPT2, RoBERTa, DistilBERT to improve classification scores,
                                         - Achieved higher scores (80% - 100%, depending on dataset), even with simplified models.
                                     - Implemented everything in tandem with MLFlow for proper training monitoring.
-                                `
+                                `,
+                                postscriptum: "See the thesis PDF and source code available [here]()"
                             }),
                             createItem({
                                 title: "Machine and Deep Learning Courses",
@@ -284,7 +301,6 @@ export const currentExperienceData: ExperienceNode[] = [
                                 start_date: "2023-09-01",
                                 end_date: "2026-06-24",
                                 description: "There were a lot of other courses during the program, i.e. mathematical or other DS courses like Knowledge Systems, etc. The full list of courses you can find on [my absolved courses](https://github.com/nickobard/Education-The-Bachelors-Program) pages."
-
                             })
                         ]
                     }),
