@@ -1,6 +1,6 @@
 import type {TagGraph} from "../../types/TagGraph.ts";
 import {generalTagGraph} from "./general.ts";
-import {JetBrainsTagGraph} from "./jetbrains/tags.ts";
+import {JetBrainsTagGraph} from "./jetbrains/jetbrains.ts";
 import {generateTagGraphMmd} from "../../utils/generateTagGraphMmd.ts";
 
 export const tagGraphsLocator = new Map<string, TagGraph>();

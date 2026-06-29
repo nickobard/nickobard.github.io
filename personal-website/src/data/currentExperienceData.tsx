@@ -30,7 +30,9 @@ export const currentExperienceData: ExperienceNode[] = [
                             "Python"],
                         secondary_tags: [
                             "Bootstrap",
-                            "A/B Tests"
+                            "A/B Tests",
+                            "Spreadsheets",
+                            "Jupyter Notebooks"
                         ],
                         tags_scopes: ["general", "jetbrains"]
                     }),
@@ -54,6 +56,10 @@ export const currentExperienceData: ExperienceNode[] = [
                             "Multithreading",
                             "Research"
                         ],
+                        secondary_tags: [
+                            "Spreadsheets",
+                            "Jupyter Notebooks"
+                        ],
                         tags_scopes: ['general', 'jetbrains']
                     }),
                 ]
@@ -66,12 +72,41 @@ export const currentExperienceData: ExperienceNode[] = [
                 end_date: "2024-07-25",
                 description: "As an AI program student I was as a technical assistant to lectors, guiding students technically and making one technical presentation for them.",
                 core_tags: ["Teaching", "Supervising", "Python", "Presentation"],
+                secondary_tags: ["Machine Learning", "Deep Learning", "Jupyter Notebooks", "PyTorch"],
+                tags_scopes: ["general"],
+                gallery: [
+                    createTextItem({
+                        text_type: "content_separator",
+                        title: "Some photos from the summer school",
+                        description: "Students at the start of the summer school working on their sprint projects:"
+                    }),
+                    createMediaItem({
+                        media_type: "image",
+                        src: "/media/AI-Detem-Summer-School/ai-detem-summer-students-working.png",
+                        alt: "Image showing students working on their projects."
+                    }),
+                    createTextItem({
+                        text_type: "content_separator",
+                        description: "Technical assistants presenting their presentation about data poisoning of artificial intelligence models:"
+                    }),
+                    createMediaItem({
+                        media_type: "image",
+                        src: "/media/AI-Detem-Summer-School/ai-detem-summer-data-poisoning-presentation.png"
+                    }),
+                    createTextItem({
+                        text_type: "content_separator",
+                        description: "Students showcasing their projects to other teams:",
+                    }),
+                    createMediaItem({
+                        media_type: "image",
+                        src: "/media/AI-Detem-Summer-School/ai-detem-summer-students-presenting.png"
+                    })
+                ],
                 details: `
                     - Guided teams of teenage students in their sprints of creating AI applications,
                     - Advised on some technical details regarding AI models and principles how it works,
                     - Created a presentation about data poisoning of neural network, showing the students dangers of improperly trained networks.
                 `,
-                gallery: [],
                 postscriptum: "[Source code](https://github.com/nickobard/ai-summer-school)"
             }),
             createFolder({
@@ -88,8 +123,9 @@ export const currentExperienceData: ExperienceNode[] = [
                                 - Managed and negotiated budget, responsible for creating a purchase and assets location plan,
                                 - Greatly contributed in creating an operational order and finding people to keep the gym in operation.
                             `,
-                            core_tags: ["Management"],
-                            secondary_tags: ["Human Resources", "Communication"],
+                            gallery: [],
+                            core_tags: ["Management", "Volunteering"],
+                            secondary_tags: ["Human Resources", "Communication", "Project Management", "Organization Skills"],
                         }),
                         createItem({
                             title: "Board Member",
@@ -97,8 +133,13 @@ export const currentExperienceData: ExperienceNode[] = [
                             start_date: "2023-09",
                             end_date: "2025-02",
                             description: "Contributed in various parts of the club rebuilding, but greatly in gym rebuilding.",
-                            core_tags: ["Management"],
-                            secondary_tags: ["Communication"]
+                            core_tags: ["Management", "Volunteering"],
+                            secondary_tags: ["Communication", "Presentation", "Organization Skills"],
+                            details: `
+                                - Discussed important matters of the student club,
+                                - Contributed to broad number of activities and overall club improvements. 
+                            `,
+                            postscriptum: "[Club Instagram](https://www.instagram.com/bubenklub/?utm_source=ig_web_button_share_sheet)"
                         }),
                     ]
                 }

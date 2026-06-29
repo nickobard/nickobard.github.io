@@ -55,7 +55,10 @@ export function MediaGalleryButton({items}: MediaGalleryButtonProps) {
                                 <div className="gallery-item" key={index}>
                                     {item.type === "text" ? (
                                         <div className="gallery-text-item">
-                                            <h3>{item.title}</h3>
+                                            {item.title &&
+                                                <h3>{item.title}</h3>
+                                            }
+
                                             {item.description &&
                                                 <ReactMarkdown>
                                                     {dedent(item.description)}

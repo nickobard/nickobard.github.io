@@ -4,6 +4,8 @@ import {parseTagTrees} from "../../utils/parseTagTrees.ts";
 import {bottomUpTagTreesString, type TagTreesString, topDownTagTreesString} from "../../types/TagGraph.ts";
 
 
+export const MachineLearningPythonPack = ["Python", "NumPy", "Pandas"];
+
 const topDownTrees = topDownTagTreesString(`
     Artificial Intelligence, Data Science
         Machine Learning
@@ -28,6 +30,14 @@ const bottomUpTrees = bottomUpTagTreesString(`
      
     Data Analysis
         Data Science
+        
+    PyTorch
+        Machine Learning
+        
+    Deep Learning
+        Machine Learning
+            Artificial Intelligence
+            Data Science
 `);
 
 

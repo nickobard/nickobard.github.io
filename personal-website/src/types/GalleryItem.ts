@@ -31,7 +31,7 @@ export type MediaItem = GalleryItemBase & {
 export type TextItem = GalleryItemBase & {
     type: "text";
     text_type: "content_separator";
-    title: string;
+    title?: string;
     description?: string;
 }
 
