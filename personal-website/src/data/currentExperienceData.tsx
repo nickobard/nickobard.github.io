@@ -123,9 +123,39 @@ export const currentExperienceData: ExperienceNode[] = [
                                 - Managed and negotiated budget, responsible for creating a purchase and assets location plan,
                                 - Greatly contributed in creating an operational order and finding people to keep the gym in operation.
                             `,
-                            gallery: [],
+                            gallery: [
+                                createTextItem({
+                                    text_type: "content_separator",
+                                    title: "The state of the gym at the beginning",
+                                }),
+                                createMediaItem({
+                                    media_type: "image",
+                                    src: "/media/Buben-Club/gym-before-1.jpg"
+                                }),
+                                createMediaItem({
+                                    media_type: "image",
+                                    src: "/media/Buben-Club/gym-before-2.jpg"
+                                }),
+                                createTextItem({
+                                    text_type: "content_separator",
+                                    title: "The state of the gym after the job is done (mostly)",
+                                }),
+                                createMediaItem({
+                                    media_type: "image",
+                                    src: "/media/Buben-Club/gym-after-1.jpg"
+                                }),
+                                createMediaItem({
+                                    media_type: "image",
+                                    src: "/media/Buben-Club/gym-after-2.jpg"
+                                }),
+                                createMediaItem({
+                                    media_type: "image",
+                                    src: "/media/Buben-Club/gym-after-3.jpg"
+                                })
+                            ],
                             core_tags: ["Management", "Volunteering"],
                             secondary_tags: ["Human Resources", "Communication", "Project Management", "Organization Skills"],
+                            postscriptum: "P.S. This was a hard, collective job, done in our free time, thank you to all who contributed to this (we argued, we were upset, but it doesn't matter, we did a good job for people and earned some life experience)."
                         }),
                         createItem({
                             title: "Board Member",
@@ -134,10 +164,14 @@ export const currentExperienceData: ExperienceNode[] = [
                             end_date: "2025-02",
                             description: "Contributed in various parts of the club rebuilding, but greatly in gym rebuilding.",
                             core_tags: ["Management", "Volunteering"],
-                            secondary_tags: ["Communication", "Presentation", "Organization Skills"],
+                            secondary_tags: ["Communication", "Presentation", "Organization Skills", 'IT Infrastructure'],
                             details: `
                                 - Discussed important matters of the student club,
-                                - Contributed to broad number of activities and overall club improvements. 
+                                - Contributed to broad number of activities and overall club improvements:
+                                    - Mainly was responsible for Sport Section revival and gym renovation,
+                                    - Helped to set up some IT infrastructure at the beginning,
+                                    - Was a helping hand at some party events,
+                                    - Some help with some minor gigs here and there.
                             `,
                             postscriptum: "[Club Instagram](https://www.instagram.com/bubenklub/?utm_source=ig_web_button_share_sheet)"
                         }),
