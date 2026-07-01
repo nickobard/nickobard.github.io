@@ -226,7 +226,7 @@ export const currentExperienceData: ExperienceNode[] = [
                             "Word2Vec"
                         ],
                         secondary_tags: [
-                            "Git",
+                            "Git", "Sklearn", "Scikit"
                         ]
                     })
                 ]
@@ -287,7 +287,17 @@ export const currentExperienceData: ExperienceNode[] = [
                                     - Used transformer models like BERT, GPT2, RoBERTa, DistilBERT to improve classification scores,
                                         - Achieved higher scores (80% - 100%, depending on dataset), even with simplified models.
                                     - Implemented everything in tandem with MLFlow for proper training monitoring.
-                                `
+                                `,
+                                core_tags: [
+                                    'BERT',
+                                    'Transformers',
+                                    'Deep Learning',
+                                    'Python',
+                                    'PyTorch',
+                                    'Research',
+                                    "LaTeX",
+                                    'MLFlow'],
+                                secondary_tags: ['Git']
                             }),
                             createItem({
                                 title: "Machine and Deep Learning Courses",
@@ -299,7 +309,8 @@ export const currentExperienceData: ExperienceNode[] = [
                                     - Did some Deep Learning tasks in Deep Learning course
                                         - Neural Networks, Convolutions,
                                         - Manually computed backpropagation for a simple neural network to understand the mechanism closely                                
-                                `
+                                `,
+                                core_tags: [''],
                             }),
                             createItem({
                                 title: "Data Analysis Courses",

@@ -30,7 +30,7 @@ export function ItemInnerContent({item, contentRef}: Props) {
             )}
 
             {item.gallery && item.gallery.items.length > 0 &&
-                <MediaGalleryButton items={item.gallery.items}/>
+                <MediaGalleryButton gallery={item.gallery}/>
             }
 
             {item.postscriptum && (
