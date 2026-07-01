@@ -74,34 +74,36 @@ export const currentExperienceData: ExperienceNode[] = [
                 core_tags: ["Teaching", "Supervising", "Python", "Presentation"],
                 secondary_tags: ["Machine Learning", "Deep Learning", "Jupyter Notebooks", "PyTorch"],
                 tags_scopes: ["general"],
-                gallery: [
-                    createTextItem({
-                        text_type: "content_separator",
-                        title: "Some photos from the summer school",
-                        description: "Students at the start of the summer school working on their sprint projects:"
-                    }),
-                    createMediaItem({
-                        media_type: "image",
-                        src: "/media/ai-detem-summer-school/ai-detem-summer-students-working.png",
-                        alt: "Image showing students working on their projects."
-                    }),
-                    createTextItem({
-                        text_type: "content_separator",
-                        description: "Technical assistants presenting their presentation about data poisoning of artificial intelligence models:"
-                    }),
-                    createMediaItem({
-                        media_type: "image",
-                        src: "/media/ai-detem-summer-school/ai-detem-summer-data-poisoning-presentation.png"
-                    }),
-                    createTextItem({
-                        text_type: "content_separator",
-                        description: "Students showcasing their projects to other teams:",
-                    }),
-                    createMediaItem({
-                        media_type: "image",
-                        src: "/media/ai-detem-summer-school/ai-detem-summer-students-presenting.png"
-                    })
-                ],
+                gallery: {
+                    items: [
+                        createTextItem({
+                            text_type: "content_separator",
+                            title: "Some photos from the summer school",
+                            description: "Students at the start of the summer school working on their sprint projects:"
+                        }),
+                        createMediaItem({
+                            media_type: "image",
+                            src: "/media/ai-detem-summer-school/ai-detem-summer-students-working.png",
+                            alt: "Image showing students working on their projects."
+                        }),
+                        createTextItem({
+                            text_type: "content_separator",
+                            description: "Technical assistants presenting their presentation about data poisoning of artificial intelligence models:"
+                        }),
+                        createMediaItem({
+                            media_type: "image",
+                            src: "/media/ai-detem-summer-school/ai-detem-summer-data-poisoning-presentation.png"
+                        }),
+                        createTextItem({
+                            text_type: "content_separator",
+                            description: "Students showcasing their projects to other teams:",
+                        }),
+                        createMediaItem({
+                            media_type: "image",
+                            src: "/media/ai-detem-summer-school/ai-detem-summer-students-presenting.png"
+                        })
+                    ]
+                },
                 details: `
                     - Guided teams of teenage students in their sprints of creating AI applications,
                     - Advised on some technical details regarding AI models and principles how it works,
@@ -123,36 +125,39 @@ export const currentExperienceData: ExperienceNode[] = [
                                 - Managed and negotiated budget, responsible for creating a purchase and assets location plan,
                                 - Greatly contributed in creating an operational order and finding people to keep the gym in operation.
                             `,
-                            gallery: [
-                                createTextItem({
-                                    text_type: "content_separator",
-                                    title: "The state of the gym at the beginning",
-                                }),
-                                createMediaItem({
-                                    media_type: "image",
-                                    src: "/media/buben-club/gym-before-1.jpg"
-                                }),
-                                createMediaItem({
-                                    media_type: "image",
-                                    src: "/media/buben-club/gym-before-2.jpg"
-                                }),
-                                createTextItem({
-                                    text_type: "content_separator",
-                                    title: "The state of the gym after the job is done (mostly)",
-                                }),
-                                createMediaItem({
-                                    media_type: "image",
-                                    src: "/media/buben-club/gym-after-1.jpg"
-                                }),
-                                createMediaItem({
-                                    media_type: "image",
-                                    src: "/media/buben-club/gym-after-2.jpg"
-                                }),
-                                createMediaItem({
-                                    media_type: "image",
-                                    src: "/media/buben-club/gym-after-3.jpg"
-                                })
-                            ],
+                            gallery: {
+                                items:
+                                    [
+                                        createTextItem({
+                                            text_type: "content_separator",
+                                            title: "The state of the gym at the beginning",
+                                        }),
+                                        createMediaItem({
+                                            media_type: "image",
+                                            src: "/media/buben-club/gym-before-1.jpg"
+                                        }),
+                                        createMediaItem({
+                                            media_type: "image",
+                                            src: "/media/buben-club/gym-before-2.jpg"
+                                        }),
+                                        createTextItem({
+                                            text_type: "content_separator",
+                                            title: "The state of the gym after the job is done (mostly)",
+                                        }),
+                                        createMediaItem({
+                                            media_type: "image",
+                                            src: "/media/buben-club/gym-after-1.jpg"
+                                        }),
+                                        createMediaItem({
+                                            media_type: "image",
+                                            src: "/media/buben-club/gym-after-2.jpg"
+                                        }),
+                                        createMediaItem({
+                                            media_type: "image",
+                                            src: "/media/buben-club/gym-after-3.jpg"
+                                        })
+                                    ]
+                            },
                             core_tags: ["Management", "Volunteering"],
                             secondary_tags: ["Human Resources", "Communication", "Project Management", "Organization Skills"],
                             postscriptum: "P.S. This was a hard, collective job, done in our free time, thank you to all who contributed to this (we argued, we were upset, but it doesn't matter, we did a good job for people and earned some life experience)."
@@ -255,26 +260,28 @@ export const currentExperienceData: ExperienceNode[] = [
                                 description: "This is my bachelor thesis where I used transformers for fake news classification.",
                                 start_date: "2024-09-01",
                                 end_date: "2026-06-24",
-                                gallery: [
-                                    createTextItem({
-                                        text_type: "content_separator",
-                                        title: "Bachelor's Thesis",
-                                        description: `
+                                gallery: {
+                                    items: [
+                                        createTextItem({
+                                            text_type: "content_separator",
+                                            title: "Bachelor's Thesis",
+                                            description: `
                                         View my thesis pdf file here. The source code is also available [here](https://github.com/nickobard/FIT-CTU-Bc-Work-Enhancing-Fake-News-Classification).
                                         
                                         The first file is my thesis presentation, the second one is my thesis text. The presentation is some summarization of the work, so it is in the first place, but feel free to skip it and read the text.
                                         `
-                                    }),
-                                    createFileItem({
-                                        file_type: "pdf",
-                                        data: "/media/education/bachelors-thesis-fake-news-classification/Bc_presentation_2026_en_reduced.pdf"
-                                    }),
-                                    createFileItem({
-                                        file_type: "pdf",
-                                        data: "/media/education/bachelors-thesis-fake-news-classification/fake_news_detection.pdf"
-                                    }),
+                                        }),
+                                        createFileItem({
+                                            file_type: "pdf",
+                                            data: "/media/education/bachelors-thesis-fake-news-classification/Bc_presentation_2026_en_reduced.pdf"
+                                        }),
+                                        createFileItem({
+                                            file_type: "pdf",
+                                            data: "/media/education/bachelors-thesis-fake-news-classification/fake_news_detection.pdf"
+                                        }),
 
-                                ],
+                                    ]
+                                },
                                 details: `
                                     - Analyzed datasets for additional insights about articles token lengths,
                                     - Used transformer models like BERT, GPT2, RoBERTa, DistilBERT to improve classification scores,
@@ -359,37 +366,39 @@ export const currentExperienceData: ExperienceNode[] = [
                                     - Used OOP programming, inheritance and polymorphism to create extensible code,
                                     - Used Game Design patterns to create a good architecture of the game engine.
                                 `,
-                                gallery: [
-                                    createTextItem({
-                                        text_type: "content_separator",
-                                        title: "Visual Showcase of the Pacman Game",
-                                    }),
-                                    createMediaItem({
-                                        media_type: "image",
-                                        src: '/media/pa2-pacman-game-project-assets/pacman_game.jpg',
-                                        alt: "Pacman Game Screenshot",
-                                    }),
-                                    createMediaItem({
-                                        media_type: "video",
-                                        src: '/media/pa2-pacman-game-project-assets/pacman_showcase.mp4',
-                                        alt: "Pacman Showcase"
-                                    }),
-                                    createTextItem({
-                                        text_type: "content_separator",
-                                        title: "Showcase of Doxygen Documentation",
-                                        description: "Some pages from documentation. Full documentation PDF is available in [the source code](https://github.com/nickobard/CPP-Pacman-Game/blob/main/refman.pdf).",
-                                    }),
-                                    createMediaItem({
-                                        media_type: "image",
-                                        src: '/media/pa2-pacman-game-project-assets/documentation_game_actor.png',
-                                        alt: "Documentation Game Actor"
-                                    }),
-                                    createMediaItem({
-                                        media_type: "image",
-                                        src: '/media/pa2-pacman-game-project-assets/documentation_game_manager.png',
-                                        alt: "Documentation Game Manager"
-                                    })
-                                ],
+                                gallery: {
+                                    items: [
+                                        createTextItem({
+                                            text_type: "content_separator",
+                                            title: "Visual Showcase of the Pacman Game",
+                                        }),
+                                        createMediaItem({
+                                            media_type: "image",
+                                            src: '/media/pa2-pacman-game-project-assets/pacman_game.jpg',
+                                            alt: "Pacman Game Screenshot",
+                                        }),
+                                        createMediaItem({
+                                            media_type: "video",
+                                            src: '/media/pa2-pacman-game-project-assets/pacman_showcase.mp4',
+                                            alt: "Pacman Showcase"
+                                        }),
+                                        createTextItem({
+                                            text_type: "content_separator",
+                                            title: "Showcase of Doxygen Documentation",
+                                            description: "Some pages from documentation. Full documentation PDF is available in [the source code](https://github.com/nickobard/CPP-Pacman-Game/blob/main/refman.pdf).",
+                                        }),
+                                        createMediaItem({
+                                            media_type: "image",
+                                            src: '/media/pa2-pacman-game-project-assets/documentation_game_actor.png',
+                                            alt: "Documentation Game Actor"
+                                        }),
+                                        createMediaItem({
+                                            media_type: "image",
+                                            src: '/media/pa2-pacman-game-project-assets/documentation_game_manager.png',
+                                            alt: "Documentation Game Manager"
+                                        })
+                                    ]
+                                },
                                 postscriptum: '[Link to full source code.](https://github.com/nickobard/CPP-Pacman-Game)'
                             })
                         ]
