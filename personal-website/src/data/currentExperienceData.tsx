@@ -1,6 +1,6 @@
 import type {ExperienceNode} from "../types/ExperienceNode.ts";
 import {createFolder, createItem} from "../types/ExperienceNode.ts";
-import {createMediaItem, createTextItem} from "../types/GalleryItem.ts";
+import {createFileItem, createMediaItem, createTextItem} from "../types/GalleryItem.ts";
 
 export const currentExperienceData: ExperienceNode[] = [
     createFolder({
@@ -82,7 +82,7 @@ export const currentExperienceData: ExperienceNode[] = [
                     }),
                     createMediaItem({
                         media_type: "image",
-                        src: "/media/AI-Detem-Summer-School/ai-detem-summer-students-working.png",
+                        src: "/media/ai-detem-summer-school/ai-detem-summer-students-working.png",
                         alt: "Image showing students working on their projects."
                     }),
                     createTextItem({
@@ -91,7 +91,7 @@ export const currentExperienceData: ExperienceNode[] = [
                     }),
                     createMediaItem({
                         media_type: "image",
-                        src: "/media/AI-Detem-Summer-School/ai-detem-summer-data-poisoning-presentation.png"
+                        src: "/media/ai-detem-summer-school/ai-detem-summer-data-poisoning-presentation.png"
                     }),
                     createTextItem({
                         text_type: "content_separator",
@@ -99,7 +99,7 @@ export const currentExperienceData: ExperienceNode[] = [
                     }),
                     createMediaItem({
                         media_type: "image",
-                        src: "/media/AI-Detem-Summer-School/ai-detem-summer-students-presenting.png"
+                        src: "/media/ai-detem-summer-school/ai-detem-summer-students-presenting.png"
                     })
                 ],
                 details: `
@@ -130,11 +130,11 @@ export const currentExperienceData: ExperienceNode[] = [
                                 }),
                                 createMediaItem({
                                     media_type: "image",
-                                    src: "/media/Buben-Club/gym-before-1.jpg"
+                                    src: "/media/buben-club/gym-before-1.jpg"
                                 }),
                                 createMediaItem({
                                     media_type: "image",
-                                    src: "/media/Buben-Club/gym-before-2.jpg"
+                                    src: "/media/buben-club/gym-before-2.jpg"
                                 }),
                                 createTextItem({
                                     text_type: "content_separator",
@@ -142,15 +142,15 @@ export const currentExperienceData: ExperienceNode[] = [
                                 }),
                                 createMediaItem({
                                     media_type: "image",
-                                    src: "/media/Buben-Club/gym-after-1.jpg"
+                                    src: "/media/buben-club/gym-after-1.jpg"
                                 }),
                                 createMediaItem({
                                     media_type: "image",
-                                    src: "/media/Buben-Club/gym-after-2.jpg"
+                                    src: "/media/buben-club/gym-after-2.jpg"
                                 }),
                                 createMediaItem({
                                     media_type: "image",
-                                    src: "/media/Buben-Club/gym-after-3.jpg"
+                                    src: "/media/buben-club/gym-after-3.jpg"
                                 })
                             ],
                             core_tags: ["Management", "Volunteering"],
@@ -255,13 +255,23 @@ export const currentExperienceData: ExperienceNode[] = [
                                 description: "This is my bachelor thesis where I used transformers for fake news classification.",
                                 start_date: "2024-09-01",
                                 end_date: "2026-06-24",
+                                gallery: [
+                                    createTextItem({
+                                        text_type: "content_separator",
+                                        title: "Bachelor's Thesis",
+                                        description: "View my thesis pdf file here. The source code is also available [here](https://github.com/nickobard/FIT-CTU-Bc-Work-Enhancing-Fake-News-Classification)."
+                                    }),
+                                    createFileItem({
+                                        file_type: "pdf",
+                                        data: "/media/education/bachelors-thesis-fake-news-classification/fake_news_detection.pdf"
+                                    })
+                                ],
                                 details: `
                                     - Analyzed datasets for additional insights about articles token lengths,
                                     - Used transformer models like BERT, GPT2, RoBERTa, DistilBERT to improve classification scores,
                                         - Achieved higher scores (80% - 100%, depending on dataset), even with simplified models.
                                     - Implemented everything in tandem with MLFlow for proper training monitoring.
-                                `,
-                                postscriptum: "See the thesis PDF and source code available [here]()"
+                                `
                             }),
                             createItem({
                                 title: "Machine and Deep Learning Courses",
@@ -347,12 +357,12 @@ export const currentExperienceData: ExperienceNode[] = [
                                     }),
                                     createMediaItem({
                                         media_type: "image",
-                                        src: '/media/PA2-PacmanGameProjectAssets/pacman_game.jpg',
+                                        src: '/media/pa2-pacman-game-project-assets/pacman_game.jpg',
                                         alt: "Pacman Game Screenshot",
                                     }),
                                     createMediaItem({
                                         media_type: "video",
-                                        src: '/media/PA2-PacmanGameProjectAssets/pacman_showcase.mp4',
+                                        src: '/media/pa2-pacman-game-project-assets/pacman_showcase.mp4',
                                         alt: "Pacman Showcase"
                                     }),
                                     createTextItem({
@@ -362,12 +372,12 @@ export const currentExperienceData: ExperienceNode[] = [
                                     }),
                                     createMediaItem({
                                         media_type: "image",
-                                        src: '/media/PA2-PacmanGameProjectAssets/documentation_game_actor.png',
+                                        src: '/media/pa2-pacman-game-project-assets/documentation_game_actor.png',
                                         alt: "Documentation Game Actor"
                                     }),
                                     createMediaItem({
                                         media_type: "image",
-                                        src: '/media/PA2-PacmanGameProjectAssets/documentation_game_manager.png',
+                                        src: '/media/pa2-pacman-game-project-assets/documentation_game_manager.png',
                                         alt: "Documentation Game Manager"
                                     })
                                 ],

@@ -16,10 +16,17 @@ export function createTextItem(
     }
 }
 
+export function createFileItem(
+    data: Omit<FileItem, "type">
+): FileItem {
+    return {
+        type: "file",
+        ...data
+    }
+}
 
-export type GalleryItemBase = {
 
-};
+export type GalleryItemBase = {};
 
 export type MediaItem = GalleryItemBase & {
     type: "media";
@@ -35,6 +42,12 @@ export type TextItem = GalleryItemBase & {
     description?: string;
 }
 
-export type GalleryItem = MediaItem | TextItem;
+export type FileItem = GalleryItemBase & {
+    type: "file";
+    file_type: "pdf";
+    data: string;
+}
+
+export type GalleryItem = MediaItem | TextItem | FileItem;
 
 

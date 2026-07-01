@@ -3,6 +3,7 @@ import type {GalleryItem} from "../../../types/GalleryItem.ts";
 import './Gallery.css'
 import ReactMarkdown from "react-markdown";
 import {dedent} from "ts-dedent";
+import {GalleryFileItem} from "./GalleryFileItem.tsx";
 
 type MediaGalleryButtonProps = {
     items: GalleryItem[];
@@ -65,7 +66,7 @@ export function MediaGalleryButton({items}: MediaGalleryButtonProps) {
                                                 </ReactMarkdown>
                                             }
                                         </div>
-                                    ) : (
+                                    ) : item.type === "media" ? (
                                         <div className="gallery-media-item">
                                             {item.media_type === "image" ? (
                                                 <img src={item.src} alt={item.alt ?? ""}/>
@@ -74,6 +75,10 @@ export function MediaGalleryButton({items}: MediaGalleryButtonProps) {
                                                     <source src={item.src} type="video/mp4"/>
                                                 </video>
                                             )}
+                                        </div>
+                                    ) : (
+                                        <div className="gallery-file-item">
+                                            <GalleryFileItem fileType={item.file_type} data={item.data}/>
                                         </div>
                                     )}
                                 </div>
