@@ -1,4 +1,4 @@
-import type {GalleryItem} from "./GalleryItem.ts";
+import type {Gallery} from "./GalleryItem.ts";
 
 
 export function createFolder(
@@ -53,7 +53,7 @@ export type ExperienceItem = ExperienceNodeBase & {
     details?: string;
     show_in_list_view: boolean;
     include_tags_in_tags_count_statistics: boolean;
-    gallery?: GalleryItem[];
+    gallery?: Gallery;
 };
 
 export type ExperienceNode = ExperienceFolder | ExperienceItem;

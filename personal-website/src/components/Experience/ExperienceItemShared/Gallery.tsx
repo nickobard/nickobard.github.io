@@ -1,18 +1,18 @@
 import {useState} from "react";
-import type {GalleryItem} from "../../../types/GalleryItem.ts";
 import './Gallery.css'
 import ReactMarkdown from "react-markdown";
 import {dedent} from "ts-dedent";
 import {GalleryFileItem} from "./GalleryFileItem.tsx";
+import type {Gallery} from "../../../types/GalleryItem.ts";
 
 type MediaGalleryButtonProps = {
-    items: GalleryItem[];
+    gallery: Gallery;
 };
 
-export function MediaGalleryButton({items}: MediaGalleryButtonProps) {
+export function MediaGalleryButton({gallery}: MediaGalleryButtonProps) {
     const [open, setOpen] = useState(false);
 
-    if (items.length === 0) return null;
+    if (gallery.items.length === 0) return null;
 
     return (
         <>
@@ -20,7 +20,14 @@ export function MediaGalleryButton({items}: MediaGalleryButtonProps) {
                 display: "flex",
             }}>
                 <button className="gallery-open-button" onClick={() => setOpen(true)}>
-                    <span>View media</span>
+
+                    <span>
+                        {gallery.view_button_name ? (
+                            gallery.view_button_name
+                        ) : (
+                            "View media"
+                        )}
+                    </span>
 
                     <svg
                         className="gallery-open-button-icon"
@@ -52,7 +59,7 @@ export function MediaGalleryButton({items}: MediaGalleryButtonProps) {
 
                             <div className="modal-window-title">Gallery</div>
 
-                            {items.map((item, index) => (
+                            {gallery.items.map((item, index) => (
                                 <div className="gallery-item" key={index}>
                                     {item.type === "text" ? (
                                         <div className="gallery-text-item">

@@ -29,8 +29,8 @@ export function ItemInnerContent({item, contentRef}: Props) {
                 </div>
             )}
 
-            {item.gallery && item.gallery.length > 0 &&
-                <MediaGalleryButton items={item.gallery}/>
+            {item.gallery && item.gallery.items.length > 0 &&
+                <MediaGalleryButton items={item.gallery.items}/>
             }
 
             {item.postscriptum && (

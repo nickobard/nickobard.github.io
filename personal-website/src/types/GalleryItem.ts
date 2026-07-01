@@ -1,3 +1,9 @@
+export type Gallery = {
+    view_button_name?: string;
+    items: GalleryItem[];
+}
+
+
 export function createMediaItem(
     data: Omit<MediaItem, "type">
 ): MediaItem {
