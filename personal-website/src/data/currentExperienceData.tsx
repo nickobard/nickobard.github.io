@@ -259,12 +259,21 @@ export const currentExperienceData: ExperienceNode[] = [
                                     createTextItem({
                                         text_type: "content_separator",
                                         title: "Bachelor's Thesis",
-                                        description: "View my thesis pdf file here. The source code is also available [here](https://github.com/nickobard/FIT-CTU-Bc-Work-Enhancing-Fake-News-Classification)."
+                                        description: `
+                                        View my thesis pdf file here. The source code is also available [here](https://github.com/nickobard/FIT-CTU-Bc-Work-Enhancing-Fake-News-Classification).
+                                        
+                                        The first file is my thesis presentation, the second one is my thesis text. The presentation is some summarization of the work, so it is in the first place, but feel free to skip it and read the text.
+                                        `
+                                    }),
+                                    createFileItem({
+                                        file_type: "pdf",
+                                        data: "/media/education/bachelors-thesis-fake-news-classification/Bc_presentation_2026_en_reduced.pdf"
                                     }),
                                     createFileItem({
                                         file_type: "pdf",
                                         data: "/media/education/bachelors-thesis-fake-news-classification/fake_news_detection.pdf"
-                                    })
+                                    }),
+
                                 ],
                                 details: `
                                     - Analyzed datasets for additional insights about articles token lengths,
